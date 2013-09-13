@@ -1,0 +1,23 @@
+<h1>Course#edit</h1>
+<p>Find me in app/views/course/edit.html.erb</p>
+
+<%= form_for @course, :url=>{:action=>:update,:id=>@course.id} do |f| %>
+
+  <div><%= f.label :name %><br />
+  <%= f.text_field :name, :autofocus => true %></div>
+  
+  <div><%= f.label :course_date %><br />
+  <%= f.datetime_select :course_date, :autofocus => true %></div>
+
+  <div><%= f.label :student_amount %><br />
+  <%= f.text_field :student_amount, :autofocus => true %></div>
+
+  <div><%= f.label :location %><br />
+  <%= f.text_field :location %></div>
+
+  <div><%= f.label :agenda %><br />
+  <%= f.text_area :agenda %></div>
+
+  <div><%= f.submit "Save" %></div>
+
+<% end %>

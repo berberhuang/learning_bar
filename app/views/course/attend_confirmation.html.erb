@@ -1,0 +1,7 @@
+<h1>Course#attend_confirmation</h1>
+<p>Find me in app/views/course/attend_confirmation.html.erb</p>
+<%= @course.name%>
+<%= @course.course_date.to_s%>
+<%= @course.location%>
+
+<%=link_to '確認報名', :action=>:attend, :course_id=>@course.id%>

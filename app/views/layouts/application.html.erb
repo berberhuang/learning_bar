@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Learningbar</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% if user_signed_in? %>
+  <div>Hello! <%=current_user.username%></div>
+  <%=link_to 'Logout', '/users/sign_out',method: 'DELETE'%>
+<%else%>
+  <%=link_to 'Login','/users/sign_in'%>
+  <%=link_to 'Sign Up', '/users/sign_up'%>
+<%end%>
+<%= yield %>
+
+</body>
+</html>
