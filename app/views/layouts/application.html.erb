@@ -1,20 +1,25 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Learningbar</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<% if user_signed_in? %>
-  <div>Hello! <%=current_user.username%></div>
-  <%=link_to 'Logout', '/users/sign_out',method: 'DELETE'%>
-<%else%>
-  <%=link_to 'Login','/users/sign_in'%>
-  <%=link_to 'Sign Up', '/users/sign_up'%>
-<%end%>
-<%= yield %>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-</body>
+    <title><%= content_for?(:title) ? yield(:title) : "Learningbar" %></title>
+
+    <%= stylesheet_link_tag    "application" :media => "all"%>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+  	<% if user_signed_in? %>
+  	  <div>Hello! <%=current_user.username%></div>
+  	  <%=link_to 'Logout', '/users/sign_out',method: 'DELETE'%>
+  	<%else%>
+  	  <%=link_to 'Login','/users/sign_in'%>
+  	  <%=link_to 'Sign Up', '/users/sign_up'%>
+  	<%end%>
+    <%= yield %>
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>

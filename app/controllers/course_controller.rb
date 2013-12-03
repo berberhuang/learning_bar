@@ -34,7 +34,7 @@ class CourseController < ApplicationController
 	@course.company_id=1	
 
 	@course.save
-	redirect_to :action=>:info, :id=>@course.id
+	redirect_to :controller=>:backbone,:action=>:course_info, :id=>@course.id
   end
  
   def update
@@ -43,7 +43,7 @@ class CourseController < ApplicationController
 	params[:course][:company_id]=@course.company_id
 
 	@course.update_attributes(params[:course])
-	redirect_to :action=>:info, :id=>@course.id
+	redirect_to :controller=>:backbone,:action=>:course_info, :id=>@course.id
   end	
 
 end

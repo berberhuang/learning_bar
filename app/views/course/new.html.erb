@@ -1,7 +1,7 @@
 <h1>Course#New</h1>
-<p>Find me in app/views/course/Create.html.erb</p>
+<p>Find me in app/views/course/new.html.erb</p>
   
-<%= form_for @course, :url=>{:action=>:create} do |f| %>
+<%= form_for @course, :url=>{:controller=>:course,:action=>:create} do |f| %>
 
   <div><%= f.label :name %><br />
   <%= f.text_field :name, :autofocus => true %></div>

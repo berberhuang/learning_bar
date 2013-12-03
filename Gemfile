@@ -21,7 +21,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
+gem 'foundation-rails'
 gem 'devise'
 
 # To use ActiveModel has_secure_password
@@ -38,5 +38,5 @@ gem 'devise'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
-gem 'therubyracer'
+gem 'therubyracer', '~> 0.12', :require => 'v8'
 gem 'rb-readline', '~>0.4.2'
