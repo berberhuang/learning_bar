@@ -6,20 +6,49 @@
 
     <title><%= content_for?(:title) ? yield(:title) : "Learningbar" %></title>
 
-    <%= stylesheet_link_tag    "application" :media => "all"%>
+    <%= stylesheet_link_tag    "application" ,:media => "all"%>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
 
   <body>
-  	<% if user_signed_in? %>
-  	  <div>Hello! <%=current_user.username%></div>
-  	  <%=link_to 'Logout', '/users/sign_out',method: 'DELETE'%>
-  	<%else%>
-  	  <%=link_to 'Login','/users/sign_in'%>
-  	  <%=link_to 'Sign Up', '/users/sign_up'%>
-  	<%end%>
+  	<nav class="top-bar">
+  		<ul class="title-area">
+  			<li class="name">
+  				<img src="<%=asset_path('learningbar.png')%>">
+  			</li>
+  		</ul>
+  		<% if user_signed_in? %>
+  		<section class="top-bar-section">
+  			<ul class="right">
+  				<li>Hello! <%=current_user.username%></li>
+  				<li class="divider"></li>
+  				<li><%=link_to 'Logout', '/users/sign_out',method: 'DELETE'%></li>
+  			</ul>
+  		</section>
+  		<%else%>
+  		<section class="top-bar-section">
+  			<ul class="right">
+  				<li class="divider"></li>
+  				<li><%=link_to '登入','#',:data=>{:'reveal-id'=>'loginModal'}%></li>
+  				<li class="divider"></li>
+  				<li><%=link_to '註冊', '#', :data=>{:'reveal-id'=>'signupModal'}%></li>
+  				<%end%>
+  			</ul>
+  		</section>
+  	</nav>
+  	  
     <%= yield %>
     <%= javascript_include_tag "application" %>
+
+    <!--Login & Sign up modal-->
+    <div id="loginModal" class="reveal-modal" data-reveal>
+    	<%= render 'devise/sessions/new' %>
+    	<a class="close-reveal-modal">&#215;</a>
+    </div>
+    <div id="signupModal" class="reveal-modal" data-reveal>
+    	<%= render 'devise/registrations/new'%>
+    	<a class="close-reveal-modal">&#215;</a>
+    </div>
   </body>
 </html>
