@@ -39,11 +39,11 @@
     <%= javascript_include_tag "application" %>
 
     <!--Login & Sign up modal-->
-    <div id="loginModal" class="reveal-modal" data-reveal>
+    <div id="loginModal" class="reveal-modal small" data-reveal>
     	<%= render 'devise/sessions/new' %>
     	<a class="close-reveal-modal">&#215;</a>
     </div>
-    <div id="signupModal" class="reveal-modal" data-reveal>
+    <div id="signupModal" class="reveal-modal small" data-reveal>
     	<%= render 'devise/registrations/new'%>
     	<a class="close-reveal-modal">&#215;</a>
     </div>
