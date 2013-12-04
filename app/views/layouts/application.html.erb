@@ -18,17 +18,14 @@
   				<img src="<%=asset_path('learningbar.png')%>">
   			</li>
   		</ul>
-  		<% if user_signed_in? %>
+  		
   		<section class="top-bar-section">
   			<ul class="right">
-  				<li>Hello! <%=current_user.username%></li>
+  			<% if user_signed_in? %>
+  				<li><%=link_to current_user.username, edit_user_registration_path %></li>
   				<li class="divider"></li>
-  				<li><%=link_to 'Logout', '/users/sign_out',method: 'DELETE'%></li>
-  			</ul>
-  		</section>
-  		<%else%>
-  		<section class="top-bar-section">
-  			<ul class="right">
+  				<li><%=link_to '登出', '/users/sign_out',method: 'DELETE'%></li>
+  				<%else%>
   				<li class="divider"></li>
   				<li><%=link_to '登入','#',:data=>{:'reveal-id'=>'loginModal'}%></li>
   				<li class="divider"></li>
