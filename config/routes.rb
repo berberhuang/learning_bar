@@ -1,22 +1,14 @@
 Learningbar::Application.routes.draw do
-
-  get "course/attend"
-
-  get "course/attend_confirmation"
-
-  get "course/cancel_attendence"
+  #resources :backbone
+  resources :course
+  
+  get "backbone/index",:controller=>:backbone,:action=>:index
+  get "backbone/course_info/:id",:controller=>:backbone,:action=>:course_info
 
   get "course/edit/:id",:controller=>:course,:action=>:edit
-
+  get "courese/attend_confirmation/:id", :controller=>:course,:action=>:attend_confirmation
+  get "courese/attend/:id", :controller=>:course,:action=>:attend
   get "course/info/:id", :controller=>:backbone,:action=>:course_info
-  
-  get "course/new"
-
-  put "course/update"
-
-  post "course/create"
-  
-  get "backbone/index"
 
   devise_for :users
 
