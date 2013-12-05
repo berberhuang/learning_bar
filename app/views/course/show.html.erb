@@ -1,0 +1,13 @@
+<h1>Course#info</h1>
+<p>Find me in app/views/course/info.html.erb</p>
+<%= @course.name%>
+<%= @course.course_date.to_s%>
+<%= @course.student_amount.to_s%>
+<%= @course.location%>
+<%= @course.agenda%>
+
+<% if @attend %>
+   已報名
+<% else %>
+  <%=link_to '報名',:controller=>:course, :action=>:attend_confirmation,:course_id=>@course.id %>
+<% end %>

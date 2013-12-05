@@ -1,16 +1,14 @@
 Learningbar::Application.routes.draw do
-  #resources :backbone
   resources :course
   
   get "backbone/index",:controller=>:backbone,:action=>:index
-  get "backbone/course_info/:id",:controller=>:backbone,:action=>:course_info
 
   get "course/edit/:id",:controller=>:course,:action=>:edit
-  get "courese/attend_confirmation/:id", :controller=>:course,:action=>:attend_confirmation
-  get "courese/attend/:id", :controller=>:course,:action=>:attend
+  get "course/attend_confirmation/:id", :controller=>:course,:action=>:attend_confirmation
+  get "course/attend/:id", :controller=>:course,:action=>:attend
   get "course/info/:id", :controller=>:backbone,:action=>:course_info
 
-  devise_for :users
+  devise_for :users, :controllers =>{:registrations => "registrations",:sessions=>'sessions'}
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

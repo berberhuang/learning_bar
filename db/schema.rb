@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(:version => 20130913121019) do
     t.datetime "updated_at",     :null => false
   end
 
+  add_index "courses", ["name"], :name => "index_courses_on_name"
+
   create_table "students", :force => true do |t|
     t.text     "description", :null => false
     t.integer  "user_id",     :null => false
