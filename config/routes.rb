@@ -6,7 +6,8 @@ Learningbar::Application.routes.draw do
   get "backbone/course_info/:id",:controller=>:backbone,:action=>:course_info
 
   get "course/edit/:id",:controller=>:course,:action=>:edit
-
+  get "courese/attend_confirmation/:id", :controller=>:course,:action=>:attend_confirmation
+  get "courese/attend/:id", :controller=>:course,:action=>:attend
   get "course/info/:id", :controller=>:backbone,:action=>:course_info
 
   devise_for :users
