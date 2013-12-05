@@ -6,15 +6,9 @@ class RegistrationsController < Devise::RegistrationsController
 	s.user_id=resource.id
 	s.description=''
 	s.save
+	session[:student_id]=s.id
     end
     
-  end
-
-  def update
-    super
-    @student=Student.find(session[:student_id])
-    @student.description=params[:student][:description]
-    @student.save
   end
 
   def after_update_path_for(resource)

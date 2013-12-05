@@ -1,5 +1,8 @@
 Learningbar::Application.routes.draw do
 
+  get "student/edit"
+  put "student/update"
+
   resources :course
   
   get "backbone/index",:controller=>:backbone,:action=>:index
