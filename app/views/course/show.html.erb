@@ -8,6 +8,14 @@
 
 <% if @attend %>
    已報名
-<% else %>
+<% elsif student_signed_in? %>
   <%=link_to '報名',:controller=>:course, :action=>:attend_confirmation,:course_id=>@course.id %>
+<% elsif admin_signed_in? %>
+  <%=link_to '編輯',:controller=>:course, :action=>:edit,:id=>@course.id%>
+  <div>已報名學生列表</div>
+  <ul>
+  <%@students.each do |s| %>
+      <li><%=s.username%></li>
+  <%end%>
+  </ul>
 <% end %>

@@ -1,13 +1,13 @@
 module BackboneHelper
 	def resource_name
-	   :user
+	   :student
 	end
 	
 	def resource
-	   @resource ||= User.new
+	   @resource ||= Student.new
 	end
 	
 	def devise_mapping
-	   @devise_mapping ||= Devise.mappings[:user]
+	   @devise_mapping ||= Devise.mappings[:student]
 	end
 end

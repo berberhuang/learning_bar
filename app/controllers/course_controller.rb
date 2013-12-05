@@ -1,22 +1,25 @@
 class CourseController < ApplicationController
-  before_filter :authenticate_user!,:except=>[:show]
+  before_filter :authenticate_student!,:only=>[:attend,:attend_confirmation,:cancel_attendence]
+  before_filter :authenticate_admin!,:only=>[:new,:create,:edit,:update]
+
 
   def show
      course_id=params[:id].to_i
      @course=Course.find(course_id)
-     @attend=false
      
-     s=Student.find(session[:student_id])
-     if s
-	@attend = s.attends.select{|i| i.course_id==course_id}.size > 0
+     if student_signed_in?
+	@attend = current_student.attends.select{|i| i.course_id==course_id}.size > 0
+     elsif admin_signed_in?
+	@students=@course.students
      end
   end
 
   def attend
+     student=current_student
      course_id=params[:course_id]
-     student_id=session[:student_id]
+     student_id=student.id
 
-     if Student.find(session[:student_id]).attends.select{|i| i.course_id==course_id.to_i}.size > 0
+     if student.attends.select{|i| i.course_id==course_id.to_i}.size > 0
 	redirect_to '/course/'+course_id
      end  
   
@@ -35,7 +38,7 @@ class CourseController < ApplicationController
 
   def attend_confirmation
      course_id=params[:course_id]
-     if Student.find(session[:student_id]).attends.select{|i| i.course_id==course_id.to_i}.size > 0
+     if current_student.attends.select{|i| i.course_id==course_id.to_i}.size > 0
 	redirect_to '/course/'+course_id
      end    
 
@@ -46,7 +49,7 @@ class CourseController < ApplicationController
 
   def cancel_attendence
 	@course_id=params[:id]
-	@student_id=session[:student_id]
+	@student_id=current_student.id
 	a=Attend.where(:course_id=>@course_id, :student_id=>@student_id)
 	a[0].destroy
 	redirect_to :back

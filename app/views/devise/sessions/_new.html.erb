@@ -1,4 +1,4 @@
-<h2>Sign in</h2>
+<h2><%=resource_name.capitalize%> Sign in</h2>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <div class="small-2 columns"><%= f.label 'Email',:class=>'right inline' %></div>
@@ -17,7 +17,7 @@
 
   <div>
   	<%= f.submit "登入", :class=>'button' %>
-  	<%= link_to "忘記密碼", new_password_path('user'),:class=>'right' %>
+  	<%= link_to "忘記密碼", new_password_path('student'),:class=>'right' %>
   </div>
 
 <% end %>

@@ -1,4 +1,4 @@
-<h2><%=resource_name.capitalize%> Sign up</h2>
+<h2>Admin Sign up</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -32,4 +32,4 @@
   <div><%= f.submit "Sign up", :class=>'button' %></div>
 <% end %>
 
-<!--%= render "devise/shared/links" %-->
+<%= render "admins/shared/links" %>

@@ -1,7 +1,15 @@
 Learningbar::Application.routes.draw do
 
+  devise_for :students
+
+  get "admins",:controller=>:admins,:action=>:show
+
+  devise_for :admins
+
   get "student/edit"
   put "student/update"
+  get "student", :controller=>:student,:action=>:show
+  get "student/course"
 
   resources :course
   
@@ -13,11 +21,8 @@ Learningbar::Application.routes.draw do
   get "course/cancel_attendence/:id", :controller=>:course,:action=>:cancel_attendence
   get "course/info/:id", :controller=>:backbone,:action=>:course_info
 
-  get "users", :controller=>:users,:action=>:show
 
-  get "users/course"
-
-  devise_for :users, :controllers =>{:registrations => "registrations",:sessions=>'sessions'}
+ # devise_for :users, :controllers =>{:registrations => "registrations",:sessions=>'sessions'}
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

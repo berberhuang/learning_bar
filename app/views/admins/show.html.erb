@@ -1,0 +1,7 @@
+<h1>Admins#show</h1>
+<p>Find me in app/views/admins/show.html.erb</p>
+
+<% @courses.each do |c|%>
+   <div><%= link_to c.name, '/course/'+c.id.to_s %>,<%=c.course_date%>,<%=c.location%>,<%=link_to '編輯課程', '/course/edit/'+c.id.to_s%></div>
+
+<%end%>

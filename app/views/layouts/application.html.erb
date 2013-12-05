@@ -21,10 +21,14 @@
   		
   		<section class="top-bar-section">
   			<ul class="right">
-  			<% if user_signed_in? %>
-  				<li><%=link_to current_user.username, '/users'%></li>
+  			<% if student_signed_in? %>
+  				<li><%=link_to current_student.username, '/student'%></li>
   				<li class="divider"></li>
-  				<li><%=link_to '登出', '/users/sign_out',method: 'DELETE'%></li>
+  				<li><%=link_to '登出', '/students/sign_out',method: 'DELETE'%></li>
+			<%elsif admin_signed_in? %>
+  				<li><%=link_to 'Admin '+current_admin.username, '/admins'%></li>
+  				<li class="divider"></li>
+  				<li><%=link_to '登出', '/admins/sign_out',method: 'DELETE'%></li>
   			<%else%>
   				<li class="divider"></li>
   				<li><%=link_to '登入','#',:data=>{:'reveal-id'=>'loginModal'}%></li>
