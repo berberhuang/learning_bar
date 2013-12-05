@@ -6,21 +6,23 @@ class CourseController < ApplicationController
      @course=Course.find(course_id)
      @attend=false
      
-     i=session[:user_identity]
-     if i
-	@attend = i.attends.select{|i| i.course_id==course_id}.size > 0
+     s=Student.find(session[:student_id])
+     if s
+	@attend = s.attends.select{|i| i.course_id==course_id}.size > 0
      end
   end
 
   def attend
      course_id=params[:course_id]
-     if session[:user_identity].attends.select{|i| i.course_id==course_id.to_i}.size > 0
+     student_id=session[:student_id]
+
+     if Student.find(session[:student_id]).attends.select{|i| i.course_id==course_id.to_i}.size > 0
 	redirect_to '/course/'+course_id
      end  
   
      @attend=Attend.new
-     @attend.course_id=params[:course_id]
-     @attend.student_id=session[:user_identity].id
+     @attend.course_id=course_id
+     @attend.student_id=student_id
           
 
      if @attend.save
@@ -33,7 +35,7 @@ class CourseController < ApplicationController
 
   def attend_confirmation
      course_id=params[:course_id]
-     if session[:user_identity].attends.select{|i| i.course_id==course_id.to_i}.size > 0
+     if Student.find(session[:student_id]).attends.select{|i| i.course_id==course_id.to_i}.size > 0
 	redirect_to '/course/'+course_id
      end    
 
@@ -43,6 +45,11 @@ class CourseController < ApplicationController
 
 
   def cancel_attendence
+	@course_id=params[:id]
+	@student_id=session[:student_id]
+	a=Attend.where(:course_id=>@course_id, :student_id=>@student_id)
+	a[0].destroy
+	redirect_to :back
   end
 
   def edit

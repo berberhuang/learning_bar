@@ -4,13 +4,13 @@ class SessionsController < Devise::SessionsController
   def create
      super
      if user_signed_in?
-	session[:user_identity]=Student.find_by_user_id(current_user.id)
+	session[:student_id]=Student.find_by_user_id(current_user.id).id
      end
   end
 
   # DELETE /resource/sign_out
   def destroy
 	super
-	session[:user_identity]=nil
+	session[:student_id]=nil
   end
 end

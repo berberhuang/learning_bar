@@ -1,0 +1,3 @@
+<% @course.each do |c|%>
+	<div><%= link_to c.name, '/course/'+c.id.to_s %>,<%=c.course_date%>,<%=c.location%>,<%=link_to '退報名', '/course/cancel_attendence/'+c.id.to_s%></div>
+<% end %>

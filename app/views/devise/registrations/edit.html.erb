@@ -16,6 +16,11 @@
   <div><%= f.label :phone %><br />
   <%= f.text_field :phone, :autofocus => true %></div>
 
+  <% if @student=Student.find(session[:student_id])%>
+	  <div><%=label @student,:description%><br />
+	  <%= text_area :student,:description%></div>
+  <% end%>
+
   <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
   <%= f.password_field :password, :autocomplete => "off" %></div>
 

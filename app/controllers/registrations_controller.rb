@@ -1,8 +1,4 @@
 class RegistrationsController < Devise::RegistrationsController
-  def new
-    super
-  end
-
   def create
     super
     if resource.id
@@ -16,5 +12,12 @@ class RegistrationsController < Devise::RegistrationsController
 
   def update
     super
+    @student=Student.find(session[:student_id])
+    @student.description=params[:student][:description]
+    @student.save
+  end
+
+  def after_update_path_for(resource)
+      '/users'
   end
 end 
