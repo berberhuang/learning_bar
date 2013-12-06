@@ -1,32 +1,61 @@
-<!-- First Band (Slider) -->
-<div class="first_band">
-	<div>
-		<img src="<%=asset_path('facebook_banner.png')%>">
-	</div>
+<section role="main">
+<div class="first_band clearfix">
+  <div class="row">
+    <h1 class="text-center">SUPERPOWER</h1>
+    <div class="column large-6 large-centered">
+      <h4 class="text-justify">
+        Massa enim, dapibus arcu non sed lectus vut amet? Elementum, integer, integer enim mattis natoque, tempor. Aliquet, tristique, enim aliquam dolor augue mid pulvinar dis cursus. Aliquam vel, elementum dictumst. Nisi turpis tortor placerat magna, porta proin hac cras tincidunt! Habitasse aliquam tristique magna. Penatibus a et pulvinar! Dis, est nisi lacus elit integer! Tincidunt placerat, sed, natoque scelerisque hac? Adipiscing eu nisi elementum magna sit pulvinar et porttitor vut, parturient velit, 
+        
+        
+      </h4>
+    </div>
+    
+  </div>
 </div>
-
 <!-- Three-up Content Blocks -->
 
 <div class="row">
-<div class="large-4 columns">
+<div class="large-3 columns">
   <img src="http://placehold.it/400x300&text=[img]" />
   <h4>網路公司的實務技術</h4>
   <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
 </div>
 
-<div class="large-4 columns">
+<div class="large-3 columns">
   <img src="http://placehold.it/400x300&text=[img]" />
   <h4>直接與網路公司開發者學習</h4>
   <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
 </div>
 
-<div class="large-4 columns">
+<div class="large-3 columns">
   <img src="http://placehold.it/400x300&text=[img]" />
   <h4>有夠帥氣</h4>
   <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
 </div>
+<div class="large-3 columns">
+  <img src="http://placehold.it/400x300&text=[img]" />
+  <h4>有夠帥氣</h4>
+  <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.
+
+
+  </p>
+</div>
 
 </div>
+<div class="second_band">
+  <div class="column large-5 large-offset-2">
+    <img src="<%=asset_path('choco_course.jpg')%>" style="width:80%"/>
+  </div>
+  <div class="column large-5" style="padding-top:100px;">
+    <h1><%= @course.name%></h1>
+    <h4>時間：<%= @course.course_date.strftime('%Y年%m月%d日%I:%M %p')%></h4>
+    <h4>地點：<%= @course.location%></h4>
+      <%=link_to '報名',"#", :class=>'button' %>
+  </div>
+    
+</div>
+
+
 
 <!-- Call to Action Panel -->
 <div class="row">
@@ -45,6 +74,7 @@
   
 </div>
 </div>
+</section>
 
 <!-- Footer -->
 
