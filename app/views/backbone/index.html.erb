@@ -1,91 +1,73 @@
 <section role="main">
 <div class="first_band clearfix">
-  <div class="row">
-    <h1 class="text-center">SUPERPOWER</h1>
-    <div class="column large-6 large-centered">
-      <h4 class="text-justify">
-        Massa enim, dapibus arcu non sed lectus vut amet? Elementum, integer, integer enim mattis natoque, tempor. Aliquet, tristique, enim aliquam dolor augue mid pulvinar dis cursus. Aliquam vel, elementum dictumst. Nisi turpis tortor placerat magna, porta proin hac cras tincidunt! Habitasse aliquam tristique magna. Penatibus a et pulvinar! Dis, est nisi lacus elit integer! Tincidunt placerat, sed, natoque scelerisque hac? Adipiscing eu nisi elementum magna sit pulvinar et porttitor vut, parturient velit, 
-        
-        
-      </h4>
-    </div>
-    
+  <h1 class="text-center">學習、交流</h1>
+  <div class="column large-4 large-centered">
+    <h4 class="text-center">
+      向頂尖開發者學習實務技術<br>
+
+    </h4>
   </div>
 </div>
 <!-- Three-up Content Blocks -->
 
-<div class="row">
-<div class="large-3 columns">
-  <img src="http://placehold.it/400x300&text=[img]" />
-  <h4>網路公司的實務技術</h4>
-  <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
-</div>
-
-<div class="large-3 columns">
-  <img src="http://placehold.it/400x300&text=[img]" />
-  <h4>直接與網路公司開發者學習</h4>
-  <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
-</div>
-
-<div class="large-3 columns">
-  <img src="http://placehold.it/400x300&text=[img]" />
-  <h4>有夠帥氣</h4>
-  <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
-</div>
-<div class="large-3 columns">
-  <img src="http://placehold.it/400x300&text=[img]" />
-  <h4>有夠帥氣</h4>
-  <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.
-
-
-  </p>
-</div>
-
-</div>
 <div class="second_band">
-  <div class="column large-5 large-offset-2">
-    <img src="<%=asset_path('choco_course.jpg')%>" style="width:80%"/>
-  </div>
-  <div class="column large-5" style="padding-top:100px;">
-    <h1><%= @course.name%></h1>
-    <h4>時間：<%= @course.course_date.strftime('%Y年%m月%d日%I:%M %p')%></h4>
-    <h4>地點：<%= @course.location%></h4>
-      <%=link_to '報名',"#", :class=>'button' %>
-  </div>
-    
-</div>
+  <div class="row">
+    <div class="large-4 columns">
+      <h4 class="text-center">
+        <span class="fa-stack fa-lg fa-5x">
+        <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+        <i class="fa fa-lg fa-keyboard-o fa-stack-1x"></i>
+      </span><br/>
+      學習網路產業實務的開發技術
+      </h4>
+      <p>LEARNINGBAR邀請網路產業的專業開發者開班授課，讓你用最直接的方法，學會實務的開發技術，增加學習效率。</p>
+    </div>
+    <div class="large-4 columns">
+      <h4 class="text-center">
+        <span class="fa-stack fa-lg fa-5x">
+          <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+          <i class="fa fa-lg fa-star fa-stack-1x"></i></span><br/>
+        與網路專業開發者深度交流</h4>
+      <p>你有任何想法希望得到專業的建議？或者你想要認識一流網路公司、增加未來接觸機會？在LEARNINGBAR，你將獲得與網路公司開發者深度交流的機會</p>
+    </div>
 
-
-
-<!-- Call to Action Panel -->
-<div class="row">
-<div class="large-12 columns">
-  <div class="panel">
-    <h4>Get in touch!</h4>
-    <div class="row">
-      <div class="large-9 columns">
-        <p>請讓我們知道你的想法</p>
-      </div>
-      <div class="large-3 columns">
-        <a href="#" class="radius button right">Contact Us</a>
-      </div>
+    <div class="large-4 columns">
+      <h4 class="text-center">
+        <span class="fa-stack fa-lg fa-5x">
+        <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+        <i class="fa fa-lg fa-keyboard-o fa-stack-1x"></i>
+        </span><br/>
+        累積課程資歷</h4>
+      <p>在LEARNINGBAR上過的課，都會被記錄起來，整合你個人撰寫的履歷，為你的開發實力背書</p>
     </div>
   </div>
-  
 </div>
+<div class="third_band clearfix">
+  <div class="column large-4 large-offset-2">
+    <img src="<%=asset_path('choco_course.png')%>"/>
+  </div>
+  <div class="column large-5" style="padding-top:100px;">
+    <h1><%=link_to @course.name,course_url(@course)%></h1>
+    <h4>時間：<%= @course.course_date.strftime('%Y年%m月%d日%I:%M %p')%></h4>
+    <h4>地點：<%= @course.location%></h4>
+      <%=link_to '查看課程',course_url(@course), :class=>'button' %>
+  </div>
 </div>
 </section>
 
 <!-- Footer -->
 
-<footer class="row">
-<div class="large-12 columns">
-  <hr />
+<footer>
   <div class="row">
-    <div class="large-6 columns">
-      <p>© Copyright no one at all. Go to town.</p>
+    <div class="large-3 columns">
+      <h4>Get in touch!</h4>
+      <p>請讓我們知道你的想法!</p>
+      <a href="http://on.fb.me/1aIEVfr" class="radius button">Contact Us</a>
     </div>
-    <div class="large-6 columns">
+    <div class="large-4 columns">
+      <div class="fb-like-box" data-href="http://www.facebook.com/learningbar" data-height="190" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
+    </div>
+    <div class="large-4 columns">
       <ul class="inline-list right">
         <li><a href="#">Link 1</a></li>
         <li><a href="#">Link 2</a></li>
@@ -93,6 +75,7 @@
         <li><a href="#">Link 4</a></li>
       </ul>
     </div>
+    <p class="right">© Copyright no one at all. Go to town.</p>
   </div>
-</div> 
+  
 </footer>

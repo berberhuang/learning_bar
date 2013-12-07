@@ -1,8 +1,9 @@
 // Place all the styles related to the Backbone controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+$beer-orange:#fbb03a;
 .first_band{
+	height: 400px;
 	background-image: url(image_path('mainbanner.jpg'));
 	background-size:cover;
 	padding-top:20px;
@@ -10,10 +11,19 @@
 		color: white;
 	};
 	h4{
-		color:rgba(248,127,25,1);
+		color:$beer-orange;
 	}
 }
-
 .second_band{
-	background: red;
+	background-color:#FDD62E;
+}
+.third_band{
+	background-color: $beer-orange;
+	img{
+		width:100%;
+	}
+}
+footer{
+	background: black;
+	color:white;
 }

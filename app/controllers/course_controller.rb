@@ -8,9 +8,9 @@ class CourseController < ApplicationController
      @course=Course.find(course_id)
      
      if student_signed_in?
-	@attend = current_student.attends.select{|i| i.course_id==course_id}.size > 0
+      @attend = current_student.attends.select{|i| i.course_id==course_id}.size > 0
      elsif admin_signed_in?
-	@students=@course.students
+      @students=@course.students
      end
   end
 
@@ -20,7 +20,7 @@ class CourseController < ApplicationController
      student_id=student.id
 
      if student.attends.select{|i| i.course_id==course_id.to_i}.size > 0
-	redirect_to '/course/'+course_id
+      redirect_to '/course/'+course_id
      end  
   
      @attend=Attend.new

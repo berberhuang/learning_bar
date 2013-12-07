@@ -19,7 +19,7 @@ Learningbar::Application.routes.draw do
   get "course/attend_confirmation/:id", :controller=>:course,:action=>:attend_confirmation
   get "course/attend/:id", :controller=>:course,:action=>:attend
   get "course/cancel_attendence/:id", :controller=>:course,:action=>:cancel_attendence
-  get "course/info/:id", :controller=>:backbone,:action=>:course_info
+  #get "course/info/:id", :controller=>:backbone,:action=>:course_info
 
 
  # devise_for :users, :controllers =>{:registrations => "registrations",:sessions=>'sessions'}
