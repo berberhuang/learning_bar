@@ -9,7 +9,7 @@ class StudentController < ApplicationController
   end
 
   def edit
-	@student=current_student
+    @student=current_student
   end
 
   def update

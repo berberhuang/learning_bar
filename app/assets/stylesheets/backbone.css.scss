@@ -7,6 +7,9 @@ $beer-orange:#fbb03a;
 	background-image: url(image_path('mainbanner.jpg'));
 	background-size:cover;
 	padding-top:20px;
+	.slogan_container{
+		margin-top: 5%;
+	}
 	h1{
 		color: white;
 	};
@@ -25,5 +28,7 @@ $beer-orange:#fbb03a;
 }
 footer{
 	background: black;
-	color:white;
+  	h1,h2,h3,h4,h5,h6{
+    	color:white;
+  }
 }
