@@ -29,9 +29,9 @@ class CourseController < ApplicationController
           
 
      if @attend.save
-	@course=@attend.course
+	     @course=@attend.course
      else
-	@course=nil
+	     @course=nil
      end
      
   end
@@ -39,7 +39,7 @@ class CourseController < ApplicationController
   def attend_confirmation
      course_id=params[:course_id]
      if current_student.attends.select{|i| i.course_id==course_id.to_i}.size > 0
-	redirect_to '/course/'+course_id
+      redirect_to '/course/'+course_id
      end    
 
      @course=Course.find(course_id)

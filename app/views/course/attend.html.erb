@@ -1,4 +1,8 @@
-<h1>Course#attend</h1>
-<p>Find me in app/views/course/attend.html.erb</p>
+<div class="row">
+	<div class="columns">
+		<h1>成功報名課程:<%=@course.name%></h1>
+		<%=link_to '查看課程記錄', student_course_path, :class=>'button'%>
+	</div>
+</div>
 
-<%=current_student.username%>已成功報名課程:<%=@course.name%>
+

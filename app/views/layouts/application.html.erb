@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="learningbar_icon.png" rel="shortcut icon" />
+    <link href="/learningbar_icon.png" rel="shortcut icon" />
     <title><%= content_for?(:title) ? yield(:title) : "Learningbar" %></title>
     
     <%= stylesheet_link_tag    "application" ,:media => "all"%>
@@ -22,7 +22,7 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));</script>
   	<div class="contain-to-grid">
-      <nav class="top-bar">
+      <nav class="top-bar" data-topbar>
         <ul class="title-area">
           <li class="name">
             <%=link_to image_tag('learningbar.png'),'/' %>
@@ -32,7 +32,13 @@
         <section class="top-bar-section">
           <ul class="right">
           <% if student_signed_in? %>
-            <li><%=link_to current_student.username, '/student'%></li>
+            <li class="has-dropdown"><%=link_to current_student.username, '/student'%>
+              <ul class="dropdown">
+                <li><%=link_to '個人資料', student_path%></li>
+                <li><%=link_to '課程記錄',student_course_path%></li>
+                <li><%=link_to '編輯',edit_student_registration_path%></li>
+              </ul>
+            </li>
             <li class="divider"></li>
             <li><%=link_to '登出', '/students/sign_out',method: 'DELETE'%></li>
         <%elsif admin_signed_in? %>
@@ -61,6 +67,15 @@
       <div id="signupModal" class="reveal-modal small" data-reveal>
       	<%= render 'devise/registrations/new'%>
       	<a class="close-reveal-modal">&#215;</a>
+      </div>
+      <div id="course_sign_in_up" class="reveal-modal large" data-reveal>
+        <div class="large-6 columns">
+          <%= render 'devise/sessions/new' %>
+        </div>
+        <div class="large-6 columns">
+          <%= render 'devise/registrations/new'%>
+        </div>
+        <a class="close-reveal-modal">&#215;</a>
       </div>
   </div>
   </body>

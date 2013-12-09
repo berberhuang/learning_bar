@@ -1,7 +1,9 @@
-<h1>Course#attend_confirmation</h1>
-<p>Find me in app/views/course/attend_confirmation.html.erb</p>
-<%= @course.name%>
-<%= @course.course_date.to_s%>
-<%= @course.location%>
+<div class="row">
+	<div class="columns">
+		<h1>確認報名:<%= @course.name%></h1>
+		<h4>時間:<%= @course.course_date.to_s%></h4>
+		<h4>地點:<%= @course.location%></h4>
+		<%=link_to '確認報名',{ :action=>:attend,:course_id=>@course.id},:class=>:button%>
 
-<%=link_to '確認報名', :action=>:attend, :course_id=>@course.id%>
+	</div>
+</div>

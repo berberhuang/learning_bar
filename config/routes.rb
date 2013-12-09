@@ -14,7 +14,6 @@ Learningbar::Application.routes.draw do
   resources :course
   
   get "backbone/index",:controller=>:backbone,:action=>:index
-
   get "course/edit/:id",:controller=>:course,:action=>:edit
   get "course/attend_confirmation/:id", :controller=>:course,:action=>:attend_confirmation
   get "course/attend/:id", :controller=>:course,:action=>:attend
