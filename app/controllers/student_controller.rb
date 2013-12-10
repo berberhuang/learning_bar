@@ -1,7 +1,14 @@
 class StudentController < ApplicationController
-  before_filter :authenticate_student!
+  before_filter :authenticate_student!, :except=>[:show]
   def show
-    @student=current_student
+    stu_id=params[:id]
+    if admin_signed_in? && stu_id
+	@student=Student.find(stu_id)
+    elsif student_signed_in?
+	@student=current_student
+    else
+	redirect_to :back
+    end
   end
 
   def course

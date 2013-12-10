@@ -8,7 +8,7 @@ Learningbar::Application.routes.draw do
 
   get "student/edit"
   put "student/update"
-  get "student", :controller=>:student,:action=>:show
+  get "student(/:id)", :controller=>:student,:action=>:show
   get "student/course"
 
   resources :course

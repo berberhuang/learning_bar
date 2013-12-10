@@ -28,7 +28,7 @@
 					 <div>已報名學生列表</div>
 					 <ul>
 					 <%@students.each do |s| %>
-						<li><%=link_to s.username, student_path%></li>
+						<li><%=link_to s.username, '/student/'+s.id.to_s %></li>
 					 <%end%>
 					 </ul>
 				<% else %>
