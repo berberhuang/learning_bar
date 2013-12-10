@@ -1,7 +1,8 @@
 // Place all the styles related to the Backbone controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-$beer-orange:#fbb03a;
+
+@import "foundation_and_overrides";
 .first_band{
 	height: 400px;
 	background-image: url(image_path('mainbanner.jpg'));

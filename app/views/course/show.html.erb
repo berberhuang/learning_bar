@@ -1,6 +1,4 @@
-<div class="row">
-	<h1><%= @course.name%></h1>
-</div>
+<h1><%= @course.name%></h1>
 <div class="row">
 	<div class="large-8 column">
 		<div class="row course_img_container">
@@ -30,7 +28,7 @@
 					 <div>已報名學生列表</div>
 					 <ul>
 					 <%@students.each do |s| %>
-						<li><%=s.username%></li>
+						<li><%=link_to s.username, student_path%></li>
 					 <%end%>
 					 </ul>
 				<% else %>

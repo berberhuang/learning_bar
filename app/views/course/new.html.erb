@@ -1,22 +1,22 @@
 <div class="columns">
   <%= form_for @course, :url=>{:controller=>:course,:action=>:create} do |f| %>
 
-    <div><%= f.label :name %><br />
-    <%= f.text_field :name, :autofocus => true %></div>
+    <div class="columns large-2"><%= f.label :name %><br /></div>
+    <div class="columns large-10"><%= f.text_field :name, :autofocus => true %></div>
     
-    <div><%= f.label :course_date %><br />
-    <%= f.datetime_select :course_date, :autofocus => true %></div>
+    <div class="columns large-2"><%= f.label :course_date %><br /></div>
+    <div class="columns large-10"><%= f.datetime_select :course_date, :autofocus => true %></div>
 
-    <div><%= f.label :student_amount %><br />
-    <%= f.text_field :student_amount, :autofocus => true %></div>
+    <div class="columns large-2"><%= f.label :student_amount %><br /></div>
+    <div class="columns large-10"><%= f.text_field :student_amount, :autofocus => true %></div>
 
-    <div><%= f.label :location %><br />
-    <%= f.text_field :location %></div>
+    <div class="columns large-2"><%= f.label :location %><br /></div>
+    <div class="columns large-10"><%= f.text_field :location %></div>
 
-    <div><%= f.label :agenda %><br />
-    <%= f.text_area :agenda %></div>
+    <div class="columns large-2"><%= f.label :agenda %><br /></div>
+    <div class="columns large-10"><%= f.text_area :agenda %></div>
 
-    <div><%= f.submit "Create" %></div>
+    <div class="columns large-"><%= f.submit "Create" %></div>
 
   <% end %>
 
