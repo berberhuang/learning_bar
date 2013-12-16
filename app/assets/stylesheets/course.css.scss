@@ -2,5 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.course_img_container{
+@import "foundation_and_overrides";
+.course_list{
+	
+}
+.course_list_block{
+	@include thumb;
 }

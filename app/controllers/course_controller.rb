@@ -1,7 +1,9 @@
 class CourseController < ApplicationController
   before_filter :authenticate_student!,:only=>[:attend,:attend_confirmation,:cancel_attendence]
   before_filter :authenticate_admin!,:only=>[:new,:create,:edit,:update]
-
+  def index
+    @courses=Course.all
+  end
 
   def show
      course_id=params[:id].to_i

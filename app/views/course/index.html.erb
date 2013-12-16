@@ -1,0 +1,13 @@
+<h1>課程列表</h1>
+<ul class="course_list small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+<%@courses.each do |course|%>	
+	<li>
+		<%=link_to course_path(course), :class=>:course_list_block do %>
+			<h4><%=course.name%></h4>
+			<p><%=course.course_date%></p>
+			<p><%=course.location%></p>
+			<p><%=course.description%></p>
+		<%end%>
+	</li>
+<% end -%>
+</ul>
