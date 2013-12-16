@@ -4,9 +4,10 @@
 	<li>
 		<%=link_to course_path(course), :class=>:course_list_block do %>
 			<h4><%=course.name%></h4>
-			<p><%=course.course_date%></p>
+			<p><%=course.course_date.strftime('%Y年%m月%d日%I:%M %p')%></p>
 			<p><%=course.location%></p>
 			<p><%=course.description%></p>
+			<!--%=link_to '查看', course_path(course),:class=>:button%-->
 		<%end%>
 	</li>
 <% end -%>

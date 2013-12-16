@@ -52,7 +52,7 @@
     <h1><%=link_to @course.name,course_url(@course)%></h1>
     <h4>時間：<%= @course.course_date.strftime('%Y年%m月%d日%I:%M %p')%></h4>
     <h4>地點：<%= @course.location%></h4>
-      <%=link_to '查看課程',course_url(@course), :class=>'button' %>
+      <%=link_to '查看課程',course_path(@course), :class=>'button' %>
   </div>
 </div>
 </section>
