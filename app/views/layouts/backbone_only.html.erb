@@ -34,7 +34,7 @@
           <% if student_signed_in? %>
             <li class="has-dropdown"><%=link_to current_student.username, '/student'%>
               <ul class="dropdown">
-                <li><%=link_to '個人資料', student_path%></li>
+                <li><%=link_to '個人資料', '/student'%></li>
                 <li><%=link_to '課程記錄',student_course_path%></li>
                 <li><%=link_to '編輯',edit_student_registration_path%></li>
               </ul>

@@ -34,7 +34,7 @@
           <% if student_signed_in? %>
             <li class="has-dropdown"><%=link_to current_student.username, '/student'%>
               <ul class="dropdown">
-                <li><%=link_to '個人資料', student_path%></li>
+                <li><%=link_to '個人資料', '/student'%></li>
                 <li><%=link_to '課程記錄',student_course_path%></li>
                 <li><%=link_to '編輯',edit_student_registration_path%></li>
               </ul>
@@ -49,8 +49,10 @@
             <li class="divider"></li>
             <li><%=link_to '登入','#',:data=>{:'reveal-id'=>'loginModal'}%></li>
             <li class="divider"></li>
-            <li><%=link_to '註冊', '#', :data=>{:'reveal-id'=>'signupModal'}%></li>
-            <%end%>
+	    <%if resource_name=='student'%>
+            	<li><%link_to '註冊', '#', :data=>{:'reveal-id'=>'signupModal'}%></li>
+            <%end%>  
+	  <%end%>
           </ul>
         </section>
       </nav>
@@ -69,17 +71,21 @@
       	<%= render 'devise/sessions/new' %>
       	<a class="close-reveal-modal">&#215;</a>
       </div>
+      <%if resource_name=='student'%>
       <div id="signupModal" class="reveal-modal small" data-reveal>
       	<%= render 'devise/registrations/new'%>
       	<a class="close-reveal-modal">&#215;</a>
       </div>
+      <%end%>
       <div id="course_sign_in_up" class="reveal-modal large" data-reveal>
         <div class="large-6 columns">
           <%= render 'devise/sessions/new' %>
         </div>
+	<%if resource_name=='student'%>
         <div class="large-6 columns">
           <%= render 'devise/registrations/new'%>
         </div>
+        <%end%>
         <a class="close-reveal-modal">&#215;</a>
       </div>
   </div>
