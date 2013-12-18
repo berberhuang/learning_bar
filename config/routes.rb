@@ -6,11 +6,21 @@ Learningbar::Application.routes.draw do
 
   devise_for :admins
 
-  get "student/edit"
-  put "student/update"
+  # get "student/edit"
+  # put "student/update"
+  resource :student, :controller => :student do
+    collection do
+      get 'course'
+    end
+  end
   get "student(/:id)", :controller=>:student,:action=>:show
-  get "student/course"
+  # get "student/course"
 
+  
+
+  namespace :admin do
+    resources :students
+  end
 
   get "course/index", :controller=>:course, :action=>:index
   resources :course

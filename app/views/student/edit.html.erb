@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="columns">
 		<h1><%=@student.username%></h1>
-		<%= form_for(@student,:url =>'/student/update', :html => { :method => :put }) do |f| %>
+		<%= form_for @student,:url =>student_path(@student), :method => :put  do |f| %>
 		  <div class="large-2 columns"><%= f.label :關於我, :class=>'right'%></div>
 		  <div class="large-10 columns">
 		  <%= f.text_area :description, :autofocus => true %></div>

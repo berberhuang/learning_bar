@@ -3,11 +3,11 @@ class StudentController < ApplicationController
   def show
     stu_id=params[:id]
     if admin_signed_in? && stu_id
-	@student=Student.find(stu_id)
+      @student=Student.find(stu_id)
     elsif student_signed_in?
-	@student=current_student
+      @student=current_student
     else
-	redirect_to :back
+      redirect_to :back
     end
   end
 
@@ -20,8 +20,8 @@ class StudentController < ApplicationController
   end
 
   def update
-	@student=current_student
-	@student.update_attributes(params[:student])
-	redirect_to '/student'
+  	@student=current_student
+  	@student.update_attributes(params[:student])
+  	redirect_to '/student'
   end
 end

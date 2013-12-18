@@ -21,63 +21,12 @@
     js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=514033835356159";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));</script>
-  	<div class="contain-to-grid">
-      <nav class="top-bar" data-topbar>
-        <ul class="title-area">
-          <li class="name">
-            <%=link_to image_tag('learningbar.png'),'/' %>
-          </li>
-        </ul>
-        
-        <section class="top-bar-section">
-          <ul class="right">
-          <% if student_signed_in? %>
-            <li class="has-dropdown"><%=link_to current_student.username, '/student'%>
-              <ul class="dropdown">
-                <li><%=link_to '個人資料', '/student'%></li>
-                <li><%=link_to '課程記錄',student_course_path%></li>
-                <li><%=link_to '編輯',edit_student_registration_path%></li>
-              </ul>
-            </li>
-            <li class="divider"></li>
-            <li><%=link_to '登出', '/students/sign_out',method: 'DELETE'%></li>
-        <%elsif admin_signed_in? %>
-            <li><%=link_to 'Admin '+current_admin.username, '/admins'%></li>
-            <li class="divider"></li>
-            <li><%=link_to '登出', '/admins/sign_out',method: 'DELETE'%></li>
-          <%else%>
-            <li class="divider"></li>
-            <li><%=link_to '登入','#',:data=>{:'reveal-id'=>'loginModal'}%></li>
-            <li class="divider"></li>
-            <li><%=link_to '註冊', '#', :data=>{:'reveal-id'=>'signupModal'}%></li>
-            <%end%>
-          </ul>
-        </section>
-      </nav>
-    </div>
+  <%=render :partial=>'backbone/navbar'%>
 
-    <%= yield %>  
+  <%= yield %>  
     
-    <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application" %>
+  <%=render :partial=>'backbone/modals'%>
 
-      <!--Login & Sign up modal-->
-      <div id="loginModal" class="reveal-modal small" data-reveal>
-      	<%= render 'devise/sessions/new' %>
-      	<a class="close-reveal-modal">&#215;</a>
-      </div>
-      <div id="signupModal" class="reveal-modal small" data-reveal>
-      	<%= render 'devise/registrations/new'%>
-      	<a class="close-reveal-modal">&#215;</a>
-      </div>
-      <div id="course_sign_in_up" class="reveal-modal large" data-reveal>
-        <div class="large-6 columns">
-          <%= render 'devise/sessions/new' %>
-        </div>
-        <div class="large-6 columns">
-          <%= render 'devise/registrations/new'%>
-        </div>
-        <a class="close-reveal-modal">&#215;</a>
-      </div>
-  </div>
   </body>
 </html>

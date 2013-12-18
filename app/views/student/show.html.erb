@@ -3,8 +3,8 @@
 		<h1><%=@student.username%></h1>
 		<p><%=@student.description%></p>
 		<%=link_to '編輯帳號資料',edit_student_registration_path%><br>
-		<%=link_to '報名課程清單',student_course_path%><br/>
-		<%=link_to '編輯學生個人資料',student_edit_path%><br/>
+		<%=link_to '報名課程清單',course_student_path%><br/>
+		<%=link_to '編輯學生個人資料',edit_student_path%><br/>
 
 		<!--dl class="tabs vertical" data-tab>
 			<dd class="active"><a href="#basic_data">基本資料</a></dd>
