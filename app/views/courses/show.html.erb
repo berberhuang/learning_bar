@@ -24,7 +24,7 @@
 				<% if @attend %>
 					 已報名
 				<% elsif admin_signed_in? %>
-					 <%=link_to '編輯',:controller=>:course, :action=>:edit,:id=>@course.id%>
+					 <%=link_to '編輯',:controller=>:courses, :action=>:edit,:id=>@course.id%>
 					 <div>已報名學生列表</div>
 					 <ul>
 					 <%@students.each do |s| %>
@@ -32,7 +32,7 @@
 					 <%end%>
 					 </ul>
 				<% else %>
-					 <%=link_to '報名',{:controller=>:course, :action=>:attend_confirmation,:course_id=>@course.id},:class=>'button' %>
+					 <%=link_to '報名',{:controller=>:courses, :action=>:attend_confirmation,:course_id=>@course.id},:class=>'button' %>
 				<% end %>
 			</fieldset>
 	</div>

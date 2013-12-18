@@ -1,0 +1,37 @@
+<div class="contain-to-grid">
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+        <%=link_to image_tag('learningbar.png'),'/' %>
+      </li>
+    </ul>
+    
+    <section class="top-bar-section">
+      <ul class="right">
+      <% if student_signed_in? %>
+        <li class="has-dropdown"><%=link_to current_student.username, '/student'%>
+          <ul class="dropdown">
+            <li><%=link_to '個人資料', '/student'%></li>
+            <li><%=link_to '課程記錄',course_student_path%></li>
+            <li><%=link_to '編輯',edit_student_registration_path%></li>
+          </ul>
+        </li>
+        <li class="divider"></li>
+        <li><%=link_to '登出', '/students/sign_out',method: 'DELETE'%></li>
+    <%elsif admin_signed_in? %>
+        <li><%=link_to 'Admin '+current_admin.username, '/admins'%></li>
+        <li class="divider"></li>
+        <li><%=link_to '登出', '/admins/sign_out',method: 'DELETE'%></li>
+      <%else%>
+        <li class="divider"></li>
+        <li><%=link_to '登入','#',:data=>{:'reveal-id'=>'loginModal'}%></li>
+        <li class="divider"></li>
+        <li><%=link_to '註冊', '#', :data=>{:'reveal-id'=>'signupModal'}%></li>
+  <%if resource_name=='student'%>
+        	<li><%link_to '註冊', '#', :data=>{:'reveal-id'=>'signupModal'}%></li>
+        <%end%>  
+  <%end%>
+      </ul>
+    </section>
+  </nav>
+</div>
