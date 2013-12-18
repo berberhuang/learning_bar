@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  company_id: 1
-  course_date: 2013-09-13 19:40:54
-  student_amount: 1
-  location: MyString
-  agenda: MyText
+#one:
+#  name: MyString
+#  company_id: 1
+#  course_date: 2013-09-13 19:40:54
+#  student_amount: 1
+#  location: MyString
+#  agenda: MyText
 
-two:
-  name: MyString
-  company_id: 1
-  course_date: 2013-09-13 19:40:54
-  student_amount: 1
-  location: MyString
-  agenda: MyText
+#two:
+#  name: MyString
+#  company_id: 1
+#  course_date: 2013-09-13 19:40:54
+#  student_amount: 1
+#  location: MyString
+#  agenda: MyText

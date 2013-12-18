@@ -8,17 +8,17 @@ Learningbar::Application.routes.draw do
 
   get "student/edit"
   put "student/update"
-  get "student(/:id)", :controller=>:student,:action=>:show
   get "student/course"
+  get "student(/:id)", :controller=>:student,:action=>:show
 
-
+  get "course/attend_confirmation", :controller=>:course,:action=>:attend_confirmation
+  get "course/attend", :controller=>:course,:action=>:attend
+  get "course/cancel_attendence/:id", :controller=>:course,:action=>:cancel_attendence
   get "course/index", :controller=>:course, :action=>:index
   resources :course
   get "backbone/index",:controller=>:backbone,:action=>:index
   get "course/edit/:id",:controller=>:course,:action=>:edit
-  get "course/attend_confirmation/:id", :controller=>:course,:action=>:attend_confirmation
-  get "course/attend/:id", :controller=>:course,:action=>:attend
-  get "course/cancel_attendence/:id", :controller=>:course,:action=>:cancel_attendence
+  
   #get "course/info/:id", :controller=>:backbone,:action=>:course_info
 
 

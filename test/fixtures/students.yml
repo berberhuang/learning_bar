@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  description: MyText
-  user_id: 1
+#one:
+#  email: ber@gmail.com
+#  username: Student1
+#  phone: 1234
+#  description: MyText
 
-two:
-  description: MyText
-  user_id: 1
+#two:
+#  email: sunny@gmail.com
+#  username: Student2
+#  phone: 2255
+#  description: MyText

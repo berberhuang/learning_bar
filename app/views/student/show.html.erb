@@ -2,9 +2,9 @@
 	<div class="columns">
 		<h1><%=@student.username%></h1>
 		<p><%=@student.description%></p>
-		<%=link_to '編輯帳號資料',edit_student_registration_path%><br>
-		<%=link_to '報名課程清單','/student/course'%><br/>
-		<%=link_to '編輯學生個人資料', 'student/edit'%><br/>
+		<%=link_to '編輯帳號資料',edit_student_registration_path, :id=>'edit_account'%><br>
+		<%=link_to '報名課程清單','/student/course',:id=>'attended_list'%><br/>
+		<%=link_to '編輯學生個人資料', '/student/edit',:id=>'edit_student_info'%><br/>
 
 		<!--dl class="tabs vertical" data-tab>
 			<dd class="active"><a href="#basic_data">基本資料</a></dd>

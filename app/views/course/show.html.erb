@@ -1,4 +1,4 @@
-<h1><%= @course.name%></h1>
+<h1 class="course_name"><%= @course.name%></h1>
 <div class="row">
 	<div class="large-8 column">
 		<div class="row course_img_container">
@@ -9,31 +9,31 @@
 		</div>
 	</div>
 	<div class="large-4 column">
-			<fieldset>
-				<legend><h4>課程資訊</h4></legend>
-				<h6>課程時間</h6>
-					<%= @course.course_date.strftime('%Y年%m月%d日%I:%M %p')%>
-				<h6>課程地點</h6>
-					<%= @course.location%>
-				<!--map-->
-				<h6>開放名額/報名人數</h6>
-				<%= @course.student_amount.to_s%>/
-			</fieldset>
-			<fieldset>
-				<legend><h4>報名課程</h4></legend>	
-				<% if @attend %>
-					 已報名
-				<% elsif admin_signed_in? %>
-					 <%=link_to '編輯',:controller=>:course, :action=>:edit,:id=>@course.id%>
-					 <div>已報名學生列表</div>
-					 <ul>
-					 <%@students.each do |s| %>
-						<li><%=link_to s.username, '/student/'+s.id.to_s %></li>
-					 <%end%>
-					 </ul>
-				<% else %>
-					 <%=link_to '報名',{:controller=>:course, :action=>:attend_confirmation,:course_id=>@course.id},:class=>'button' %>
-				<% end %>
-			</fieldset>
+		<fieldset>
+			<legend><h4>課程資訊</h4></legend>
+			<h6>課程時間</h6>
+			<%= @course.course_date.strftime('%Y年%m月%d日%I:%M %p')%>
+			<h6>課程地點</h6>
+			<%= @course.location%>
+			<!--map-->
+			<h6>開放名額/報名人數</h6>
+			<%= @course.student_amount.to_s%>/
+		</fieldset>
+		<fieldset>
+			<legend><h4>報名課程</h4></legend>	
+			<% if @attend %>
+			<span class="attended">已報名</span>
+			<% elsif admin_signed_in? %>
+			<%=link_to '編輯',:controller=>:course, :action=>:edit,:id=>@course.id%>
+			<div>已報名學生列表</div>
+			<ul id="attended_list">
+				<%@students.each do |s| %>
+				<li><%=link_to s.username, '/student/'+s.id.to_s %></li>
+				<%end%>
+			</ul>
+			<% else %>
+			<%=link_to '報名',{:controller=>:course, :action=>:attend_confirmation,:course_id=>@course.id},:class=>'button, attend' %>
+			<% end %>
+		</fieldset>
 	</div>
 </div>

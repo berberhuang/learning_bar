@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/learningbar_icon.png" rel="shortcut icon" />
-    <title><%= content_for?(:title) ? yield(:title) : "Learningbar" %></title>
-    
-    <%= stylesheet_link_tag    "application" ,:media => "all"%>
-    <%= javascript_include_tag "vendor/modernizr" %>
-    <%= csrf_meta_tags %>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="/learningbar_icon.png" rel="shortcut icon" />
+  <title><%= content_for?(:title) ? yield(:title) : "Learningbar" %></title>
+  
+  <%= stylesheet_link_tag    "application" ,:media => "all"%>
+  <%= javascript_include_tag "vendor/modernizr" %>
+  <%= csrf_meta_tags %>
+</head>
 
-  <body>
+<body>
   <div id="fb-root"></div>
   <script>(function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -21,73 +21,72 @@
     js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=514033835356159";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));</script>
-  	<div class="contain-to-grid">
-      <nav class="top-bar" data-topbar>
-        <ul class="title-area">
-          <li class="name">
-            <%=link_to image_tag('learningbar.png'),'/' %>
-          </li>
-        </ul>
-        
-        <section class="top-bar-section">
-          <ul class="right">
+  <div class="contain-to-grid">
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <%=link_to image_tag('learningbar.png'),'/' %>
+        </li>
+      </ul>
+      
+      <section class="top-bar-section">
+        <ul class="right">
           <% if student_signed_in? %>
-            <li class="has-dropdown"><%=link_to current_student.username, '/student'%>
-              <ul class="dropdown">
-                <li><%=link_to '個人資料', '/student'%></li>
-                <li><%=link_to '課程記錄',student_course_path%></li>
-                <li><%=link_to '編輯',edit_student_registration_path%></li>
-              </ul>
-            </li>
-            <li class="divider"></li>
-            <li><%=link_to '登出', '/students/sign_out',method: 'DELETE'%></li>
-        <%elsif admin_signed_in? %>
-            <li><%=link_to 'Admin '+current_admin.username, '/admins'%></li>
-            <li class="divider"></li>
-            <li><%=link_to '登出', '/admins/sign_out',method: 'DELETE'%></li>
+          <li class="has-dropdown"><%=link_to current_student.username, '/student', :class=>'username'%>
+            <ul class="dropdown">
+              <li><%=link_to '個人資料', '/student'%></li>
+              <li><%=link_to '課程記錄',student_course_path%></li>
+              <li><%=link_to '編輯',edit_student_registration_path%></li>
+            </ul>
+          </li>
+          <li class="divider"></li>
+          <li><%=link_to '登出', '/students/sign_out',method: 'DELETE'%></li>
+          <%elsif admin_signed_in? %>
+          <li class="username"><%=link_to 'Admin '+current_admin.username, '/admins'%></li>
+          <li class="divider"></li>
+          <li><%=link_to '登出', '/admins/sign_out',method: 'DELETE'%></li>
           <%else%>
-            <li class="divider"></li>
-            <li><%=link_to '登入','#',:data=>{:'reveal-id'=>'loginModal'}%></li>
-            <li class="divider"></li>
-	    <%if resource_name=='student'%>
-            	<li><%link_to '註冊', '#', :data=>{:'reveal-id'=>'signupModal'}%></li>
-            <%end%>  
-	  <%end%>
-          </ul>
-        </section>
-      </nav>
-    </div>
-    <div class="row">
-      <div class="columns">
-        <%= yield %>
-      </div>
-    </div>
-    
-
-    <%= javascript_include_tag "application" %>
-
-      <!--Login & Sign up modal-->
-      <div id="loginModal" class="reveal-modal small" data-reveal>
-      	<%= render 'devise/sessions/new' %>
-      	<a class="close-reveal-modal">&#215;</a>
-      </div>
-      <%if resource_name=='student'%>
-      <div id="signupModal" class="reveal-modal small" data-reveal>
-      	<%= render 'devise/registrations/new'%>
-      	<a class="close-reveal-modal">&#215;</a>
-      </div>
-      <%end%>
-      <div id="course_sign_in_up" class="reveal-modal large" data-reveal>
-        <div class="large-6 columns">
-          <%= render 'devise/sessions/new' %>
-        </div>
-	<%if resource_name=='student'%>
-        <div class="large-6 columns">
-          <%= render 'devise/registrations/new'%>
-        </div>
-        <%end%>
-        <a class="close-reveal-modal">&#215;</a>
-      </div>
+          <li class="divider"></li>
+          <li><%=link_to '登入','#',:data=>{:'reveal-id'=>'loginModal'}%></li>
+          <li class="divider"></li>
+          <%if resource_name=='student'%>
+          <li><%link_to '註冊', '#', :data=>{:'reveal-id'=>'signupModal'}%></li>
+          <%end%>  
+          <%end%>
+        </ul>
+      </section>
+    </nav>
   </div>
-  </body>
+  <div class="row">
+    <div class="columns">
+      <%= yield %>
+    </div>
+  </div>
+  
+
+  <%= javascript_include_tag "application" %>
+
+  <!--Login & Sign up modal-->
+  <div id="loginModal" class="reveal-modal small" data-reveal>
+   <%= render 'devise/sessions/new' %>
+   <a class="close-reveal-modal">&#215;</a>
+ </div>
+ <%if resource_name=='student'%>
+ <div id="signupModal" class="reveal-modal small" data-reveal>
+   <%= render 'devise/registrations/new'%>
+   <a class="close-reveal-modal">&#215;</a>
+ </div>
+ <%end%>
+ <div id="course_sign_in_up" class="reveal-modal large" data-reveal>
+  <div class="large-6 columns">
+    <%= render 'devise/sessions/new' %>
+  </div>
+  <%if resource_name=='student'%>
+  <div class="large-6 columns">
+    <%= render 'devise/registrations/new'%>
+  </div>
+  <%end%>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+</body>
 </html>
