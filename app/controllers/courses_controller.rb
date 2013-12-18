@@ -1,4 +1,4 @@
-class CourseController < ApplicationController
+class CoursesController < ApplicationController
   before_filter :authenticate_student!,:only=>[:attend,:attend_confirmation,:cancel_attendence]
   before_filter :authenticate_admin!,:only=>[:new,:create,:edit,:update]
   def index
@@ -22,7 +22,7 @@ class CourseController < ApplicationController
      student_id=student.id
 
      if student.attends.select{|i| i.course_id==course_id.to_i}.size > 0
-      redirect_to '/course/'+course_id
+      redirect_to '/courses/'+course_id
      end  
   
      @attend=Attend.new

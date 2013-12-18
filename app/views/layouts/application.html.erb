@@ -26,9 +26,11 @@
     <div class="row">
       <div class="columns">
         <%= yield %>
-      </div>
+      </div>    
     </div>
     <%= javascript_include_tag "application" %>
     <%=render :partial=>'backbone/modals'%>
+    <%=render :partial=>'backbone/footer'%>
+    
   </body>
 </html>
