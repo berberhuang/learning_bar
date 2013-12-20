@@ -1,0 +1,19 @@
+<div id="loginModal" class="reveal-modal small" data-reveal>
+  <%= render 'devise/sessions/new' %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+<div id="signupModal" class="reveal-modal small" data-reveal>
+  <%= render 'devise/registrations/new'%>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+<div id="course_sign_in_up" class="reveal-modal large" data-reveal>
+  <div class="large-6 columns">
+    <%= render 'devise/sessions/new' %>
+  </div>
+<%if resource_name=='student'%>
+  <div class="large-6 columns">
+    <%= render 'devise/registrations/new'%>
+  </div>
+  <%end%>
+  <a class="close-reveal-modal">&#215;</a>
+</div>

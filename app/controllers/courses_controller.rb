@@ -1,4 +1,4 @@
-class CourseController < ApplicationController
+class CoursesController < ApplicationController
   before_filter :authenticate_student!,:only=>[:attend,:attend_confirmation,:cancel_attendence]
   before_filter :authenticate_admin!,:only=>[:new,:create,:edit,:update]
   def index
@@ -52,11 +52,11 @@ class CourseController < ApplicationController
 
 
   def cancel_attendence
-   @course_id=params[:id]
-   @student_id=current_student.id
-   a=Attend.where(:course_id=>@course_id, :student_id=>@student_id)
-   a[0].destroy
-   redirect_to '/student/course'
+	@course_id=params[:id]
+	@student_id=current_student.id
+	a=Attend.where(:course_id=>@course_id, :student_id=>@student_id)
+	a[0].destroy
+	redirect_to :back
   end
 
   def edit

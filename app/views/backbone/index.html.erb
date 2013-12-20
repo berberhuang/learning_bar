@@ -1,13 +1,14 @@
 <section role="main">
 <div class="first_band clearfix">
-  <div class="column large-4 large-centered slogan_container">
-    <h1 class="text-center">網路產業的開發課程平台</h1>
+  <div class="column large-12 large-centered slogan_container">
+    <h1 class="text-center">向頂尖程式開發者<br>
+      學習一流開發技術</h1>
     <h4 class="text-center">
-      由一流的網路程式開發者開班授課<br>
-      從入門到進階<br>讓你直接學會最貼近業界的開發技術
-      <br>
-
+      專業程式開發者開班授課<br>
+      從入門到進階的程式學習平台<br>
+      <%=link_to :瀏覽課程,student_path, :class=>:button%>
     </h4>
+
   </div>
 </div>
 <!-- Three-up Content Blocks -->
@@ -52,29 +53,7 @@
     <h1><%=link_to @course.name,course_url(@course)%></h1>
     <h4>時間：<%= @course.course_date.strftime('%Y年%m月%d日%I:%M %p')%></h4>
     <h4>地點：<%= @course.location%></h4>
-      <%=link_to '查看課程',course_url(@course), :class=>'button' %>
+      <%=link_to '查看課程',course_path(@course), :class=>'button' %>
   </div>
 </div>
 </section>
-
-<!-- Footer -->
-
-<footer>
-  <div class="row">
-    <div class="large-3 columns">
-      <h4>讓我們知道你的想法:</h4>
-      <a href="http://on.fb.me/1aIEVfr" class="radius button expand">聯絡我們</a>
-    </div>
-    <div class="large-4 columns">
-      <div class="fb-like-box" data-href="http://www.facebook.com/learningbar" data-height="190" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
-    </div>
-    <div class="large-4 columns">
-      <ul class="inline-list right">
-      </ul>
-    </div>
-  </div>
-  <div class="row">
-    <h6 class="right">© Copyright LEARNINGBAR</h6>
-  </div>
-  
-</footer>

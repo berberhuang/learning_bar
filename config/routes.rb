@@ -6,19 +6,31 @@ Learningbar::Application.routes.draw do
 
   devise_for :admins
 
-  get "student/edit"
-  put "student/update"
-  get "student/course"
+  # get "student/edit"
+  # put "student/update"
+  resource :student, :controller => :student do
+    collection do
+      get 'course'
+    end
+  end
   get "student(/:id)", :controller=>:student,:action=>:show
+  # get "student/course"
 
-  get "course/attend_confirmation", :controller=>:course,:action=>:attend_confirmation
-  get "course/attend", :controller=>:course,:action=>:attend
-  get "course/cancel_attendence/:id", :controller=>:course,:action=>:cancel_attendence
-  get "course/index", :controller=>:course, :action=>:index
-  resources :course
-  get "backbone/index",:controller=>:backbone,:action=>:index
-  get "course/edit/:id",:controller=>:course,:action=>:edit
   
+
+  namespace :admin do
+    resources :students
+  end
+
+  # get "course/index", :controller=>:course, :action=>:index
+  resources :courses, :controller=>:courses do
+    collection do
+    end
+  end
+  get "courses/edit/:id",:controller=>:courses,:action=>:edit
+  get "courses/attend_confirmation/:id", :controller=>:courses,:action=>:attend_confirmation
+  get "courses/attend/:id", :controller=>:courses,:action=>:attend
+  get "courses/cancel_attendence/:id", :controller=>:courses,:action=>:cancel_attendence
   #get "course/info/:id", :controller=>:backbone,:action=>:course_info
 
 
