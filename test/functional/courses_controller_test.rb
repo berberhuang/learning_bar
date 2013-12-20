@@ -1,7 +1,7 @@
 #encoding: utf-8
 require 'test_helper'
 
-class CourseControllerTest < ActionController::TestCase
+class CoursesControllerTest < ActionController::TestCase
 	include Devise::TestHelpers
 	setup do
       init_student
@@ -12,12 +12,12 @@ class CourseControllerTest < ActionController::TestCase
   end
 
   test "test course's routing" do
-    assert_routing({:path=>'/course/20'}, {:controller=>'course',:action=>'show',:id=>'20'})
-    assert_routing({:path=>'/course/5'}, {:controller=>'course',:action=>'show',:id=>'5'})
-    assert_routing({:path=>'/course/index'}, {:controller=>'course',:action=>'index'})
-    assert_routing({:path=>'/course/attend'}, {:controller=>'course',:action=>'attend'})
-    assert_routing({:path=>'/course/attend_confirmation'}, {:controller=>'course',:action=>'attend_confirmation'})
-    assert_routing({:path=>'/course/cancel_attendence/20'}, {:controller=>'course',:action=>'cancel_attendence',:id=>'20'})
+    assert_routing({:path=>'/courses/20'}, {:controller=>'courses',:action=>'show',:id=>'20'})
+    assert_routing({:path=>'/courses/5'}, {:controller=>'courses',:action=>'show',:id=>'5'})
+    assert_routing({:path=>'/courses'}, {:controller=>'courses',:action=>'index'})
+    assert_routing({:path=>'/courses/attend/10'}, {:controller=>'courses',:action=>'attend',:course_id=>'10'})
+    assert_routing({:path=>'/courses/attend_confirmation/10'}, {:controller=>'courses',:action=>'attend_confirmation',:course_id=>'10'})
+    assert_routing({:path=>'/courses/cancel_attendence/20'}, {:controller=>'courses',:action=>'cancel_attendence',:id=>'20'})
   end
 
   test "should get course list" do
@@ -78,7 +78,7 @@ class CourseControllerTest < ActionController::TestCase
     get :attend_confirmation, :course_id=>3
     assert_response 302
 
-    assert_redirected_to :controller=>'course',:action=>'show', :id=>'3'
+    assert_redirected_to :controller=>'courses',:action=>'show', :id=>'3'
     assert_equal 1, Attend.select('id').where(:course_id=>3, :student_id=>100).size
   end
 
@@ -86,12 +86,13 @@ class CourseControllerTest < ActionController::TestCase
     get :attend, :course_id=>3
     assert_response 302
     
-    assert_redirected_to :controller=>'course',:action=>'show', :id=>'3'
+    assert_redirected_to :controller=>'courses',:action=>'show', :id=>'3'
     assert_equal 1, Attend.select('id').where(:course_id=>3, :student_id=>100).size 
     
   end
 
   test "should get cancel attendence" do
+    request.env["HTTP_REFERER"]='/student/course'
     get :cancel_attendence, :id=>3
 
     assert_response 302

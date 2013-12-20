@@ -27,7 +27,7 @@ class StudentControllerTest < ActionController::TestCase
 
     assert_select '.username', 'BertHuang'
     assert_select '#edit_account[href="/students/edit"]' ,1
-    assert_select '#attended_list[href="/student/course"]', 1
+    assert_select '#attended_course_list[href="/student/course"]', 1
     assert_select '#edit_student_info[href="/student/edit"]', 1
   end
 

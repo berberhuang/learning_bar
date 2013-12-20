@@ -7,7 +7,7 @@ class StudentController < ApplicationController
     elsif student_signed_in?
       @student=current_student
     else
-      redirect_to :back
+      redirect_to '/'
     end
   end
 

@@ -22,7 +22,7 @@ class CoursesController < ApplicationController
    student_id=student.id
 
    if Attend.select(:id).where(:course_id=>course_id, :student_id=>current_student.id).size > 0
-     redirect_to '/course/'+course_id
+     redirect_to '/courses/'+course_id
      return 
    end  
 
@@ -42,7 +42,7 @@ class CoursesController < ApplicationController
   def attend_confirmation
    course_id=params[:course_id]
    if Attend.select(:id).where(:course_id=>course_id, :student_id=>current_student.id).size > 0
-     redirect_to '/course/'+course_id
+     redirect_to '/courses/'+course_id
      return 
    end    
 

@@ -28,8 +28,8 @@ Learningbar::Application.routes.draw do
     end
   end
   get "courses/edit/:id",:controller=>:courses,:action=>:edit
-  get "courses/attend_confirmation/:id", :controller=>:courses,:action=>:attend_confirmation
-  get "courses/attend/:id", :controller=>:courses,:action=>:attend
+  get "courses/attend_confirmation/:course_id", :controller=>:courses,:action=>:attend_confirmation
+  get "courses/attend/:course_id", :controller=>:courses,:action=>:attend
   get "courses/cancel_attendence/:id", :controller=>:courses,:action=>:cancel_attendence
   #get "course/info/:id", :controller=>:backbone,:action=>:course_info
 

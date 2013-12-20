@@ -9,7 +9,7 @@
     <section class="top-bar-section">
       <ul class="right">
       <% if student_signed_in? %>
-        <li class="has-dropdown"><%=link_to current_student.username, '/student'%>
+        <li class="has-dropdown"><%=link_to current_student.username, '/student', :class=>"username"%>
           <ul class="dropdown">
             <li><%=link_to '個人資料', '/student'%></li>
             <li><%=link_to '課程記錄',course_student_path%></li>
@@ -19,7 +19,7 @@
         <li class="divider"></li>
         <li><%=link_to '登出', '/students/sign_out',method: 'DELETE'%></li>
     <%elsif admin_signed_in? %>
-        <li><%=link_to 'Admin '+current_admin.username, '/admins'%></li>
+        <li><%=link_to 'Admin '+current_admin.username, '/admins', :class=>"username"%></li>
         <li class="divider"></li>
         <li><%=link_to '登出', '/admins/sign_out',method: 'DELETE'%></li>
       <%else%>
