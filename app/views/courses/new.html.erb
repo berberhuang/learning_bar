@@ -1,5 +1,5 @@
 <div class="columns">
-  <%= form_for @course, :url=>{:controller=>:course,:action=>:create} do |f| %>
+  <%= form_for @course, :url=>{:controller=>:courses,:action=>:create} do |f| %>
 
     <div class="columns large-2"><%= f.label :name %><br /></div>
     <div class="columns large-10"><%= f.text_field :name, :autofocus => true %></div>
@@ -19,7 +19,7 @@
     <div class="columns large-2"><%= f.label :agenda %><br /></div>
     <div class="columns large-10"><%= f.text_area :agenda %></div>
 
-    <div class="columns large-"><%= f.submit "Create" %></div>
+    <div class="columns"><%= f.submit "Create" %></div>
 
   <% end %>
 

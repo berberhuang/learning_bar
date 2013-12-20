@@ -1,23 +1,26 @@
-<div class="row">
-	<div class="columns">
-		<h1><%=@student.username%></h1>
-		<p><%=@student.description%></p>
-		<%=link_to '編輯帳號資料',edit_student_registration_path,:id=>:edit_account%><br>
-		<%=link_to '報名課程清單',course_student_path, :id=>:attended_course_list%><br/>
-		<%=link_to '編輯學生個人資料',edit_student_path, :id=>:edit_student_info %><br/>
-
-		<!--dl class="tabs vertical" data-tab>
-			<dd class="active"><a href="#basic_data">基本資料</a></dd>
-			<dd><a href="#courses">參與課程</a></dd>
-			<dd><a href="#">tab3</a></dd>
-			<dd><a href="#">tab4</a></dd>
-		</dl>
-		<div class="tabs-content vertical">
-			<div class="content active" id="basic_data">
-				<p><%=@student.description%></p>
-			</div>
-			<div class="content" id="courses">
-			</div>
-		</div-->
+<div class="large-3 column">
+	<h1><%=@student.username%></h1>
+	<%=link_to '編輯個人資料',edit_student_path, :id=>:edit_student_info %><br/>
+	<%=link_to '報名課程清單',course_student_path, :id=>:attended_course_list%><br/>
+</div>
+<div class="large-9 column">
+	<dl class="tabs" data-tab>
+		<dd class="active"><a href="#basic_data">關於我</a></dd>
+		<dd>
+			<a href="#courses">參與課程</a>
+		</dd>
+		<!-- <dd><a href="#">tab3</a></dd>
+		<dd><a href="#">tab4</a></dd> -->
+	</dl>
+	<div class="tabs-content">
+		<div class="content active" id="basic_data">
+			<p><%=@student.description%></p>
+		</div>
+		<div class="content" id="courses">
+			<%=render template:'/student/course'%>
+		</div>
 	</div>
 </div>
+
+
+	
