@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_filter :authenticate_student!,:only=>[:attend,:attend_confirmation,:cancel_attendence]
-  before_filter :authenticate_admin!,:only=>[:new,:create,:edit,:update]
+  before_filter :authenticate_admin!,:only=>[:new,:create,:update]
   def index
     @courses=Course.all
   end
@@ -8,25 +8,32 @@ class CoursesController < ApplicationController
   def show
    course_id=params[:id].to_i
    @course=Course.find(course_id)
+   @companies=@course.companies
+   @teachers=@course.teachers
 
    if student_signed_in?
       @attend = current_student.attends.select{|i| i.course_id==course_id}.size > 0
    elsif admin_signed_in?
-      @students=@course.students 
+      @students=@course.students
+   elsif teacher_signed_in?
+      teacher=current_teacher
+      if(TeachingCourseShip.exists?(:teacher_id=>teacher.id, :course_id=>course_id.to_s ))
+        @students=@course.students
+      end     
    end
   end
 
   def attend
-   student=current_student
-   course_id=params[:course_id]
-   student_id=student.id
+   @student=current_student
+   course_id=params[:id]
+   student_id=@student.id
 
-   if Attend.select(:id).where(:course_id=>course_id, :student_id=>current_student.id).size > 0
+   if Attend.select(:id).where(:course_id=>course_id, :student_id=>student_id).size > 0
      redirect_to '/courses/'+course_id
      return 
    end  
 
-   @attend=Attend.new
+   @attend=Attend.new(params[:attend])
    @attend.course_id=course_id
    @attend.student_id=student_id
 
@@ -40,23 +47,32 @@ class CoursesController < ApplicationController
   end
 
   def attend_confirmation
-   course_id=params[:course_id]
+   course_id=params[:id]
    if Attend.select(:id).where(:course_id=>course_id, :student_id=>current_student.id).size > 0
      redirect_to '/courses/'+course_id
      return 
    end    
-
+   @attend=Attend.new
    @course=Course.find(course_id)
 
   end
 
-
-  def cancel_attendence
+  def cancel_attendance
 	@course_id=params[:id]
 	@student_id=current_student.id
 	a=Attend.where(:course_id=>@course_id, :student_id=>@student_id)
 	a[0].destroy
 	redirect_to :back
+  end
+
+  def attendee_info
+    course_id=params[:id]
+    if( admin_signed_in? or (teacher_signed_in? and TeachingCourseShip.exists?(:course_id=>course_id, :teacher_id=>current_teacher.id)))
+      @course=Course.find(course_id)
+      @students=Student.select('students.id,username,course_expect').joins(:attends).where('attends.course_id='+course_id)
+    else
+      redirect_to :back
+    end
   end
 
   def edit
@@ -82,5 +98,11 @@ class CoursesController < ApplicationController
    @course.update_attributes(params[:course])
    redirect_to :action=>:show, :id=>@course.id
   end	
+
+protected 
+
+  def auauthenticate_admin_or_company_or_teacher
+    #if 
+  end
 
 end

@@ -1,0 +1,4 @@
+<h4><%=@company.name%> 的老師群</h4>
+<% @teachers.each do |t|%>
+	<div><%=link_to t.username, teacher_path(t)%></div>
+<%end%>

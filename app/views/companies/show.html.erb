@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @company.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @company.description %>
+</p>
+
+<p>
+  <b>Founded in:</b>
+  <%= @company.founded_in %>
+</p>
+
+<p>
+  <b>Company url:</b>
+  <%= @company.company_url %>
+</p>
+
+<%= link_to 'Teacher List',teachers_company_path(@company)%> |
+<%= link_to 'Course List',courses_company_path(@company)%> |
+<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %>

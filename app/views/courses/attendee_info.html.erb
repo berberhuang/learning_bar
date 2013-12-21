@@ -1,0 +1,9 @@
+<h4><%=@course.name%></h4>
+<ul>
+	<%@students.each do |s|%>
+		<li>
+			<div><%=link_to s.username, student_path(s.id)%></div>
+			<div><%=s.course_expect%></div>
+		</li>
+	<%end%>
+</ul>

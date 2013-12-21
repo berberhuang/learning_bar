@@ -1,0 +1,16 @@
+<h1>Teachers#show</h1>
+<p>Find me in app/views/teachers/show.html.erb</p>
+<div class="row">
+	<div class="columns">
+		<h1><%=@teacher.username%></h1>
+		<%if @company %>
+			<p><%=@company.name%></p>
+		<%else%>
+			<p><%=@teacher[:company]%></p>
+		<%end%>
+		<p><%=@teacher.position%></p>
+		<p><%=@teacher.description%></p>
+		<%=link_to '編輯帳號資料',edit_teacher_registration_path,:id=>:edit_account%><br>
+		<%=link_to '教授課程清單',courses_teacher_path('me'), :id=>:teach_course_list%><br/>
+		<%=link_to '編輯個人資料',:edit_info_teachers, :id=>:edit_teacher_info %><br/>
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131216085523) do
+ActiveRecord::Schema.define(:version => 20131220151617) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -34,10 +34,11 @@ ActiveRecord::Schema.define(:version => 20131216085523) do
   add_index "admins", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
 
   create_table "attends", :force => true do |t|
-    t.integer  "course_id",  :null => false
-    t.integer  "student_id", :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "course_id",     :null => false
+    t.integer  "student_id",    :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.text     "course_expect"
   end
 
   create_table "companies", :force => true do |t|
@@ -47,6 +48,20 @@ ActiveRecord::Schema.define(:version => 20131216085523) do
     t.string   "company_url", :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "company_course_ships", :force => true do |t|
+    t.integer  "company_id"
+    t.integer  "course_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "company_teacher_ships", :force => true do |t|
+    t.integer  "company_id"
+    t.integer  "teacher_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "courses", :force => true do |t|
@@ -59,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20131216085523) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.text     "description"
+    t.integer  "teacher_id"
   end
 
   add_index "courses", ["name"], :name => "index_courses_on_name"
@@ -85,17 +101,11 @@ ActiveRecord::Schema.define(:version => 20131216085523) do
   add_index "students", ["reset_password_token"], :name => "index_students_on_reset_password_token", :unique => true
 
   create_table "teachers", :force => true do |t|
-    t.integer  "user_id",     :null => false
-    t.integer  "company_id",  :null => false
-    t.text     "description", :null => false
-    t.string   "position",    :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "users", :force => true do |t|
-    t.string   "username",                               :null => false
-    t.string   "phone",                                  :null => false
+    t.string   "username"
+    t.string   "phone"
+    t.string   "company"
+    t.text     "description"
+    t.string   "position"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "email",                  :default => "", :null => false
@@ -110,7 +120,14 @@ ActiveRecord::Schema.define(:version => 20131216085523) do
     t.string   "last_sign_in_ip"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "teachers", ["email"], :name => "index_teachers_on_email", :unique => true
+  add_index "teachers", ["reset_password_token"], :name => "index_teachers_on_reset_password_token", :unique => true
+
+  create_table "teaching_course_ships", :force => true do |t|
+    t.integer  "teacher_id"
+    t.integer  "course_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

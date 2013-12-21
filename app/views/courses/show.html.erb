@@ -11,6 +11,16 @@
 	<div class="large-4 column">
 			<fieldset>
 				<legend><h4>課程資訊</h4></legend>
+				<%if @companies %>
+					<h6>開課單位</h6>
+					<%@companies.each do |c|%>
+						<%=c.name%>
+					<%end%>
+				<%end%>
+				<h6>主講人</h6>
+				<% @teachers.each do |t|%>
+					<%= t.username%>
+				<%end%>
 				<h6>課程時間</h6>
 					<%= @course.course_date.strftime('%Y年%m月%d日%I:%M %p')%>
 				<h6>課程地點</h6>
@@ -23,16 +33,16 @@
 				<legend><h4>報名課程</h4></legend>	
 				<% if @attend %>
 					 <div class="attended">已報名</div>
-				<% elsif admin_signed_in? %>
-					 <%=link_to '編輯',:controller=>:courses, :action=>:edit,:id=>@course.id%>
+				<% elsif @students %>
+					 <%=link_to '編輯', edit_course_path(@course)%>
 					 <div>已報名學生列表</div>
 					 <ul id="attended_list">
 					 <%@students.each do |s| %>
-						<li><%=link_to s.username, '/student/'+s.id.to_s %></li>
+						<li><%=link_to s.username, student_path(s) %></li>
 					 <%end%>
 					 </ul>
 				<% else %>
-					 <%=link_to '報名',{:controller=>:courses, :action=>:attend_confirmation,:course_id=>@course.id},:class=>'button attend'%>
+					 <%=link_to '報名', attend_confirmation_course_path(@course),:class=>'button attend'%>
 				<% end %>
 			</fieldset>
 	</div>

@@ -1,38 +1,47 @@
 Learningbar::Application.routes.draw do
 
-  devise_for :students
-
-  get "admins",:controller=>:admins,:action=>:show
-
-  devise_for :admins
-
-  # get "student/edit"
-  # put "student/update"
-  resource :student, :controller => :student do
-    collection do
-      get 'course'
-    end
+  devise_for :teachers,:controllers => { :registrations => :teacher_registrations }
+  resources :teachers do
+      collection do
+         get 'edit_info'
+      end
+      get 'courses',:on => :member
   end
-  get "student(/:id)", :controller=>:student,:action=>:show
-  # get "student/course"
+
+  devise_for :students
+  resources :students do
+      collection do
+         get 'edit_info'
+      end
+      get 'courses', :on => :member
+  end
 
   
-
+  get "admins",:controller=>:admins,:action=>:show
+  
+  devise_for :admins
   namespace :admin do
     resources :students
   end
+    
 
-  # get "course/index", :controller=>:course, :action=>:index
-  resources :courses, :controller=>:courses do
-    collection do
+  resources :companies do
+    member do
+      get 'teachers'
+      get 'courses'
     end
   end
-  get "courses/edit/:id",:controller=>:courses,:action=>:edit
-  get "courses/attend_confirmation/:course_id", :controller=>:courses,:action=>:attend_confirmation
-  get "courses/attend/:course_id", :controller=>:courses,:action=>:attend
-  get "courses/cancel_attendence/:id", :controller=>:courses,:action=>:cancel_attendence
-  #get "course/info/:id", :controller=>:backbone,:action=>:course_info
 
+  resources :courses do
+    member do
+      get 'attend_confirmation'
+      post 'attend'
+      get 'cancel_attendance'
+      get "attendee_info"
+    end
+  end
+
+  
 
  # devise_for :users, :controllers =>{:registrations => "registrations",:sessions=>'sessions'}
 

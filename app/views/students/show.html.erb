@@ -1,7 +1,8 @@
 <div class="large-3 column">
 	<h1><%=@student.username%></h1>
-	<%=link_to '編輯個人資料',edit_student_path, :id=>:edit_student_info %><br/>
-	<%=link_to '報名課程清單',course_student_path, :id=>:attended_course_list%><br/>
+	<%=link_to '編輯帳號資料',:edit_student_registration,:id=>:edit_account%><br>
+	<%=link_to '報名課程清單',courses_student_path('me'), :id=>:attended_course_list%><br/>
+	<%=link_to '編輯學生個人資料',:edit_info_students, :id=>:edit_student_info %><br/>
 </div>
 <div class="large-9 column">
 	<dl class="tabs" data-tab>
@@ -17,7 +18,7 @@
 			<p><%=@student.description%></p>
 		</div>
 		<div class="content" id="courses">
-			<%=render template:'/student/course'%>
+			<%=render template:'/students/courses'%>
 		</div>
 	</div>
 </div>

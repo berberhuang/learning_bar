@@ -1,0 +1,44 @@
+<h1><%=@teacher.username%></h1>
+<%= form_for @teacher,:url =>teacher_path('me'), :method => :put  do |f| %>
+
+	<div class="row">
+		<div class="large-2 columns">
+  			<%= f.label :company, :class=>'right'%>
+		</div>
+		<div class="large-10 columns">
+			<%= f.text_field :company %>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-2 columns">
+  			<%= f.label :position, :class=>'right'%>
+		</div>
+		<div class="large-10 columns">
+			<%= f.text_field :position %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-2 columns">
+  			<%= f.label :關於我, :class=>'right'%>
+		</div>
+		<div class="large-10 columns">
+			<%= f.text_area :description, :autofocus => true, :class=>(:about_me) %>
+		</div>
+	</div>
+  	<div class="row">
+  		<div class="large-2 columns"></div>
+		<div class="large-10 columns"> 		  		
+	  		<div class="row">
+			  	<div class="large-1 columns right pull-1">
+					<%= f.submit "儲存", :class=>:button%>
+				</div>
+				<div class="large-1 columns right pull-2">
+					<%=button_to '取消',:back,:class=>:button %>
+				</div>
+	  		</div>
+		</div>
+	</div>
+	
+<% end %>
+

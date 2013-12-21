@@ -6,7 +6,7 @@ gem 'rails', '3.2.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-gem 'mysql2'
+#gem 'mysql2'
 
 group :development, :test do
   gem 'factory_girl_rails'

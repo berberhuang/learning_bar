@@ -1,0 +1,4 @@
+<h4><%=@company.name%> 的課程</h4>
+<% @courses.each do |c|%>
+	<div><%=link_to c.name, course_path(c)%></div>
+<%end%>
