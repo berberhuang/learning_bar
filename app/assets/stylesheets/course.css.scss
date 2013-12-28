@@ -3,8 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "foundation_and_overrides";
-.course_list{
-	
+.course_content{
+}
+.course_sidebar{
+	fieldset{
+		margin-top: 0px;	
+
+	}
 }
 .course_list_block{
 	@include thumb;

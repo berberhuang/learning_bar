@@ -1,6 +1,6 @@
 <h1 class="course_name"><%= @course.name%></h1>
 <div class="row">
-	<div class="large-8 column">
+	<div class="large-8 column course_content">
 		<div class="row course_img_container">
 			<img src="<%=image_path('mainbanner.jpg')%>">	
 		</div>
@@ -8,42 +8,49 @@
 			<%= @course.agenda%>
 		</div>
 	</div>
-	<div class="large-4 column">
-			<fieldset>
-				<legend><h4>課程資訊</h4></legend>
-				<%if @companies %>
-					<h6>開課單位</h6>
-					<%@companies.each do |c|%>
-						<%=c.name%>
-					<%end%>
+	<aside class="large-4 column course_sidebar">
+		<div class="panel">
+			<h4>課程資訊</h4>
+			<%if @companies %>
+				<h6>開課單位</h6>
+				<%@companies.each do |c|%>
+					<%=c.name%>
 				<%end%>
-				<h6>主講人</h6>
-				<% @teachers.each do |t|%>
-					<%= t.username%>
-				<%end%>
-				<h6>課程時間</h6>
-					<%= @course.course_date.strftime('%Y年%m月%d日%I:%M %p')%>
-				<h6>課程地點</h6>
-					<%= @course.location%>
-				<!--map-->
-				<h6>開放名額/報名人數</h6>
-				<%= @course.student_amount.to_s%>/
-			</fieldset>
-			<fieldset>
-				<legend><h4>報名課程</h4></legend>	
-				<% if @attend %>
-					 <div class="attended">已報名</div>
-				<% elsif @students %>
-					 <%=link_to '編輯', edit_course_path(@course)%>
-					 <div>已報名學生列表</div>
-					 <ul id="attended_list">
-					 <%@students.each do |s| %>
-						<li><%=link_to s.username, student_path(s) %></li>
-					 <%end%>
-					 </ul>
-				<% else %>
-					 <%=link_to '報名', attend_confirmation_course_path(@course),:class=>'button attend'%>
-				<% end %>
-			</fieldset>
-	</div>
+			<%end%>
+			<h6>主講人</h6>
+			<% @teachers.each do |t|%>
+				<%= t.username%>
+			<%end%>
+			<h6><i class="fa fa-calendar"></i> 課程時間</h6>
+				<%= @course.course_date.strftime('%Y年%m月%d日%I:%M %p')%>
+			<h6><i class="fa fa-map-marker"></i> 課程地點</h6>
+				<%= @course.location%>
+			<!--map-->
+			<h6><i class="fa fa-users"></i> 開放名額/報名人數</h6>
+			<%= @course.student_amount.to_s%>/
+		</div>
+		
+		<div class="panel">
+			<h4>報名課程</h4>
+			<h6>課程要求:</h6>
+			<%=@course.attend_request%>
+
+			<% if @attend %>
+				 <div class="attended">已報名</div>
+			<% elsif @students %>
+				 <%=link_to '編輯', edit_course_path(@course)%>
+				 <div>已報名學生列表</div>
+				 <ul id="attended_list">
+				 <%@students.each do |s| %>
+					<li><%=link_to s.username, student_path(s) %></li>
+				 <%end%>
+				 </ul>
+			<% else %>
+				 <%=link_to attend_confirmation_course_path(@course),class:"button" do %>
+				 	報名<i class="fa fa-sign-in fa-lg"></i>
+				 <% end -%>
+			<% end %>
+		</div>
+		
+	</aside>
 </div>

@@ -34,10 +34,10 @@ Learningbar::Application.routes.draw do
 
   resources :courses do
     member do
-      get 'attend_confirmation'
+      get  'attend_confirmation'
       post 'attend'
-      get 'cancel_attendance'
-      get "attendee_info"
+      get  'cancel_attendance'
+      get  'attendee_info'
     end
   end
 
