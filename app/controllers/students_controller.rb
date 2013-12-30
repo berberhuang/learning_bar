@@ -2,7 +2,6 @@ class StudentsController < ApplicationController
   before_filter :authenticate_student!, :except=>[:show]
   before_filter :find_student_by_id, :only=>[:show, :courses]
   
-
   def show
     if @student
       @courses=@student.courses

@@ -1,6 +1,17 @@
 // Place all the styles related to the student controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "foundation_and_overrides";
 .about_me{
 	height: 300px;
+}
+
+.user_table{
+	margin-top: 4em;
+	.user_avatar{
+		border-radius: 2px;
+	};
+	.user_name{
+		text-align: center;
+	};
 }

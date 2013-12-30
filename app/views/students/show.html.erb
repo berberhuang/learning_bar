@@ -1,26 +1,24 @@
 <div class="large-3 column">
-	<h1><%=@student.username%></h1>
-	<%=link_to '編輯帳號資料',:edit_student_registration,:id=>:edit_account%><br>
-	<%=link_to '報名課程清單',courses_student_path('me'), :id=>:attended_course_list%><br/>
-	<%=link_to '編輯學生個人資料',:edit_info_students, :id=>:edit_student_info %><br/>
+	<div class="user_table">
+	  <div class="user_avatar"></div>
+	  <div class="user_name"><%=@student.username%></div>
+	  <div class="description">An awesome description</div>
+	  <div>
+	  </div>
+	</div>
+	<br/>
 </div>
 <div class="large-9 column">
-	<dl class="tabs" data-tab>
-		<dd class="active"><a href="#basic_data">關於我</a></dd>
+	<dl >	
+		<dt><h3>關於我</h3><%=link_to '編輯',:edit_info_students, :id=>:edit_student_info %></dt>
 		<dd>
-			<a href="#courses">參與課程</a>
+			<div class="content active" id="basic_data">
+				<p><%=@student.description%></p>
+			</div>
 		</dd>
-		<!-- <dd><a href="#">tab3</a></dd>
-		<dd><a href="#">tab4</a></dd> -->
+		<dt><h3>參與課程</h3><%=link_to "編輯",courses_student_path('me'), :id=>:attended_course_list%></dt>
+		<dd><%=render template:'/students/courses'%></dd>
 	</dl>
-	<div class="tabs-content">
-		<div class="content active" id="basic_data">
-			<p><%=@student.description%></p>
-		</div>
-		<div class="content" id="courses">
-			<%=render template:'/students/courses'%>
-		</div>
-	</div>
 </div>
 
 

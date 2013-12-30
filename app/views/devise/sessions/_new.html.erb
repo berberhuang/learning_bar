@@ -19,7 +19,9 @@
 
       <div>
         <%= f.submit "登入", :class=>'button' %>
-        <%=link_to "第一次造訪？註冊帳號", new_student_registration_path%>
+        <%if request.env['PATH_INFO']==new_student_session_path %>
+          <%=link_to "第一次造訪？註冊帳號", new_student_registration_path%>
+        <% end -%>
         <%= link_to "忘記密碼", new_password_path('student'),:class=>'right' %>
 
       </div>

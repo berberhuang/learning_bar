@@ -1,5 +1,5 @@
-<h4><%=@course.name%></h4>
-<ul>
+<h1><%=@course.name%></h1>
+<ul class="large-block-grid-12 small-block-grid-4">
 	<%@students.each do |s|%>
 		<li>
 			<div><%=link_to s.username, student_path(s.id)%></div>

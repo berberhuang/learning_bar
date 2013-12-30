@@ -8,6 +8,11 @@
 		<div class="row">
 			<%= @course.agenda%>
 		</div>
+		<div class="row">
+			<!-- student 也可以看有哪些人參加課程
+			 <ul id="attended_list" class="large-block-grid-12 small-block-grid-6">
+			</ul> -->
+		</div>
 	</div>
 	<aside class="large-4 column course_sidebar">
 		<div class="panel">
@@ -35,20 +40,16 @@
 			<h3>報名課程</h3>
 			<h6>課程要求:</h6>
 			<%=@course.attend_request%>
-
+			<br/><br/>
 			<% if @attend %>
-				<div class="attended">已報名</div>
-				<%=link_to '取消報名','#',data:{:'reveal-id'=>:'cancel_confirmation'}, class:'button'%>
+				<div class="attended"><h3 class="subheader text-center">已報名</h1></div>
+				<%=link_to '取消報名','#',data:{:'reveal-id'=>:'cancel_confirmation'}, class:'button expand alert'%>
 			<% elsif @students %>
-			<%=link_to '編輯', edit_course_path(@course)%>
-			<div>已報名學生列表</div>
-			<ul id="attended_list">
-			<%@students.each do |s| %>
-				<li><%=link_to s.username, student_path(s) %></li>
-			<%end%>
-			</ul>
+				<%=link_to '編輯', edit_course_path(@course)%>
+				<%=link_to '已報名學生列表', attendee_info_course_path%>
 			<% else %>
-				 <%=link_to attend_confirmation_course_path(@course),class:"button" do %>
+				<br/><br/><br/>
+				 <%=link_to attend_confirmation_course_path(@course),class:"button expand" do %>
 				 	報名<i class="fa fa-sign-in fa-lg"></i>
 				 <% end -%>
 			<% end %>
