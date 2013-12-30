@@ -1,5 +1,6 @@
 <h1 class="course_name"><%= @course.name%></h1>
 <div class="row">
+	<!-- cancel alert -->
 	<div class="large-8 column course_content">
 		<div class="row course_img_container">
 			<img src="<%=image_path('mainbanner.jpg')%>">	
@@ -10,7 +11,7 @@
 	</div>
 	<aside class="large-4 column course_sidebar">
 		<div class="panel">
-			<h4>課程資訊</h4>
+			<h3>課程資訊</h3>
 			<%if @companies %>
 				<h6>開課單位</h6>
 				<%@companies.each do |c|%>
@@ -31,26 +32,33 @@
 		</div>
 		
 		<div class="panel">
-			<h4>報名課程</h4>
+			<h3>報名課程</h3>
 			<h6>課程要求:</h6>
 			<%=@course.attend_request%>
 
 			<% if @attend %>
-				 <div class="attended">已報名</div>
+				<div class="attended">已報名</div>
+				<%=link_to '取消報名','#',data:{:'reveal-id'=>:'cancel_confirmation'}, class:'button'%>
 			<% elsif @students %>
-				 <%=link_to '編輯', edit_course_path(@course)%>
-				 <div>已報名學生列表</div>
-				 <ul id="attended_list">
-				 <%@students.each do |s| %>
-					<li><%=link_to s.username, student_path(s) %></li>
-				 <%end%>
-				 </ul>
+			<%=link_to '編輯', edit_course_path(@course)%>
+			<div>已報名學生列表</div>
+			<ul id="attended_list">
+			<%@students.each do |s| %>
+				<li><%=link_to s.username, student_path(s) %></li>
+			<%end%>
+			</ul>
 			<% else %>
 				 <%=link_to attend_confirmation_course_path(@course),class:"button" do %>
 				 	報名<i class="fa fa-sign-in fa-lg"></i>
 				 <% end -%>
 			<% end %>
 		</div>
-		
+
+		<div id="cancel_confirmation" class="reveal-modal small" data-reveal>
+			<h3>確定要取消報名課程？</h3>
+			<%=link_to "取消報名", cancel_attendance_course_path, class:'button alert', data:{:'alert-class'=>:'cancel-success'}%>
+			<%=link_to "維持報名", "#", class:'button'%>
+			<a class="close-reveal-modal">&#215;</a>
+		</div>
 	</aside>
 </div>

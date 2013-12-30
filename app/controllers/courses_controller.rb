@@ -1,3 +1,4 @@
+#encoding: utf-8
 class CoursesController < ApplicationController
   before_filter :authenticate_student!,:only=>[:attend,:attend_confirmation,:cancel_attendence]
   before_filter :authenticate_admin!,:only=>[:new,:create,:update]
@@ -63,6 +64,7 @@ class CoursesController < ApplicationController
 	a=Attend.where(:course_id=>@course_id, :student_id=>@student_id)
 	a[0].destroy
 	redirect_to :back
+  flash[:alert]="取消成功"
   end
 
   def attendee_info
