@@ -1,19 +1,20 @@
-<h1><%=@student.username%></h1>
-<%= form_for @student,:url =>student_path(@student), :method => :put  do |f| %>
-  <div class="large-2 columns">
-  	<%= f.label :關於我, :class=>'right'%>
-	</div>
-	<div class="large-10 columns">
-  		<%= f.text_area :description, :autofocus => true, :class=>(:about_me) %>
-  		<div class="row">
-		  	<div class="large-1 columns right pull-1">
-				<%= f.submit "儲存", :class=>:button%>
-			</div>
-			<div class="large-1 columns right pull-2">
-				<%=button_to '取消',:back,:class=>:button %>
-			</div>
-  		</div>
-	</div>
-	
-<% end %>
+<%=render 'layouts/usertable'%>
+<div class="large-9 columns">
+	<%= form_for @student,:url =>student_path(@student), :method => :put  do |f| %>
+	  	<h3>關於我</h3>
+		<div class="columns">
+	  		<%= f.text_area :description, :autofocus => true, :class=>(:about_me) %>
+	  		<div class="row">
+			  	<div class="large-1 columns right pull-1">
+					<%= f.submit "儲存", :class=>:button%>
+				</div>
+				<div class="large-1 columns right pull-2">
+					<%=button_to '取消',:back,:class=>:button %>
+				</div>
+	  		</div>
+		</div>
+		
+	<% end %>
+</div>
+  
 

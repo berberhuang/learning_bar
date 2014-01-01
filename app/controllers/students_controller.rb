@@ -9,6 +9,10 @@ class StudentsController < ApplicationController
     end
   end
 
+  def edit_avatar
+    @student=current_student
+  end
+
   def courses
     if @student
       @courses=@student.courses
@@ -23,8 +27,8 @@ class StudentsController < ApplicationController
 
   def update
   	@student=current_student
-  	@student.update_attributes(params[:student]).
-  	redirect_to student_path(@student)
+  	@student.update_attributes(params[:student])
+  	redirect_to student_path('me')
   end
   
 
