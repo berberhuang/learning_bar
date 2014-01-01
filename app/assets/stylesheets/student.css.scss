@@ -6,12 +6,16 @@
 	height: 300px;
 }
 
+
 .user_table{
 	margin-top: 4em;
+	text-align: center;
 	.user_avatar{
-		border-radius: 2px;
-	};
-	.user_name{
-		text-align: center;
-	};
+		.gravatar{
+			margin:0 auto;
+			border-radius: 15px;
+			width:128px;
+			height:128px;
+		}
+	}
 }

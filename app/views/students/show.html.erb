@@ -1,25 +1,46 @@
 <div class="large-3 column">
 	<div class="user_table">
-	  <div class="user_avatar"></div>
-	  <div class="user_name"><%=@student.username%></div>
-	  <div class="description">An awesome description</div>
-	  <div>
+	  <div class="user_avatar">
+	  	<%= image_tag @student.avatar.url(:medium), :class=>:th %>
+	  	<%= form_for(resource, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+	  		<%= f.file_field :avatar %>
+	  		<%= f.submit%>
+	  	<% end -%>
 	  </div>
+	  <div class="user_name"><h3><%=@student.username%></h3></div>
+	  <div class="description">An awesome description</div>
 	</div>
 	<br/>
 </div>
 <div class="large-9 column">
-	<dl >	
-		<dt><h3>關於我</h3><%=link_to '編輯',:edit_info_students, :id=>:edit_student_info %></dt>
-		<dd>
-			<div class="content active" id="basic_data">
-				<p><%=@student.description%></p>
-			</div>
-		</dd>
-		<dt><h3>參與課程</h3><%=link_to "編輯",courses_student_path('me'), :id=>:attended_course_list%></dt>
-		<dd><%=render template:'/students/courses'%></dd>
+	<dl class="tabs" data-tab>
+	  <dd class="active"><a href="#panel2-1"><h5>關於我</h5></a></dd>
+	  <dd><a href="#panel2-2"><h5>參與課程</h5></a></dd>
+	  <dd><a href="#panel2-3"><h5>開發技能</h5></a></dd>
+	  <dd><a href="#panel2-4"><h5>聯絡方式</h5></a></dd>
 	</dl>
+	<div class="tabs-content">
+	  <div class="content active" id="panel2-1">
+	    <div class="content active" id="basic_data">
+			<%=link_to '編輯',:edit_info_students, :id=>:edit_student_info,:class=>:right %>
+			<p><%=@student.description%></p>
+		</div>
+	  </div>
+	  <div class="content" id="panel2-2">
+	  	<%=link_to "編輯",courses_student_path('me'), :id=>:attended_course_list%>
+	    <p><%=render template:'/students/courses'%></p>	
+	  </div>
+	  <div class="content" id="panel2-3">
+	    <p>Third panel content goes here...</p>
+	  </div>
+	  <div class="content" id="panel2-4">
+	    <p>Fourth panel content goes here...</p>
+	  </div>
+	</div>
+	<div class='textavatar' style='width: 140px;' data-name='2222'></div>
+	
 </div>
 
+<script src="jquery.textavatar.js"></script>
 
 	

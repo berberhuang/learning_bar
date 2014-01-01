@@ -1,7 +1,6 @@
 class StudentsController < ApplicationController
   before_filter :authenticate_student!, :except=>[:show]
   before_filter :find_student_by_id, :only=>[:show, :courses]
-  
   def show
     if @student
       @courses=@student.courses
@@ -24,9 +23,10 @@ class StudentsController < ApplicationController
 
   def update
   	@student=current_student
-  	@student.update_attributes(params[:student])
+  	@student.update_attributes(params[:student]).
   	redirect_to student_path(@student)
   end
+  
 
 protected
 
