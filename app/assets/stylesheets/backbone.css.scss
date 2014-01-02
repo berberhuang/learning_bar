@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "foundation_and_overrides";
+section.top-bar-section{
+	ul{
+		background-color:black;
+	}
+}
 .first_band{
 	height: 400px;
 	background-image: url(image_path('mainbanner.jpg'));
@@ -26,7 +31,6 @@
 		width:100%;
 	}
 }
-
 
 footer{
 	background: black;

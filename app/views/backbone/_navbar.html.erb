@@ -14,10 +14,11 @@
       <ul class="right">
       <% if student_signed_in? %>
         <% student=current_student%>
-        <li class="has-dropdown"><%=link_to student.username, student_path(:me), :class=>"username"%>
+        <li><%= image_tag student.avatar.url(:tiny) %></li>
+        <li class="has-dropdown">
+        <%=link_to student.username, student_path(:me), :class=>"username"%>
           <ul class="dropdown">
             <li><%=link_to '個人資料', student_path(:me)%></li>
-            <li><%=link_to '課程記錄',courses_student_path('me')%></li>
             <li><%=link_to '帳號設定',:edit_student_registration%></li>
           </ul>
         </li>

@@ -8,7 +8,7 @@ Learningbar::Application.routes.draw do
       get 'courses',:on => :member
   end
 
-  devise_for :students
+  devise_for :students,:controllers => { :registrations => :student_registrations }
   resources :students do
       collection do
          get 'edit_info'

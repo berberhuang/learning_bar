@@ -1,6 +1,6 @@
 <%=render 'layouts/usertable'%>
 <div class="large-9 columns">
-	<%= form_for @student,:url =>student_path(@student), :method => :put  do |f| %>
+	<%= form_for @student,:url =>student_path(@student) do |f| %>
 	  	<h3>關於我</h3>
 		<div class="columns">
 	  		<%= f.text_area :description, :autofocus => true, :class=>(:about_me) %>
@@ -13,7 +13,6 @@
 				</div>
 	  		</div>
 		</div>
-		
 	<% end %>
 </div>
   

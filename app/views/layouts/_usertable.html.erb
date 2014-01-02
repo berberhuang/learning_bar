@@ -2,10 +2,11 @@
 	<div class="user_table">
 	  <div class="user_avatar">
 	  	<%= image_tag @student.avatar.url(:medium), :class=>:th %>
-	  	<%=form_for @student, :url=>student_path(@student), :method=>:put do |f|%>
+	  	<%=form_for @student, :url=>student_path(@student) do |f|%>
 	  		<%= f.file_field :avatar %>
 	  		<%= f.submit%>
 	  	<% end -%>
+
 	  </div>
 	  <div class="user_name"><h3><%=@student.username%></h3></div>
 	</div>

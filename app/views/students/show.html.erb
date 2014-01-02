@@ -7,16 +7,14 @@
 	  <dd><a href="#panel2-4"><h5>聯絡方式</h5></a></dd>
 	</dl>
 	<div class="tabs-content">
-	  <div class="content active" id="panel2-1">
 	    <div class="content active" id="basic_data">
 			<%=link_to '編輯',:edit_info_students, :id=>:edit_student_info,:class=>:right %>
-			<p><%=@student.description%></p>
+		<p><%=@student.description%></p>
 		</div>
-	  </div>
-	  <div class="content" id="panel2-2">
-	  	<%=link_to "編輯",courses_student_path('me'), :id=>:attended_course_list%>
-	    <p><%=render template:'/students/courses'%></p>	
-	  </div>
+		<div class="content" id="panel2-2">
+		  	<%=link_to "編輯",courses_student_path('me'), :id=>:attended_course_list%>
+		    <p><%=render template:'/students/courses'%></p>	
+	    </div>
 	  <div class="content" id="panel2-3">
 	    <p>Third panel content goes here...</p>
 	  </div>
@@ -24,10 +22,7 @@
 	    <p>Fourth panel content goes here...</p>
 	  </div>
 	</div>
-	<div class='textavatar' style='width: 140px;' data-name='2222'></div>
-	
+	<div class='textavatar' style='width: 140px;' data-name='fjfje'></div>
 </div>
-
-<script src="jquery.textavatar.js"></script>
 
 	

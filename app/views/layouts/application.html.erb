@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <link href="/learningbar_icon.png" rel="shortcut icon" />
     <title><%= content_for?(:title) ? yield(:title) : "LEARNING BAR" %></title>
-    
     <%= stylesheet_link_tag    "application" ,:media => "all"%>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
@@ -20,7 +20,8 @@
     //id需要更改
     js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=514033835356159";
     fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
+  }(document, 'script', 'facebook-jssdk'));
+  </script>
   <%=render :partial=>'backbone/navbar'  %>
   	
     <div class="row">
@@ -29,8 +30,13 @@
         <%= yield %>
       </div>    
     </div>
-    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "application","jquery.textavatar" %>
     <%=render :partial=>'backbone/modals'%>
     <%=render :partial=>'backbone/footer'%>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.textavatar').textAvatar();
+      })
+    </script>
   </body>
 </html>
