@@ -5,17 +5,30 @@
 .about_me{
 	height: 300px;
 }
+.user_avatar_wrapper{
+	position: relative;
+	margin-bottom: 5px;
+	&:hover{
+		.edit_avatar{
+			display:block;
+			text-decoration: underline;
+		}
+	};
+}
+
+.edit_avatar{
+	color: white;
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	display: none;
+	cursor: pointer;
+}
 
 
 .user_table{
 	margin-top: 4em;
 	text-align: center;
 	.user_avatar{
-		.gravatar{
-			margin:0 auto;
-			border-radius: 15px;
-			width:128px;
-			height:128px;
-		}
 	}
 }

@@ -33,10 +33,21 @@ section.top-bar-section{
 }
 
 footer{
-	background: black;
 	clear: both;
-  	
-  	h1,h2,h3,h4,h5,h6{
-    	color:white;
-  }
+}
+.file_selection_button{
+	position: relative;
+	overflow: hidden;
+	@include button;
+	.test{
+		position: absolute;
+		top: 0;
+		right: 0;
+		margin: 0;
+		padding: 0;
+		font-size: 20px;
+		cursor: pointer;
+		opacity: 0;
+		filter: alpha(opacity=0);
+	}
 }

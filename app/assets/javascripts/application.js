@@ -13,6 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require jquery.stickyFooter
+//= require_tree .
 
 $(function(){ $(document).foundation(); });

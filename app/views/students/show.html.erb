@@ -1,18 +1,22 @@
-<%=render 'layouts/usertable'%>
+<%=render 'layouts/student_user_panel'%>
 <div class="large-9 column">
 	<dl class="tabs" data-tab>
-	  <dd class="active"><a href="#panel2-1"><h5>關於我</h5></a></dd>
+	  <dd class="active"><a href="#basic_data"><h5>關於我</h5></a></dd>
 	  <dd><a href="#panel2-2"><h5>參與課程</h5></a></dd>
 	  <dd><a href="#panel2-3"><h5>開發技能</h5></a></dd>
 	  <dd><a href="#panel2-4"><h5>聯絡方式</h5></a></dd>
 	</dl>
 	<div class="tabs-content">
 	    <div class="content active" id="basic_data">
-			<%=link_to '編輯',:edit_info_students, :id=>:edit_student_info,:class=>:right %>
+	    	<%if @student_editable%>
+				<%=link_to '編輯',:edit_info_students, :id=>:edit_student_info,:class=>:right %>
+			<% end %>
 		<p><%=@student.description%></p>
 		</div>
 		<div class="content" id="panel2-2">
+			<%if @student_editable%>
 		  	<%=link_to "編輯",courses_student_path('me'), :id=>:attended_course_list%>
+		  	<% end %>
 		    <p><%=render template:'/students/courses'%></p>	
 	    </div>
 	  <div class="content" id="panel2-3">
@@ -22,7 +26,7 @@
 	    <p>Fourth panel content goes here...</p>
 	  </div>
 	</div>
-	<div class='textavatar' style='width: 140px;' data-name='fjfje'></div>
+	<!-- <div class='textavatar' style='width: 140px;' data-name='fjfje'></div> -->
 </div>
 
 	

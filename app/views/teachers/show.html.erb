@@ -1,16 +1,64 @@
-<h1>Teachers#show</h1>
-<p>Find me in app/views/teachers/show.html.erb</p>
-<div class="row">
-	<div class="columns">
-		<h1><%=@teacher.username%></h1>
-		<%if @company %>
-			<p><%=@company.name%></p>
-		<%else%>
-			<p><%=@teacher[:company]%></p>
-		<%end%>
-		<p><%=@teacher.position%></p>
-		<p><%=@teacher.description%></p>
-		<%=link_to '編輯帳號資料',edit_teacher_registration_path,:id=>:edit_account%><br>
-		<%=link_to '教授課程清單',courses_teacher_path('me'), :id=>:teach_course_list%><br/>
-		<%=link_to '編輯個人資料',:edit_info_teachers, :id=>:edit_teacher_info %><br/>
+<div class="large-3 column">
+	<div class="user_table">
+		<div class="user_avatar">
+	  		<div class="user_avatar_wrapper">
+	  		<%= image_tag @teacher.avatar.url(:medium), :class=>:th, :id=>:uploadPreview %>
+	  		<%if @teacher_editable%>
+	  			<i class="fa fa-gear edit_avatar">更換圖片</i>
+	  		</div>
+	  		<%=form_for @teacher, :url=>teacher_path(@teacher) do |f|%>
+	  			<div class="row">
+		  			<div class="large-6 column" style="display:none">
+		  				<div id="uploadBtn">
+		  					<%= f.file_field :avatar, :class=>"test" %>
+		  				</div>
+		  			</div>	
+		  			<div style="display:none" id="confirm_upload">
+	  					<%= f.submit "確定",  :class=>"test button tiny"%>
+		  				<%=link_to :取消, teacher_path('me'), :class=>"button secondary tiny"%>
+		  			</div>
+	  			</div>
+	  		<% end %>
+	  		<%else%>
+	  		</div>
+	  	<% end %>
+	</div>
+	  <div class="user_name"><h3><%=@teacher.username%></h3></div>
+	  <%if @company %>
+	  	<p><%=@company.name%></p>
+	  <%else%>
+	  	<p><%=@teacher[:company]%></p>
+	  <%end%>
+	  	<p><%=@teacher.position%></p>
+	</div>
+</div>
+
+<div class="large-9 column">
+	<dl class="tabs" data-tab>
+	  <dd class="active"><a href="#basic_data"><h5>關於我</h5></a></dd>
+	  <dd><a href="#panel2-2"><h5>參與課程</h5></a></dd>
+	  <dd><a href="#panel2-3"><h5>開發技能</h5></a></dd>
+	  <dd><a href="#panel2-4"><h5>聯絡方式</h5></a></dd>
+	</dl>
+
+	<div class="tabs-content">
+	    <div class="content active" id="basic_data">
+	    	<%if @teacher_editable%>
+			<%=link_to '編輯',:edit_info_teachers, :id=>:edit_teacher_info,:class=>:right %>
+			<% end %>
+			<p><%=@teacher.description%></p>
+		</div>
+		<div class="content" id="panel2-2">
+			<%if @teacher_editable%>
+		  	
+		  	<%=link_to "編輯",courses_teacher_path('me'), :id=>:attended_course_list%>
+		  	<% end %>
+	    </div>
+	  <div class="content" id="panel2-3">
+	    <p>Third panel content goes here...</p>
+	  </div>
+	  <div class="content" id="panel2-4">
+	    <p>Fourth panel content goes here...</p>
+	  </div>
+	</div>
 </div>

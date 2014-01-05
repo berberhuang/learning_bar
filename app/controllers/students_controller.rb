@@ -4,13 +4,12 @@ class StudentsController < ApplicationController
   def show
     if @student
       @courses=@student.courses
+      if student_signed_in?
+        @student_editable=true
+      end
     else
       redirect_to :back
     end
-  end
-
-  def edit_avatar
-    @student=current_student
   end
 
   def courses

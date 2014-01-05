@@ -5,6 +5,9 @@ class TeachersController < ApplicationController
   def show
   	if @teacher
   		@company=@teacher.company
+      if teacher_signed_in?
+        @teacher_editable=true
+      end
   	else
   		redirect_to :back
   	end
@@ -26,6 +29,7 @@ class TeachersController < ApplicationController
   	@teacher=current_teacher
   	@teacher.description=params[:teacher][:description]
   	@teacher[:company]=params[:teacher][:company]
+    @teacher.update_attributes(params[:teacher])
   	@teacher.position=params[:teacher][:position]
   	@teacher.save
   	redirect_to teacher_path('me')
@@ -41,6 +45,5 @@ protected
     elsif admin_signed_in? && id
       @teacher = teacher.find_by_id(id)
     end
-
   end
 end
