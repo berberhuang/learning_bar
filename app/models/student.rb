@@ -21,4 +21,7 @@ class Student < ActiveRecord::Base
 
   has_many :attends
   has_many :courses,:through=>:attends
+
+  has_many :student_skill_ships
+  has_many :skills,:through=>:student_skill_ships
 end

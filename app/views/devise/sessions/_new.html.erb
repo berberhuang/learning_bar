@@ -14,15 +14,21 @@
         <%= f.password_field :password %></div>
 
       <% if devise_mapping.rememberable? -%>
-        <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+        <div class="column">
+          <%= f.check_box :remember_me %><%= f.label :記住我 %>
+        </div>
       <% end -%>
 
-      <div>
-        <%= f.submit "登入", :class=>'button' %>
-        <%if request.env['PATH_INFO']==new_student_session_path %>
-          <%=link_to "第一次造訪？註冊帳號", new_student_registration_path%>
-        <% end -%>
-        <%= link_to "忘記密碼", new_password_path('student'),:class=>'right' %>
+      <div class="column">
+        <div class="right">
+          <%= f.submit "登入", :class=>'button'%>
+          <%if request.env['PATH_INFO']==new_student_session_path %>
+            <%=link_to "第一次造訪？註冊帳號", new_student_registration_path%>
+          <% end -%>
+        </div>
+        <div class="left forget_password_link">
+          <%= link_to "忘記密碼?", new_password_path('student')%>
+        </div>
 
       </div>
 

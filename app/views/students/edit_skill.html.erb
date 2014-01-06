@@ -1,0 +1,9 @@
+<%=render 'layouts/student_user_panel'%>
+<div class="large-9 columns">
+	<h1>開發技能</h1>
+	<div class="">
+		<%@skills.each do |s|%>
+			<%=s.skill_name%>
+		<% end -%>
+	</div>
+</div>

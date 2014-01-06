@@ -104,7 +104,6 @@ class CoursesController < ApplicationController
 protected 
 
   def auauthenticate_admin_or_company_or_teacher
-    #if 
   end
 
 end

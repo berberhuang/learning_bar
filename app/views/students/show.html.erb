@@ -7,15 +7,21 @@
 	  <dd><a href="#panel2-4"><h5>聯絡方式</h5></a></dd>
 	</dl>
 	<div class="tabs-content">
-	    <div class="content active" id="basic_data">
+	    <div class="content active columns" id="basic_data">
 	    	<%if @student_editable%>
-				<%=link_to '編輯',:edit_info_students, :id=>:edit_student_info,:class=>:right %>
+	    	<div class="right">
+	    		<%=link_to '編輯',:edit_info_students, :id=>:edit_student_info %>
+	    	</div>
 			<% end %>
 		<p><%=@student.description%></p>
+		<p>
+		</p>
 		</div>
-		<div class="content" id="panel2-2">
+		<div class="content columns" id="panel2-2">
 			<%if @student_editable%>
-		  	<%=link_to "編輯",courses_student_path('me'), :id=>:attended_course_list%>
+			<div class="right">
+				<%=link_to "編輯",courses_student_path('me'), :id=>:attended_course_list%>
+			</div>
 		  	<% end %>
 		    <p><%=render template:'/students/courses'%></p>	
 	    </div>

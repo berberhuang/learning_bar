@@ -12,7 +12,7 @@ Learningbar::Application.routes.draw do
   resources :students do
       collection do
          get 'edit_info'
-         put 'edit_avatar'
+         get 'edit_skill'
       end
       get 'courses', :on => :member
   end

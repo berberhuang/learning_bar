@@ -11,7 +11,6 @@ class StudentsController < ApplicationController
       redirect_to :back
     end
   end
-
   def courses
     if @student
       @courses=@student.courses
@@ -22,6 +21,14 @@ class StudentsController < ApplicationController
 
   def edit_info
     @student=current_student
+    if student_signed_in?
+      @student_editable=true
+    end
+  end
+
+  def edit_skill
+    @student=current_student
+    @skills=@student.skills
   end
 
   def update
@@ -29,10 +36,7 @@ class StudentsController < ApplicationController
   	@student.update_attributes(params[:student])
   	redirect_to student_path('me')
   end
-  
-
 protected
-
   def find_student_by_id
     id=params[:id]
 

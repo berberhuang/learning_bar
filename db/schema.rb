@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140103061034) do
+ActiveRecord::Schema.define(:version => 20140106084743) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -94,6 +94,27 @@ ActiveRecord::Schema.define(:version => 20140103061034) do
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "teacher_id"
+  end
+
+  create_table "replies", :force => true do |t|
+    t.integer  "post_id"
+    t.integer  "student_id"
+    t.integer  "teacher_id"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "skills", :force => true do |t|
+    t.string "skill_name"
+  end
+
+  create_table "student_skill_ships", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "student_id"
+    t.integer  "skill_id"
   end
 
   create_table "students", :force => true do |t|
@@ -120,6 +141,13 @@ ActiveRecord::Schema.define(:version => 20140103061034) do
 
   add_index "students", ["email"], :name => "index_students_on_email", :unique => true
   add_index "students", ["reset_password_token"], :name => "index_students_on_reset_password_token", :unique => true
+
+  create_table "teacher_skill_ships", :force => true do |t|
+    t.integer  "teacher_id"
+    t.integer  "skill_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "teachers", :force => true do |t|
     t.string   "username"
