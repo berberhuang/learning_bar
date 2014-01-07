@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140106084743) do
+ActiveRecord::Schema.define(:version => 20140106152415) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -111,10 +111,11 @@ ActiveRecord::Schema.define(:version => 20140106084743) do
   end
 
   create_table "student_skill_ships", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.integer  "student_id"
     t.integer  "skill_id"
+    t.text     "skill_description"
   end
 
   create_table "students", :force => true do |t|
@@ -145,8 +146,9 @@ ActiveRecord::Schema.define(:version => 20140106084743) do
   create_table "teacher_skill_ships", :force => true do |t|
     t.integer  "teacher_id"
     t.integer  "skill_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.text     "skill_description"
   end
 
   create_table "teachers", :force => true do |t|

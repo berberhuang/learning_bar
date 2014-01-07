@@ -4,6 +4,8 @@ class StudentsController < ApplicationController
   def show
     if @student
       @courses=@student.courses
+      # @teachers=Course.teachers
+      @skills= @student.skills
       if student_signed_in?
         @student_editable=true
       end
@@ -28,12 +30,24 @@ class StudentsController < ApplicationController
 
   def edit_skill
     @student=current_student
-    @skills=@student.skills
+    if student_signed_in?
+      @student_editable=true
+    end
+    @skills= Skill.all
   end
 
   def update
   	@student=current_student
   	@student.update_attributes(params[:student])
+
+    @skills = Skill.where(:id => params[:skill_ids])
+    
+    @skills.each do |skill|
+      if !@student.skills.include?(skill)
+        @student.skills << skill 
+      end
+    end 
+
   	redirect_to student_path('me')
   end
 protected

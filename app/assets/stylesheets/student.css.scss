@@ -15,7 +15,6 @@
 		}
 	};
 }
-
 .edit_avatar{
 	color: white;
 	position: absolute;
@@ -24,11 +23,16 @@
 	display: none;
 	cursor: pointer;
 }
-
-
 .user_table{
 	margin-top: 4em;
 	text-align: center;
 	.user_avatar{
+	}
+}
+
+.course_list{
+	.course_list_item{
+		width: 99%;
+		border:solid 1px ;
 	}
 }

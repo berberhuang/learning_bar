@@ -4,7 +4,7 @@
 	  <dd class="active"><a href="#basic_data"><h5>關於我</h5></a></dd>
 	  <dd><a href="#panel2-2"><h5>參與課程</h5></a></dd>
 	  <dd><a href="#panel2-3"><h5>開發技能</h5></a></dd>
-	  <dd><a href="#panel2-4"><h5>聯絡方式</h5></a></dd>
+	  <!-- <dd><a href="#panel2-4"><h5>聯絡方式</h5></a></dd> -->
 	</dl>
 	<div class="tabs-content">
 	    <div class="content active columns" id="basic_data">
@@ -17,20 +17,37 @@
 		<p>
 		</p>
 		</div>
-		<div class="content columns" id="panel2-2">
+		<div class="content columns course_list" id="panel2-2">
 			<%if @student_editable%>
 			<div class="right">
 				<%=link_to "編輯",courses_student_path('me'), :id=>:attended_course_list%>
 			</div>
-		  	<% end %>
-		    <p><%=render template:'/students/courses'%></p>	
+		  	<%end%>
+		  	<ul class="large-block-grid-3 small-block-grid-2">
+		  	<%@courses.each do |course|%>
+		  		<li>
+		  			<div class="course_list_item">
+		  				<h4><%=course.name%></h4>
+		  				<p><%=course.description%></p>
+
+		  			</div>
+		  		</li>
+		  	<%end%>
+		  	</ul>
 	    </div>
 	  <div class="content" id="panel2-3">
-	    <p>Third panel content goes here...</p>
+	  	<%if @student_editable%>
+	  	<div class="right">
+	  		<%@skills.each do |s|%>
+	  			<%=s.skill_name%>
+	  		<% end -%>
+	  		<%=link_to "編輯", :edit_skill_students, :id=>:me%>
+	  	</div>
+	  	<% end -%>
 	  </div>
-	  <div class="content" id="panel2-4">
-	    <p>Fourth panel content goes here...</p>
-	  </div>
+	  <!-- <div class="content" id="panel2-4">
+	    <p><%=@student.phone%></p>
+	  </div> -->
 	</div>
 	<!-- <div class='textavatar' style='width: 140px;' data-name='fjfje'></div> -->
 </div>

@@ -1,5 +1,5 @@
 Learningbar::Application.routes.draw do
-
+  resources :skills
   devise_for :teachers,:controllers => { :registrations => :teacher_registrations }
   resources :teachers do
       collection do
@@ -14,7 +14,10 @@ Learningbar::Application.routes.draw do
          get 'edit_info'
          get 'edit_skill'
       end
+      # resources :courses, :controller => "student_courses"
+
       get 'courses', :on => :member
+      resources :skills
   end
 
   
@@ -42,7 +45,6 @@ Learningbar::Application.routes.draw do
     end
   end
 
-  
 
  # devise_for :users, :controllers =>{:registrations => "registrations",:sessions=>'sessions'}
 
