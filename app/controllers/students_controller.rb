@@ -15,12 +15,14 @@ class StudentsController < ApplicationController
   def courses
     if @student
       @courses=@student.courses
+      @course=@courses.find(params[:id])
     else
       redirect_to :back
     end
   end
 
   def edit_info
+    # Rails.logger.info params.inspect
     @student=current_student
     if student_signed_in?
       @student_editable=true
