@@ -2,8 +2,8 @@
 <div class="large-9 column">
 	<dl class="tabs" data-tab>
 	  <dd class="active"><a href="#basic_data"><h5>關於我</h5></a></dd>
-	  <dd><a href="#panel2-2"><h5>參與課程</h5></a></dd>
-	  <dd><a href="#panel2-3"><h5>開發技能</h5></a></dd>
+	  <dd><a href="#attended_course_show"><h5>參與課程</h5></a></dd>
+	  <dd><a href="#show_skill"><h5>開發技能</h5></a></dd>
 	  <!-- <dd><a href="#panel2-4"><h5>聯絡方式</h5></a></dd> -->
 	</dl>
 	<div class="tabs-content">
@@ -14,10 +14,8 @@
 	    	</div>
 			<% end %>
 		<p><%=@student.description%></p>
-		<p>
-		</p>
 		</div>
-		<div class="content columns course_list" id="panel2-2">
+		<div class="content column course_list" id="attended_course_show">
 			<%if @student_editable%>
 			<div class="right">
 				<%=link_to "編輯",courses_student_path('me'), :id=>:attended_course_list%>
@@ -27,22 +25,33 @@
 		  	<%@courses.each do |course|%>
 		  		<li>
 		  			<div class="course_list_item">
-		  				<h4><%=course.name%></h4>
+		  				<h4 class="text-center"><%=link_to course.name, course_path(course.id)%></h4>
 		  				<p><%=course.description%></p>
-
+		  				<hr/>
+		  					<%course.teachers.each do |t|%>
+		  				 <%=link_to t.username%>
+		  				 <%end%>
 		  			</div>
 		  		</li>
 		  	<%end%>
 		  	</ul>
 	    </div>
-	  <div class="content" id="panel2-3">
+	  <div class="content" id="show_skill">
 	  	<%if @student_editable%>
 	  	<div class="right">
-	  		<%@skills.each do |s|%>
-	  			<%=s.skill_name%>
-	  		<% end -%>
 	  		<%=link_to "編輯", :edit_skill_students, :id=>:me%>
 	  	</div>
+	  	<div class="skill_board column">
+  		<%@skills.each do |s|%>
+  			<div class="large-3 column">
+  				<%=s.skill_name%>
+  			</div>
+  			<div class="large-9 column">
+  				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+  			</div>
+  			<hr/>
+  			<% end -%>
+  		</div>
 	  	<% end -%>
 	  </div>
 	  <!-- <div class="content" id="panel2-4">
@@ -51,5 +60,4 @@
 	</div>
 	<!-- <div class='textavatar' style='width: 140px;' data-name='fjfje'></div> -->
 </div>
-
 	

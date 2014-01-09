@@ -3,8 +3,7 @@ class StudentsController < ApplicationController
   before_filter :find_student_by_id, :only=>[:show, :courses]
   def show
     if @student
-      @courses=@student.courses
-      # @teachers=Course.teachers
+      @courses=@student.courses.includes(:teachers)
       @skills= @student.skills
       if student_signed_in?
         @student_editable=true

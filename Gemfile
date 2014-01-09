@@ -22,7 +22,8 @@ group :assets do
   # gem 'therubyracer'
   gem 'uglifier', '>= 1.0.3'
 end
-gem "paperclip"
+gem 'simple_form'
+gem 'paperclip'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
 gem 'foundation-rails'
