@@ -15,7 +15,6 @@ class StudentsController < ApplicationController
   def courses
     if @student
       @courses=@student.courses
-      @course=@courses.find(params[:id])
     else
       redirect_to :back
     end

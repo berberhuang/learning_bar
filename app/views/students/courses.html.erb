@@ -4,26 +4,17 @@
 		<ul class="large-block-grid-4 small-block-grid-2">
 		<% @courses.each do |c|%>
 			<li>
-				<div class="course_list_item">
-					<h3>
-					<%= link_to c.name, '/courses/'+c.id.to_s %>
+				<div class="course_list_item clearfix">
+					<h3 class="text-center"><%= link_to c.name, '/courses/'+c.id.to_s %></h3>
 					<%#= link_to c.name, student_course_path(@student, c.id) %>
-					</h3>
-					<div class="columns"><%=c.course_date%></div>
-					<div class="columns"><%=c.location%></div>
+					<!-- <div class="columns"><%=c.course_date%></div>
+					<div class="columns"><%=c.location%></div> -->
 					<div class="columns">
-					<%=link_to '退報名', cancel_attendance_course_path(c)%>
+					<%=link_to '退出課程', cancel_attendance_course_path(c)%>
 					</div>
 				</div>
-				
 			</li>
 		<% end %>
-			<li><div class="course_list_item">test</div></li>
-			<li><div class="course_list_item">test</div></li>
-			<li><div class="course_list_item">test</div></li>
-			<li><div class="course_list_item">test</div></li>
-			<li><div class="course_list_item">test</div></li>
-			<li><div class="course_list_item">test</div></li>
 		</ul>
 		</div>
 	</div>

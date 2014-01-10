@@ -1,16 +1,23 @@
 <h1>課程列表</h1>
-<ul class="course_list small-block-grid-2 medium-block-grid-3 large-block-grid-4">
-<%if teacher_signed_in?%>
-	<%=link_to '開辦課程', new_course_path%>
-<%end%>
-<%@courses.each do |course|%>
-	<li class="course_list_block">
-		<h4><%=course.name%></h4>
-		<p><%=course.course_date.strftime('%Y年%m月%d日%I:%M %p')%></p>
-		<p><%=course.location%></p>
-		<p><%=course.description%></p>
-		<%=link_to :查看課程, course_path(course), :class=>:button%>
-	</li>
-<% end -%>
+<div class="course_list">
+	<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+	<%if teacher_signed_in?%>
+		<%=link_to '開辦課程', new_course_path%>
+	<%end%>
+	<%@courses.each do |course|%>
+		<li>
+			<div class="course_list_item">
+				<h3 class="text-center"><%=course.name%></h3>
+				<p><%=course.description%></p>
+				<p>時間：<%=course.course_date.strftime('%Y年%m月%d日%I:%M %p')%></p>
+				<p>地點：<%=course.location%></p>
+				
+				<%=link_to :查看課程, course_path(course), :class=>"button"%>
+			</div>
+			
+		</li>
+	<% end -%>
 
-</ul>
+	</ul>
+</div>
+

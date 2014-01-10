@@ -11,9 +11,6 @@
 
 	}
 }
-.course_list_block{
-	@include thumb;
-}
 #cancel_confirmation{
 	@include reveal-modal-style(
 		$top-offset:100px
