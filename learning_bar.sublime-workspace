@@ -255,15 +255,108 @@
 			"file": "app/controllers/students_controller.rb",
 			"settings":
 			{
-				"buffer_size": 1092,
+				"buffer_size": 1328,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/teacher.rb",
+			"settings":
+			{
+				"buffer_size": 1104,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/course.rb",
+			"settings":
+			{
+				"buffer_size": 335,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/controllers/admins_controller.rb",
+			"settings":
+			{
+				"buffer_size": 111,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/teaching_course_ship.rb",
+			"settings":
+			{
+				"buffer_size": 91,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "db/schema.rb",
+			"settings":
+			{
+				"buffer_size": 7042,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "class CreateStudents < ActiveRecord::Migration\n  def change\n    create_table :students do |t|\n      t.text :description\n\n      t.timestamps\n    end\n  end\nend\n",
+			"file": "db/migrate/20130913113426_create_students.rb",
+			"file_size": 158,
+			"file_write_time": 130328851820000000,
+			"settings":
+			{
+				"buffer_size": 158,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "db/migrate/20140106072106_add_teacher_id_to_posts.rb",
+			"settings":
+			{
+				"buffer_size": 119,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "db/migrate/20131231081555_add_attachment_avatar_to_students.rb",
+			"settings":
+			{
+				"buffer_size": 220,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "db/migrate/20131228151505_add_attend_request.rb",
+			"settings":
+			{
+				"buffer_size": 119,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 25 files for \"post\"\n\n/Users/apple/Desktop/learning_bar/db/migrate/20140106072106_add_teacher_id_to_posts.rb:\n    1: class AddTeacherIdToPosts < ActiveRecord::Migration\n    2    def change\n    3:   	add_column :posts, :teacher_id, :integer\n    4    end\n    5  end\n\n/Users/apple/Desktop/learning_bar/db/migrate/20140106073017_create_replies.rb:\n    2    def change\n    3      create_table :replies do |t|\n    4:     	t.integer :post_id\n    5      	t.integer :student_id\n    6      	t.integer :teacher_id\n\n3 matches across 2 files\n",
+			"settings":
+			{
+				"buffer_size": 538,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
 			}
 		},
 		{
 			"file": "app/views/students/courses.html.erb",
 			"settings":
 			{
-				"buffer_size": 835,
+				"buffer_size": 626,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/assets/stylesheets/all_user.css.scss",
+			"settings":
+			{
+				"buffer_size": 504,
 				"line_ending": "Unix"
 			}
 		},
@@ -271,7 +364,7 @@
 			"file": "app/views/students/show.html.erb",
 			"settings":
 			{
-				"buffer_size": 1497,
+				"buffer_size": 2460,
 				"line_ending": "Unix"
 			}
 		},
@@ -279,7 +372,7 @@
 			"file": "app/assets/stylesheets/student.css.scss",
 			"settings":
 			{
-				"buffer_size": 652,
+				"buffer_size": 178,
 				"line_ending": "Unix"
 			}
 		},
@@ -292,18 +385,48 @@
 			}
 		},
 		{
-			"file": "app/views/courses/attend_confirmation.html.erb",
+			"file": "app/views/courses/index.html.erb",
 			"settings":
 			{
-				"buffer_size": 418,
+				"buffer_size": 564,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/controllers/skills_controller.rb",
+			"file": "app/views/backbone/index.html.erb",
 			"settings":
 			{
-				"buffer_size": 363,
+				"buffer_size": 1945,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    \n    <link href=\"/learningbar_icon.png\" rel=\"shortcut icon\" />\n    <title><%= content_for?(:title) ? yield(:title) : \"LEARNING BAR\" %></title>\n    <%= stylesheet_link_tag    \"application\" ,:media => \"all\"%>\n    <%= javascript_include_tag \"vendor/modernizr\" %>\n    <%= csrf_meta_tags %>\n  </head>\n\n  <body>\n  <div id=\"fb-root\"></div>\n  <script>(function(d, s, id) {\n    var js, fjs = d.getElementsByTagName(s)[0];\n    if (d.getElementById(id)) return;\n    js = d.createElement(s); js.id = id;\n    //id需要更改\n    js.src = \"//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=514033835356159\";\n    fjs.parentNode.insertBefore(js, fjs);\n  }(document, 'script', 'facebook-jssdk'));\n  </script>\n  <%=render :partial=>'backbone/navbar'  %>\n  	\n    <div class=\"row main\">\n      <div class=\"columns\">\n        <%= render 'layouts/flash_messages' %>\n        <%= yield %>\n      </div>\n    </div>\n    <%= javascript_include_tag \"application\" %>\n    <%=render :partial=>'backbone/modals'%>\n    <%=render :partial=>'backbone/footer'%>\n    <script type=\"text/javascript\">\n      $(document).ready(function(){\n        $('.textavatar').textAvatar();\n      })\n    </script>\n  </body>\n</html>",
+			"file": "app/views/layouts/application.html.erb",
+			"file_size": 1327,
+			"file_write_time": 130332386820000000,
+			"settings":
+			{
+				"buffer_size": 1319,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/assets/stylesheets/course.css.scss",
+			"settings":
+			{
+				"buffer_size": 429,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "// Place all the styles related to the Backbone controller here.\n// They will automatically be included in application.css.\n// You can use Sass (SCSS) here: http://sass-lang.com/\n@import \"foundation_and_overrides\";\nsection.top-bar-section{\n	ul{\n		background-color:black;\n	}\n}\n.first_band{\n	height: 400px;\n	background-image: url(image_path('mainbanner.jpg'));\n	background-size:cover;\n	padding-top:20px;\n	.slogan_container{\n		margin-top: 5%;\n	}\n	h1{\n		color: white;\n	};\n	h4{\n		color:$beer-orange;\n	}\n}\n.second_band{\n	background-color:#FDD62E;\n}\n.third_band{\n	background-color: $beer-orange;\n	img{\n		width:100%;\n	}\n}\n\nfooter{\n	clear: both;\n}\n.forget_password_link{\n	margin-top: 33px;\n}\n\n.file_selection_button{\n	position: relative;\n	overflow: hidden;\n	@include button;\n	.test{\n		position: absolute;\n		top: 0;\n		right: 0;\n		margin: 0;\n		padding: 0;\n		font-size: 20px;\n		cursor: pointer;\n		opacity: 0;\n		filter: alpha(opacity=0);\n	}\n}\n",
+			"file": "app/assets/stylesheets/backbone.css.scss",
+			"file_size": 930,
+			"file_write_time": 130336354150000000,
+			"settings":
+			{
+				"buffer_size": 930,
 				"line_ending": "Unix"
 			}
 		},
@@ -397,22 +520,75 @@
 	},
 	"file_history":
 	[
+		"/Users/apple/Desktop/learning_bar/app/assets/javascripts/application.js",
+		"/Users/apple/Desktop/learning_bar/app/views/teachers/courses.html.erb",
+		"/Users/apple/Desktop/learning_bar/app/controllers/backbone_controller.rb",
+		"/Users/apple/Desktop/learning_bar/app/assets/stylesheets/backbone.css.scss",
+		"/Users/apple/Desktop/learning_bar/app/views/layouts/_student_user_panel.html.erb",
+		"/Users/apple/Desktop/learning_bar/app/assets/stylesheets/_user_styles.scss",
+		"/Users/apple/Desktop/learning_bar/app/assets/stylesheets/admins.css.scss",
+		"/Users/apple/Desktop/learning_bar/tmp/cache/sass/11108e657f4940837836c3a7f3101bb2607934a9/student.css.scssc",
+		"/Users/apple/Desktop/learning_bar/tmp/cache/sass/11108e657f4940837836c3a7f3101bb2607934a9/skills.css.scssc",
+		"/Users/apple/Desktop/learning_bar/tmp/cache/sass/a4b78fc1f85ba2121e7be04e92e4067afeba1736/foundation.scssc",
+		"/Users/apple/Desktop/learning_bar/app/assets/stylesheets/skills.css.scss",
+		"/Users/apple/Desktop/learning_bar/tmp/cache/sass/11108e657f4940837836c3a7f3101bb2607934a9/student_registrations.css.scssc",
+		"/Users/apple/Desktop/learning_bar/config/initializers/session_store.rb",
+		"/Users/apple/Desktop/learning_bar/db/migrate/20140106084743_create_teacher_skill_ships.rb",
+		"/Users/apple/Desktop/learning_bar/db/migrate/20140106084032_create_student_skill_ships.rb",
+		"/Users/apple/Desktop/learning_bar/app/models/company_course_ship.rb",
+		"/Users/apple/Desktop/learning_bar/app/views/backbone/_footer.html.erb",
+		"/Users/apple/Desktop/learning_bar/config/application.rb",
+		"/Users/apple/Desktop/learning_bar/app/views/companies/index.html.erb",
+		"/Users/apple/Desktop/learning_bar/app/views/backbone/index.html.erb",
+		"/Users/apple/Desktop/learning_bar/app/views/skills/index.html.erb",
+		"/Users/apple/Desktop/learning_bar/db/migrate/20140106073017_create_replies.rb",
+		"/Users/apple/Desktop/learning_bar/app/models/student.rb",
+		"/Users/apple/Desktop/learning_bar/app/controllers/teachers_controller.rb",
+		"/Users/apple/Desktop/learning_bar/app/views/backbone/_modals.html.erb",
+		"/Users/apple/Desktop/learning_bar/config/initializers/mime_types.rb",
+		"/Users/apple/Desktop/learning_bar/app/assets/javascripts/student.js",
+		"/Users/apple/Desktop/learning_bar/test/factories/courses.rb",
+		"/Users/apple/Desktop/learning_bar/test/fixtures/courses.yml",
+		"/Users/apple/Desktop/learning_bar/app/helpers/course_helper.rb",
+		"/Users/apple/Desktop/learning_bar/test/unit/course_test.rb",
+		"/Users/apple/Desktop/learning_bar/app/views/companies/courses.html.erb",
+		"/Users/apple/Desktop/learning_bar/app/views/admins/show.html.erb",
+		"/Users/apple/Desktop/learning_bar/app/controllers/student_registrations_controller.rb",
+		"/Users/apple/Desktop/learning_bar/config/routes.rb",
+		"/Users/apple/Desktop/learning_bar/app/controllers/teacher_registrations_controller.rb",
+		"/Users/apple/Desktop/learning_bar/app/views/devise/registrations/_new.html.erb",
+		"/Users/apple/Desktop/learning_bar/README.md",
+		"/Users/apple/Desktop/learning_bar/app/views/devise/mailer/reset_password_instructions.html.erb",
+		"/Users/apple/Desktop/learning_bar/app/views/students/edit_info.html.erb",
+		"/Users/apple/Desktop/learning_bar/db/migrate/20131220085033_add_course_expect_to_attend.rb",
+		"/Users/apple/Desktop/learning_bar/config/environments/development.rb",
+		"/Users/apple/Desktop/learning_bar/test/unit/admin_test.rb",
+		"/Users/apple/Desktop/learning_bar/app/controllers/admins_controller.rb",
+		"/Users/apple/Desktop/learning_bar/app/models/admin.rb",
+		"/Users/apple/Desktop/learning_bar/db/migrate/20131205200110_add_devise_to_students.rb",
+		"/Users/apple/Desktop/learning_bar/app/assets/javascripts/course.js.coffee",
+		"/Users/apple/Desktop/learning_bar/app/controllers/courses_controller.rb",
+		"/Users/apple/Desktop/learning_bar/app/views/courses/attend_confirmation.html.erb",
+		"/Users/apple/Desktop/learning_bar/app/controllers/skills_controller.rb",
+		"/Users/apple/Desktop/learning_bar/app/views/courses/index.html.erb",
+		"/Users/apple/Desktop/learning_bar/db/schema.rb",
+		"/Users/apple/Desktop/learning_bar/test/unit/student_test.rb",
+		"/Users/apple/Desktop/learning_bar/config.ru",
+		"/Users/apple/Desktop/learning_bar/db/migrate/20131216085523_add_description_to_course.rb",
+		"/Users/apple/Desktop/learning_bar/test/factories/teachers.rb",
+		"/Users/apple/Desktop/learning_bar/test/unit/teacher_test.rb",
+		"/Users/apple/Desktop/learning_bar/app/assets/javascripts/teachers.js",
+		"/Users/apple/Desktop/learning_bar/app/helpers/teachers_helper.rb",
+		"/Users/apple/Desktop/learning_bar/tmp/cache/sass/461a3f64ebabb350a2fe6d9800ae87fb44376090/_visibility.scssc",
+		"/Users/apple/Desktop/learning_bar/app/helpers/student_helper.rb",
+		"/Users/apple/Desktop/learning_bar/test/functional/students_controller_test.rb",
+		"/Users/apple/Desktop/learning_bar/Gemfile",
 		"/Users/apple/Desktop/learning_bar/app/views/students/edit_skill.html.erb",
 		"/Users/apple/Desktop/learning_bar/app/views/courses/attend.html.erb",
 		"/Users/apple/Desktop/learning_bar/app/views/courses/attendee_info.html.erb",
-		"/Users/apple/Desktop/learning_bar/config/routes.rb",
-		"/Users/apple/Desktop/learning_bar/app/views/skills/index.html.erb",
-		"/Users/apple/Desktop/learning_bar/app/views/students/edit_info.html.erb",
-		"/Users/apple/Desktop/learning_bar/db/schema.rb",
 		"/Users/apple/Desktop/learning_bar/test/factories/skills.rb",
-		"/Users/apple/Desktop/learning_bar/app/views/backbone/_footer.html.erb",
-		"/Users/apple/Desktop/learning_bar/app/views/devise/registrations/_new.html.erb",
-		"/Users/apple/Desktop/learning_bar/app/models/student.rb",
-		"/Users/apple/Desktop/learning_bar/app/assets/javascripts/student.js",
-		"/Users/apple/Desktop/learning_bar/app/controllers/courses_controller.rb",
 		"/Users/apple/Desktop/learning_bar/app/helpers/skills_helper.rb",
 		"/Users/apple/Desktop/learning_bar/app/assets/javascripts/skills.js.coffee",
-		"/Users/apple/Desktop/learning_bar/app/assets/stylesheets/skills.css.scss",
 		"/Users/apple/Desktop/learning_bar/test/functional/skills_controller_test.rb",
 		"/Users/apple/Desktop/learning_bar/test/unit/helpers/skills_helper_test.rb",
 		"/Users/apple/Desktop/learning_bar/app/views/backbone/course_info.html.erb",
@@ -427,37 +603,24 @@
 		"/Users/apple/Desktop/learning_bar/config/initializers/wrap_parameters.rb",
 		"/Users/apple/Desktop/learning_bar/test/fixtures/.gitkeep",
 		"/Users/apple/Desktop/learning_bar/app/views/courses/new.html.erb",
-		"/Users/apple/Desktop/learning_bar/app/views/backbone/index.html.erb",
-		"/Users/apple/Desktop/learning_bar/app/assets/javascripts/course.js.coffee",
 		"/Users/apple/Desktop/learning_bar/test/unit/skill_test.rb",
 		"/Users/apple/Desktop/learning_bar/app/models/skill.rb",
-		"/Users/apple/Desktop/learning_bar/app/controllers/student_registrations_controller.rb",
 		"/Users/apple/Desktop/learning_bar/test/unit/attend_test.rb",
 		"/Users/apple/Desktop/learning_bar/app/models/attend.rb",
-		"/Users/apple/Desktop/learning_bar/app/assets/javascripts/application.js",
-		"/Users/apple/Desktop/learning_bar/app/views/layouts/_student_user_panel.html.erb",
 		"/Users/apple/Desktop/learning_bar/app/views/teachers/edit_info.html.erb",
 		"/Users/apple/Desktop/learning_bar/app/views/companies/edit.html.erb",
 		"/Users/apple/Desktop/learning_bar/app/views/courses/edit.html.erb",
 		"/Users/apple/Desktop/learning_bar/app/views/devise/passwords/edit.html.erb",
 		"/Users/apple/Desktop/learning_bar/app/views/devise/registrations/edit.html.erb",
-		"/Users/apple/Desktop/learning_bar/test/unit/student_test.rb",
-		"/Users/apple/Desktop/learning_bar/app/helpers/student_helper.rb",
 		"/Users/apple/Desktop/learning_bar/test/fixtures/students.yml",
 		"/Users/apple/Desktop/learning_bar/test/factories/students.rb",
 		"/Users/apple/Desktop/learning_bar/app/models/student_skill_ship.rb",
-		"/Users/apple/Desktop/learning_bar/app/controllers/teachers_controller.rb",
 		"/Users/apple/Desktop/learning_bar/app/views/backbone/_navbar.html.erb",
 		"/Users/apple/Desktop/learning_bar/app/assets/stylesheets/student.css.scss",
 		"/Users/apple/Desktop/learning_bar/test/factories/replies.rb",
 		"/Users/apple/Desktop/learning_bar/app/models/post.rb",
-		"/Users/apple/Desktop/learning_bar/app/assets/stylesheets/backbone.css.scss",
-		"/Users/apple/Desktop/learning_bar/app/controllers/teacher_registrations_controller.rb",
 		"/Users/apple/Desktop/learning_bar/app/views/companies/show.html.erb",
-		"/Users/apple/Desktop/learning_bar/app/views/admins/show.html.erb",
-		"/Users/apple/Desktop/learning_bar/app/controllers/skills_controller.rb",
 		"/Users/apple/Desktop/learning_bar/app/views/students/show.html.erb",
-		"/Users/apple/Desktop/learning_bar/app/views/companies/courses.html.erb",
 		"/Users/apple/Desktop/learning_bar/tmp/cache/sass/461a3f64ebabb350a2fe6d9800ae87fb44376090/_offcanvas.scssc",
 		"/Users/apple/Desktop/learning_bar/app/views/layouts/backbone_only.html.erb",
 		"/Users/apple/Desktop/learning_bar/app/models/teacher.rb",
@@ -470,61 +633,21 @@
 		"/Users/apple/Desktop/learning_bar/test/unit/helpers/posts_helper_test.rb",
 		"/Users/apple/Desktop/learning_bar/test/performance/browsing_test.rb",
 		"/Users/apple/Desktop/learning_bar/app/models/reply.rb",
-		"/Users/apple/Desktop/learning_bar/app/models/company_course_ship.rb",
 		"/Users/apple/Desktop/learning_bar/app/controllers/replies_controller.rb",
-		"/Users/apple/Desktop/learning_bar/app/controllers/admins_controller.rb",
 		"/Users/apple/Desktop/learning_bar/tmp/cache/sass/dede0af7736d84853657b2559808945b4dd79132/_core.scssc",
 		"/Users/apple/Desktop/learning_bar/tmp/cache/sass/461a3f64ebabb350a2fe6d9800ae87fb44376090/_clearing.scssc",
 		"/Users/apple/Desktop/learning_bar/app/models/course.rb",
 		"/Users/apple/Desktop/learning_bar/test/unit/tack_course_test.rb",
 		"/Users/apple/Desktop/learning_bar/db/migrate/20140106122138_add_description_to_studentskillship.rb",
-		"/Users/apple/Desktop/learning_bar/config/environments/development.rb",
 		"/Users/apple/Desktop/learning_bar/app/controllers/students_controller.rb",
 		"/Users/apple/Desktop/learning_bar/app/models/company_teacher_ship.rb",
-		"/Users/apple/Desktop/learning_bar/test/unit/course_test.rb",
-		"/Users/apple/Desktop/learning_bar/app/helpers/course_helper.rb",
-		"/Users/apple/Desktop/learning_bar/test/fixtures/courses.yml",
-		"/Users/apple/Desktop/learning_bar/test/factories/courses.rb",
 		"/Users/apple/Desktop/learning_bar/test/factories/attends.rb",
 		"/Users/apple/Desktop/learning_bar/test/fixtures/attends.yml",
 		"/Users/apple/Desktop/learning_bar/app/views/devise/mailer/unlock_instructions.html.erb",
 		"/Users/apple/Desktop/learning_bar/db/migrate/20140106084344_drop_student_skill_ship.rb",
 		"/Users/apple/Desktop/learning_bar/app/assets/stylesheets/foundation_and_overrides.scss",
 		"/Users/apple/Desktop/learning_bar/db/migrate/20140106072106_add_teacher_id_to_posts.rb",
-		"/Users/apple/Desktop/learning_bar/app/views/students/courses.html.erb",
-		"/Users/apple/Desktop/learning_bar/app/views/devise/shared/_links.erb",
-		"/Users/apple/Desktop/learning_bar/test/factories/student_skill_ships.rb",
-		"/Users/apple/Desktop/learning_bar/test/unit/student_skill_ship_test.rb",
-		"/Users/apple/Desktop/learning_bar/db/migrate/20140106084743_create_teacher_skill_ships.rb",
-		"/Users/apple/Desktop/learning_bar/db/migrate/20140106093547_create_skills.rb",
-		"/Users/apple/Desktop/learning_bar/db/migrate/20140106073017_create_replies.rb",
-		"/Users/apple/Desktop/learning_bar/app/models/discussion.rb",
-		"/Users/apple/Desktop/learning_bar/db/migrate/20140106072409_create_posts.rb",
-		"/Users/apple/Desktop/learning_bar/db/migrate/20140106031941_skills.rb",
-		"/Users/apple/Desktop/learning_bar/db/migrate/20131231081555_add_attachment_avatar_to_students.rb",
-		"/Users/apple/Desktop/learning_bar/db/migrate/20131205200616_add_phone_and_username_to_student.rb",
-		"/Users/apple/Desktop/learning_bar/config/environments/production.rb",
-		"/Users/apple/Desktop/learning_bar/app/views/devise/mailer/confirmation_instructions.html.erb",
-		"/Users/apple/Desktop/learning_bar/tmp/cache/assets/C35/DF0/sprockets%2Fe1145351a3419124f2b15d3a3635f206",
-		"/Users/apple/Desktop/learning_bar/db/migrate/20131205192123_add_phone_and_username_to_admin.rb",
-		"/Users/apple/Desktop/learning_bar/app/views/teachers/show.html.erb",
-		"/Users/apple/Desktop/learning_bar/app/views/courses/show.html.erb",
-		"/Users/apple/Desktop/learning_bar/tmp/cache/assets/CA0/1F0/sprockets%2Fbf0ff4f749e97612963487724bf73169",
-		"/Users/apple/Desktop/learning_bar/app/controllers/sessions_controller.rb",
-		"/Users/apple/Desktop/learning_bar/test/functional/students_controller_test.rb",
-		"/Users/apple/Desktop/learning_bar/config/initializers/backtrace_silencers.rb",
-		"/Users/apple/Desktop/learning_bar/vendor/assets/stylesheets/.gitkeep",
-		"/Users/apple/Desktop/learning_bar/app/models/company.rb",
-		"/Users/apple/Desktop/learning_bar/test/factories/teachers.rb",
-		"/Users/apple/Desktop/learning_bar/app/assets/javascripts/teachers.js",
-		"/Users/apple/Desktop/learning_bar/learning_bar.sublime-project",
-		"/Users/apple/Desktop/learning_bar/test/unit/helpers/admins_helper_test.rb",
-		"/Users/apple/Desktop/learning_bar/app/assets/javascripts/jquery.textavatar.js",
-		"/Users/apple/Desktop/learning_bar/tmp/cache/sass/461a3f64ebabb350a2fe6d9800ae87fb44376090/_sub-nav.scssc",
-		"/Users/apple/Desktop/learning_bar/app/views/companies/teachers.html.erb",
-		"/Users/apple/Desktop/learning_bar/app/views/layouts/application.html.erb",
-		"/Users/apple/Desktop/learning_bar/test/unit/helpers/student_registrations_helper_test.rb",
-		"/Users/apple/Desktop/learning_bar/app/assets/javascripts/backbone.js.coffee"
+		"/Users/apple/Desktop/learning_bar/app/views/students/courses.html.erb"
 	],
 	"find":
 	{
@@ -535,6 +658,7 @@
 		"height": 93.0,
 		"where_history":
 		[
+			"/Users/apple/Desktop/learning_bar/db/migrate",
 			"/Users/apple/Desktop/learning_bar",
 			"/Users/apple/Desktop/learning_bar/app",
 			"/Applications/MAMP/htdocs/grion-opencart/upload/catalog/view/theme/compass/template",
@@ -655,6 +779,15 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"post",
+			"small",
+			"block",
+			"course_list",
+			"course_list_block",
+			"course_list",
+			"course_list_item",
+			"courses",
+			"course",
 			"course_id",
 			"me",
 			"resources",
@@ -773,16 +906,7 @@
 			"edit_student_registration",
 			"super",
 			"attended_list",
-			"attendee_info",
-			"已報名學生列表",
-			"teacher",
-			"已報名",
-			"alert",
-			"cancel_successful",
-			"cancel",
-			"alert",
-			"cancel_attendance_course_path",
-			"modal"
+			"attendee_info"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -800,7 +924,7 @@
 	"groups":
 	[
 		{
-			"selected": 9,
+			"selected": 17,
 			"sheets":
 			[
 				{
@@ -809,15 +933,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1092,
+						"buffer_size": 1328,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								731,
-								731
+								932,
+								932
 							]
 						],
 						"settings":
@@ -827,27 +951,337 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 403.0,
+						"translation.y": 1097.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "app/views/students/courses.html.erb",
+					"file": "app/models/teacher.rb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 835,
+						"buffer_size": 1104,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								275,
-								275
+								819,
+								819
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 20,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/models/course.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 335,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								115,
+								115
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/controllers/admins_controller.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 111,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								100,
+								100
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 19,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/models/teaching_course_ship.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 91,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								66,
+								66
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "db/schema.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7042,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3631,
+								3631
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2164.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "db/migrate/20130913113426_create_students.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 158,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "db/migrate/20140106072106_add_teacher_id_to_posts.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 119,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								118,
+								118
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "db/migrate/20131231081555_add_attachment_avatar_to_students.rb",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 220,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								220,
+								220
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "db/migrate/20131228151505_add_attend_request.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 119,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 538,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										146,
+										150
+									],
+									[
+										220,
+										224
+									],
+									[
+										436,
+										440
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								233,
+								233
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "app/views/students/courses.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 626,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1,
+								1
 							]
 						],
 						"settings":
@@ -859,53 +1293,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "app/views/students/show.html.erb",
+					"buffer": 12,
+					"file": "app/assets/stylesheets/all_user.css.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1497,
+						"buffer_size": 504,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1049,
-								1049
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 456.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/assets/stylesheets/student.css.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 652,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								518,
-								518
+								389,
+								400
 							]
 						],
 						"settings":
@@ -914,14 +1319,72 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 293.0,
+						"translation.y": 369.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 13,
+					"file": "app/views/students/show.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2460,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								795,
+								795
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 385.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "app/assets/stylesheets/student.css.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 178,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 24,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
 					"file": "app/views/courses/show.html.erb",
 					"semi_transient": false,
 					"settings":
@@ -933,8 +1396,8 @@
 						"selection":
 						[
 							[
-								1502,
-								1502
+								1503,
+								1503
 							]
 						],
 						"settings":
@@ -943,71 +1406,160 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 982.0,
+						"translation.y": 1214.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 17,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "app/views/courses/attend_confirmation.html.erb",
+					"buffer": 16,
+					"file": "app/views/courses/index.html.erb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 418,
+						"buffer_size": 564,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								244,
-								244
+								231,
+								231
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "app/views/backbone/index.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1945,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								277,
+								277
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "app/controllers/skills_controller.rb",
+					"buffer": 18,
+					"file": "app/views/layouts/application.html.erb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 363,
+						"buffer_size": 1319,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								181,
-								181
+								358,
+								358
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 19,
+					"file": "app/assets/stylesheets/course.css.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 429,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								347,
+								347
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 14.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": "app/assets/stylesheets/backbone.css.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 930,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								382,
+								382
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 7.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 21,
 					"file": "app/controllers/courses_controller.rb",
 					"semi_transient": false,
 					"settings":
@@ -1019,8 +1571,8 @@
 						"selection":
 						[
 							[
-								2266,
-								2266
+								2182,
+								2182
 							]
 						],
 						"settings":
@@ -1030,14 +1582,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1926.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 22,
 					"file": "app/views/skills/new.html.erb",
 					"semi_transient": false,
 					"settings":
@@ -1062,11 +1614,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 23,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 23,
 					"file": "app/views/courses/new.html.erb",
 					"semi_transient": false,
 					"settings":
@@ -1078,8 +1630,8 @@
 						"selection":
 						[
 							[
-								256,
-								256
+								276,
+								276
 							]
 						],
 						"settings":
@@ -1092,11 +1644,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 21,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 24,
 					"file": "app/models/skill.rb",
 					"semi_transient": false,
 					"settings":
@@ -1120,7 +1672,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 22,
 					"type": "text"
 				}
 			]
@@ -1177,12 +1729,132 @@
 		"selected_items":
 		[
 			[
-				"ski",
-				"app/models/skill.rb"
+				"index",
+				"app/views/backbone/index.html.erb"
+			],
+			[
+				"",
+				"app/assets/stylesheets/backbone.css.scss"
+			],
+			[
+				"application.html.erb",
+				"app/views/layouts/application.html.erb"
+			],
+			[
+				"courses.html.erb",
+				"app/views/students/courses.html.erb"
+			],
+			[
+				"backbone.css.scss",
+				"app/assets/stylesheets/backbone.css.scss"
+			],
+			[
+				"scss",
+				"app/assets/stylesheets/course.css.scss"
+			],
+			[
+				"applicaion.html",
+				"app/views/layouts/application.html.erb"
 			],
 			[
 				"schema",
 				"db/schema.rb"
+			],
+			[
+				"model",
+				"app/models/student.rb"
+			],
+			[
+				"student",
+				"app/controllers/students_controller.rb"
+			],
+			[
+				"course.css",
+				"app/assets/stylesheets/course.css.scss"
+			],
+			[
+				"courses.html",
+				"app/views/students/courses.html.erb"
+			],
+			[
+				"courses",
+				"app/views/teachers/courses.html.erb"
+			],
+			[
+				"stucon",
+				"app/controllers/students_controller.rb"
+			],
+			[
+				"show",
+				"app/views/students/show.html.erb"
+			],
+			[
+				"student_controller",
+				"app/controllers/students_controller.rb"
+			],
+			[
+				"student.rb",
+				"app/models/student.rb"
+			],
+			[
+				"course.rb",
+				"app/models/course.rb"
+			],
+			[
+				"course",
+				"app/controllers/courses_controller.rb"
+			],
+			[
+				"teacher_reg",
+				"app/controllers/teacher_registrations_controller.rb"
+			],
+			[
+				"routes",
+				"config/routes.rb"
+			],
+			[
+				"teaching",
+				"app/models/teaching_course_ship.rb"
+			],
+			[
+				"admin_cno",
+				"app/controllers/admins_controller.rb"
+			],
+			[
+				"teachers_con",
+				"app/controllers/teachers_controller.rb"
+			],
+			[
+				"admin",
+				"app/models/admin.rb"
+			],
+			[
+				"scrb",
+				"app/controllers/students_controller.rb"
+			],
+			[
+				"teacher",
+				"app/models/teacher.rb"
+			],
+			[
+				"studen_cont",
+				"app/controllers/students_controller.rb"
+			],
+			[
+				"courses_contr",
+				"app/controllers/courses_controller.rb"
+			],
+			[
+				"student_cont",
+				"app/controllers/students_controller.rb"
+			],
+			[
+				"gemfi",
+				"Gemfile"
+			],
+			[
+				"ski",
+				"app/models/skill.rb"
 			],
 			[
 				"edit_skill",
@@ -1193,23 +1865,7 @@
 				"app/views/students/edit_skill.html.erb"
 			],
 			[
-				"routes",
-				"config/routes.rb"
-			],
-			[
-				"student",
-				"app/controllers/students_controller.rb"
-			],
-			[
 				"cour",
-				"app/controllers/courses_controller.rb"
-			],
-			[
-				"",
-				"app/controllers/skills_controller.rb"
-			],
-			[
-				"course",
 				"app/controllers/courses_controller.rb"
 			],
 			[
@@ -1241,20 +1897,8 @@
 				"app/views/courses/attend_confirmation.html.erb"
 			],
 			[
-				"show",
-				"app/views/courses/show.html.erb"
-			],
-			[
 				"edi",
 				"app/views/students/edit_info.html.erb"
-			],
-			[
-				"student.rb",
-				"app/models/student.rb"
-			],
-			[
-				"student_controller",
-				"app/controllers/students_controller.rb"
 			],
 			[
 				"student_s",
@@ -1263,10 +1907,6 @@
 			[
 				"course_controller",
 				"app/controllers/courses_controller.rb"
-			],
-			[
-				"courses",
-				"app/views/students/courses.html.erb"
 			],
 			[
 				"student_skill",
@@ -1283,10 +1923,6 @@
 			[
 				"student.css",
 				"app/assets/stylesheets/student.css.scss"
-			],
-			[
-				"courses_contr",
-				"app/controllers/courses_controller.rb"
 			],
 			[
 				"_controller",
@@ -1313,20 +1949,8 @@
 				"app/models/attend.rb"
 			],
 			[
-				"courses.html.erb",
-				"app/views/students/courses.html.erb"
-			],
-			[
-				"course.rb",
-				"app/models/course.rb"
-			],
-			[
 				"edit_",
 				"app/views/students/edit_skill.html.erb"
-			],
-			[
-				"student_cont",
-				"app/controllers/students_controller.rb"
 			],
 			[
 				"skill.rb",
@@ -1343,10 +1967,6 @@
 			[
 				"student_contro",
 				"app/controllers/students_controller.rb"
-			],
-			[
-				"courses.html",
-				"app/views/companies/courses.html.erb"
 			],
 			[
 				"attend.rb",
@@ -1371,10 +1991,6 @@
 			[
 				"disscussion",
 				"app/models/discussion.rb"
-			],
-			[
-				"index",
-				"app/views/backbone/index.html.erb"
 			],
 			[
 				"renew",
@@ -1457,10 +2073,6 @@
 				"app/views/backbone/_footer.html.erb"
 			],
 			[
-				"teacher",
-				"app/controllers/teacher_registrations_controller.rb"
-			],
-			[
 				"registration/",
 				"app/views/devise/registrations/_new.html.erb"
 			],
@@ -1515,10 +2127,6 @@
 			[
 				"student_helper",
 				"app/helpers/student_helper.rb"
-			],
-			[
-				"application.html.erb",
-				"app/views/layouts/application.html.erb"
 			],
 			[
 				"applica.html.",
@@ -1631,62 +2239,6 @@
 			[
 				"cou",
 				"app/controllers/courses_controller.rb"
-			],
-			[
-				"studn",
-				"app/models/student.rb"
-			],
-			[
-				"gemfile",
-				"Gemfile"
-			],
-			[
-				"develop",
-				"config/environments/development.rb"
-			],
-			[
-				"application_help",
-				"app/helpers/application_helper.rb"
-			],
-			[
-				"course.html",
-				"app/views/students/courses.html.erb"
-			],
-			[
-				"student.css.scss",
-				"app/assets/stylesheets/student.css.scss"
-			],
-			[
-				"student_he",
-				"app/helpers/student_helper.rb"
-			],
-			[
-				"application_he",
-				"app/helpers/application_helper.rb"
-			],
-			[
-				"studenthelp",
-				"app/helpers/student_helper.rb"
-			],
-			[
-				"applic",
-				"app/views/layouts/application.html.erb"
-			],
-			[
-				"attendee",
-				"app/views/courses/attendee_info.html.erb"
-			],
-			[
-				".i",
-				".gitignore"
-			],
-			[
-				"sessions",
-				"app/controllers/sessions_controller.rb"
-			],
-			[
-				"controller",
-				"app/controllers/sessions_controller.rb"
 			]
 		],
 		"width": 0.0
@@ -1722,7 +2274,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 243.0,
+	"side_bar_width": 327.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
