@@ -1,10 +1,10 @@
 class StudentsController < ApplicationController
   before_filter :authenticate_student!, :except=>[:show]
-  before_filter :find_student_by_id, :only=>[:show, :courses]
+  before_filter :find_student_by_id
   def show
     if @student
       @courses=@student.courses.includes(:teachers)
-      @skills= @student.skills
+      @skills= @student.student_skill_ships.includes(:skill)
       if student_signed_in?
         @student_editable=true
       end
@@ -22,34 +22,40 @@ class StudentsController < ApplicationController
 
   def edit_info
     # Rails.logger.info params.inspect
-    @student=current_student
-    if student_signed_in?
+    #@student=current_student
+    #if student_signed_in?
+    #  @student_editable=true
+    #end
+
+    if @student
       @student_editable=true
+    else
+      redirect_to :back
     end
   end
 
-  def edit_skill
-    @student=current_student
-    if student_signed_in?
+  def edit_skills
+    if @student
       @student_editable=true
+      @skills= @student.student_skill_ships.includes(:skill)
+      @skill_options= Skill.all
+
+      @new_skill=StudentSkillShip.new()
+    else
+      redirect_to :back
     end
-    @skills= Skill.all
+
   end
 
   def update
-  	@student=current_student
-  	@student.update_attributes(params[:student])
-
-    @skills = Skill.where(:id => params[:skill_ids])
-    
-    @skills.each do |skill|
-      if !@student.skills.include?(skill)
-        @student.skills << skill 
-      end
-    end 
-
-  	redirect_to student_path('me')
+    if @student
+      @student.update_attributes(params[:student])
+      redirect_to student_path('me')
+    else
+      redirect_to :back
+    end
   end
+
 protected
   def find_student_by_id
     id=params[:id]

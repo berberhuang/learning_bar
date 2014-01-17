@@ -8,19 +8,22 @@
     <title><%= content_for?(:title) ? yield(:title) : "LEARNING BAR" %></title>
     <%= stylesheet_link_tag    "application" ,:media => "all"%>
     <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application" %>   
     <%= csrf_meta_tags %>
+    <%= yield :head %>
   </head>
 
   <body>
   <div id="fb-root"></div>
-  <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    //id需要更改
-    js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=514033835356159";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
+  <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      //id需要更改
+      js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=514033835356159";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
   </script>
   <%=render :partial=>'backbone/navbar'  %>
   	
@@ -30,13 +33,15 @@
         <%= yield %>
       </div>
     </div>
-    <%= javascript_include_tag "application" %>
+    
     <%=render :partial=>'backbone/modals'%>
     <%=render :partial=>'backbone/footer'%>
     <script type="text/javascript">
-      $(document).ready(function(){
+      $(function(){ 
+        $(document).foundation();
         $('.textavatar').textAvatar();
-      })
+      });
     </script>
+    <%= javascript_include_tag "foundation" %>
   </body>
 </html>

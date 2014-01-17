@@ -13,7 +13,7 @@ class Student < ActiveRecord::Base
   # end
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :username,:phone,:email, :password, :password_confirmation, :remember_me,:description
+  attr_accessible :username,:phone,:email, :password, :password_confirmation, :remember_me,:description,:resume
   #paperclip
   attr_accessible :avatar
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "128x128>", :tiny=>"45X45>" }, :default_url => "/images/:style/default_avatar.png"

@@ -1,0 +1,28 @@
+<%=render 'layouts/student_user_panel'%>
+<div class="large-9 columns">
+	<h1>開發技能</h1>
+	<a href="#" onclick="$('.add_box').show(100);">add</a>
+	<div class="add_box" style="display:none;">
+	<%=form_for @new_skill, :url => :add_skill_students, :method => :post do |f|%>
+		<%@skill_options.each do |s|%>
+			<%=f.radio_button 'skill_id', s.id,:required=>true %>
+			<%=s.skill_name%>
+		<% end -%>
+		<%=f.text_area 'skill_description'%>
+		<%=f.submit 'add'%>
+	<%end%>
+	</div>
+	<div class="skill_board column">
+		<%@skills.each do |s|%>
+			<div><%=link_to 'edit'%><%=link_to 'delete',delete_skill_students_path(s)%></div>
+			<div class="large-3 column">
+				<%=s.skill_name%>
+			</div>
+			<div class="large-9 column">
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+			</div>
+			<hr/>
+		<% end -%>
+	</div>
+	
+</div>

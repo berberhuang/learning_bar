@@ -1,26 +1,46 @@
 <%=render 'layouts/student_user_panel'%>
 <div class="large-9 column">
-	<dl class="tabs" data-tab>
+<!-- 	<dl class="tabs" data-tab>
 	  <dd class="active"><a href="#basic_data"><h5>關於我</h5></a></dd>
 	  <dd><a href="#attended_course_show"><h5>參與課程</h5></a></dd>
 	  <dd><a href="#show_skill"><h5>開發技能</h5></a></dd>
-	  <!-- <dd><a href="#panel2-4"><h5>聯絡方式</h5></a></dd> -->
-	</dl>
+	</dl> -->
 	<div class="tabs-content">
 	    <div class="content active columns" id="basic_data">
 	    	<%if @student_editable%>
 	    	<div class="right">
-	    		<%=link_to '編輯',:edit_info_students, :id=>:edit_student_info %>
+	    		<%=link_to '編輯',edit_info_student_path('me'), :id=>:edit_student_info %>
 	    	</div>
 			<% end %>
-		<p><%=@student.description%></p>
+			<h3>自我介紹</h3>
+			<p><%=@student.description%></p>
+			<h3>個人經歷</h3>
+			<p><%=@student.resume%></p>
+
+			<%if @student_editable%>
+			  	<div class="right">
+			  		<%=link_to "編輯", edit_skills_student_path('me'), :id=>:me%>
+			  	</div>
+			<%end -%>
+			<h3>專長</h3>
+		  	<div class="skill_board column">
+	  		<%@skills.each do |s|%>
+	  			<div class="large-3 column">
+	  				<%=s.skill.skill_name%>
+	  			</div>
+	  			<div class="large-9 column">
+	  				<p><%=s.skill_description%></p>
+	  			</div>
+	  			<hr/>
+	  		<% end -%>
+	  		</div>
 		</div>
-		<div class="content column course_list" id="attended_course_show">
+<!-- 		<div class="content column course_list" id="attended_course_show">
 			<%if @student_editable%>
 			<div class="right">
 				<%=link_to "編輯",courses_student_path('me'), :id=>:attended_course_list%>
 			</div>
-		  	<%end%>
+		  	<%end -%>
 		  	<ul class="large-block-grid-3 small-block-grid-2">
 		  	<%@courses.each do |course|%>
 		  		<li>
@@ -35,26 +55,8 @@
 		  		</li>
 		  	<%end%>
 		  	</ul>
-	    </div>
-	  <div class="content" id="show_skill">
-	  	<%if @student_editable%>
-	  	<div class="right">
-	  		<%=link_to "編輯", :edit_skill_students, :id=>:me%>
-	  	</div>
-	  	<div class="skill_board column">
-  		<%@skills.each do |s|%>
-  			<div class="large-3 column">
-  				<%=s.skill_name%>
-  			</div>
-  			<div class="large-9 column">
-  				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-  			</div>
-  			<hr/>
-  			<% end -%>
-  		</div>
-	  	<% end -%>
-	  </div>
-	  <!-- <div class="content" id="panel2-4">
+	    </div> -->
+	    <!-- <div class="content" id="panel2-4">
 	    <p><%=@student.phone%></p>
 	  </div> -->
 	</div>

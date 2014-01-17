@@ -1,9 +1,13 @@
 <%=render 'layouts/student_user_panel'%>
 <div class="large-9 columns">
-	<%= form_for @student,:url =>student_path(@student) do |f| %>
-	  	<h3>關於我</h3>
+	<%= form_for @student,:url =>student_path('me') do |f| %>
+	  	<h3>自我介紹</h3>
 		<div class="columns">
 	  		<%= f.text_area :description, :autofocus => true, :class=>(:about_me) %>
+		</div>
+		<h3>個人經歷</h3>
+		<div class="columns">
+	  		<%= f.text_area :resume, :class=>(:about_me) %>
 	  		<div class="row">
 			  	<div class="large-1 columns right pull-1">
 					<%= f.submit "儲存", :class=>:button%>
