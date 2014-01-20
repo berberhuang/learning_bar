@@ -43,6 +43,8 @@ Learningbar::Application.routes.draw do
     end
   end
 
+  get 'about'=>'backbone#about'
+
  # devise_for :users, :controllers =>{:registrations => "registrations",:sessions=>'sessions'}
 
   # The priority is based upon order of creation:

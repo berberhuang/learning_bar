@@ -1,58 +1,137 @@
+<%=render 'backbone/nologo_nav'%>
 <section role="main">
 <div class="first_band clearfix">
-  <div class="column large-12 large-centered slogan_container">
-    <h1 class="text-center">向頂尖程式開發者<br>
-      學習一流開發技術</h1>
-    <h4 class="text-center">
-      由新銳創業團隊擔任業師<br>
-      富含實作精神的開發者學校<br>
-      <%=link_to :瀏覽課程,courses_path, :class=>:button%>
-    </h4>
-  </div>
-</div>
-<!-- Three-up Content Blocks -->
-
-<div class="second_band">
-  <div class="row">
-    <div class="large-4 columns">
-      <h4 class="text-center">
-        <span class="fa-stack fa-lg fa-5x">
-        <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
-        <i class="fa fa-lg fa-laptop fa-stack-1x"></i>
-      </span><br/>
-      學習網路產業實務的開發技術
-      </h4>
-      <p>LEARNINGBAR邀請網路產業的專業開發者開班授課，讓你用最直接的方法，學會實務的開發技術，增加學習效率。</p>
-    </div>
-    <div class="large-4 columns">
-      <h4 class="text-center">
-        <span class="fa-stack fa-lg fa-5x">
-          <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
-          <i class="fa fa-lg fa-star fa-stack-1x"></i></span><br/>
-        與網路專業開發者深度交流</h4>
-      <p>你有任何想法希望得到專業的建議？或者你想要認識一流網路公司、增加未來接觸機會？在LEARNINGBAR，你將獲得與網路公司開發者深度交流的機會</p>
-    </div>
-
-    <div class="large-4 columns">
-      <h4 class="text-center">
-        <span class="fa-stack fa-lg fa-5x">
-        <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
-        <i class="fa fa-lg fa-save fa-stack-1x"></i>
+	<div class="column large-12 large-centered">
+		<h1 class="text-center"><%=link_to image_tag('learningbar.png'), courses_path%></h1>
+	    <h1 class="text-center">向頂尖程式開發者<br>
+	      學習一流開發技術</h1>
+	    <h4 class="text-center subheader">
+	      由新銳創業團隊擔任業師<br>
+	      富含實作精神的開發者學校<br>
+	    </h4>
+	</div>
+    <div class="course_item_row">
+      <%=link_to @course, :class=>'course_item' do %>
+        <h4 class="text-center">
+          <span class="fa-stack fa-lg fa-4x">
+          <i class="fa fa-lg fa-laptop fa-stack-1x"></i>
         </span><br/>
-        累積課程資歷</h4>
-      <p>在LEARNINGBAR上過的課，都會被記錄起來，整合你個人撰寫的履歷，為你的開發實力背書</p>
-    </div>
-  </div>
+        Web App開發
+        </h4>
+      <%end%>
+      <%=link_to @course, :class=>'course_item' do %>
+        <h4 class="text-center">
+          <span class="fa-stack fa-lg fa-4x">
+          <i class="fa fa-lg fa-apple fa-stack-1x"></i>
+        </span><br/>
+        iOS App開發
+        </h4>
+      <%end%>
+      <%=link_to @course, :class=>'course_item' do %>
+        <h4 class="text-center">
+          <span class="fa-stack fa-lg fa-4x">
+          <i class="fa fa-lg fa-android fa-stack-1x"></i>
+        </span><br/>
+        Android App開發
+        </h4>
+      <%end%>
+      <%=link_to @course, :class=>'course_item' do %>
+        <h4 class="text-center">
+          <span class="fa-stack fa-lg fa-4x">
+          <i class="fa fa-lg fa-html5 fa-stack-1x"></i>
+        </span><br/>
+        前端界面設計&開發
+        </h4>
+      <%end%>
+	</div>
 </div>
-<div class="third_band clearfix">
-  <div class="column large-4 large-offset-2">
-    <img src="<%=asset_path('choco_course.png')%>"/>
-  </div>
-  <div class="column large-5" style="padding-top:100px;">
-    <h1><%=link_to @course.name,course_url(@course)%></h1>
-    <h4>時間：<%= @course.course_date.strftime('%Y年%m月%d日%I:%M %p')%></h4>
-    <h4>地點：<%= @course.location%></h4>
-      <%=link_to '查看課程',course_path(@course), :class=>'button' %>
-  </div>
+<div class="second_band">
+	<h1 class="text-center">台灣最好的開發者學校</h1>
+	<div class="overview">
+		<h2 class="text-center">
+      <small>LEARNING BAR與一流網路新創公司合作<br>讓學員有一流的開發教育品質！</small>
+    </h2>
+	</div>
+	<div class="process">
+		<ul class="small-block-grid-2">
+			<li>
+				<span>1</span>
+				<div class="process-content">
+					<h3>技術課程</h3>
+					<p>想學會寫程式嗎？<br>LEARNING BAR開辦技術課程，邀請台灣一流的開發者，深入淺出的帶你成為初級開發者</p>
+				</div>
+			</li>
+			<li>
+				<span>2</span>
+				<div class="process-content">
+					<h3>實作課程</h3>
+					<p>成為初級開發者，但還想要更加深入？<br>LEARNING BAR邀請一流的網路新創公司開發團隊擔任業師，與你分享業界的實務開發技術</p>
+				</div>
+			</li>
+			<li>
+				<span>3</span>
+				<div class="process-content">
+					<h3>職缺媒合</h3>
+					<p>參加LEARNING BAR的課程，向網路新創公司學習開發，你會有更多機會進入這些公司實習與應徵正職開發者工作！</p>
+				</div>
+			</li>
+			<li>
+				<span>4</span>
+				<div class="process-content">
+					<h3>認識夥伴</h3>
+					<p>會寫程式是網路創業的基礎；參加LEARNING BAR的課程，讓你更有機會與想要創業的學員接觸互動！</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+	
+
+
+</div>
+<div class="third_band">
+	<h1 class="text-center">頂尖的開發者</h1>
+	<%=link_to @course, :class=>'teacher_items' do %>
+        <h4 class="text-center">
+          <span class="fa-stack fa-lg fa-5x">
+          <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+        </span><br/>
+        </h4>
+    <%end%>
+    <%=link_to @course, :class=>'teacher_items' do %>
+        <h4 class="text-center">
+          <span class="fa-stack fa-lg fa-5x">
+          <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+        </span><br/>
+        </h4>
+    <%end%>
+    <%=link_to @course, :class=>'teacher_items' do %>
+        <h4 class="text-center">
+          <span class="fa-stack fa-lg fa-5x">
+          <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+        </span><br/>
+        </h4>
+    <%end%>
+    <%=link_to @course, :class=>'teacher_items' do %>
+        <h4 class="text-center">
+          <span class="fa-stack fa-lg fa-5x">
+          <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+        </span><br/>
+        </h4>
+    <%end%>
+</div>
+<div class="fourth_band">
+	<h1 class="text-center">合作夥伴</h1>
+	<div class="row">
+		<div class="column large-2">
+		  <img src="<%=asset_path('fandora_logo.jpg')%>"/>
+		</div>
+		<div class="column large-2">
+		  <img src="<%=asset_path('CHOCOLABS_CI_4.png')%>"/>
+		</div>
+    <div class="column large-4">
+      <img src="<%=asset_path('appworks.png')%>"/>
+    </div>
+	</div>
+  
 </div>
 </section>

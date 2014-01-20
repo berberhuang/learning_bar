@@ -2,34 +2,92 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "foundation_and_overrides";
+
 section.top-bar-section{
 	ul{
 		background-color:black;
 	}
 }
 .first_band{
-	height: 400px;
-	background-image: url(image_path('mainbanner.jpg'));
-	background-size:cover;
-	padding-top:20px;
-	.slogan_container{
-		margin-top: 5%;
+	min-height: 100%;
+	background-color: white;
+	.course_item_row{
+		@include grid-row;
 	}
 	h1{
-		color: white;
+		color:#111;
 	};
-	h4{
-		color:$beer-orange;
+	i{
+		color:#111;
 	}
 }
 .second_band{
-	background-color:#FDD62E;
+	@include grid-row;
+	.overview{
+		@include grid-column(
+		   $columns:6,
+		   $center:true,
+		   $collapse:true,
+		   $float:left
+		 );
+	}
+	.process{
+		@include grid-column(
+			$columns:12,
+			$center:true
+		);
+		span{
+			position: absolute;
+			font-size: 4em;
+			display: block;
+			color:#e0e0e0;
+		}
+		div{
+			@include grid-column(
+				$columns:10,
+				$push:2
+			);
+		}
+	}
 }
+
 .third_band{
+	@include grid-row(100%);
+	max-width: 100%;
+	h1{
+		color: white;
+	};
 	background-color: $beer-orange;
+
+}
+.fourth_band{
 	img{
 		width:100%;
+		height: 100%;
 	}
+}
+.course_item{
+		@include grid-column(3);
+		border-radius: $global-radius;
+		transition:background-color 0.5s, opacity 0.5s;
+		border-bottom: 4px double #e0e0e0;
+		h4{
+			color:rgba(60,60,60,1);
+		};
+		&:hover{
+			background-color:rgba(0,0,0,0.1);
+		};
+	}
+.teacher_items{
+	@include grid-column(3);
+	border-radius: $global-radius;
+	transition:background-color 0.5s, opacity 0.5s;
+	h4{
+		color:rgba(60,60,60,1);
+	};
+	&:hover{
+		background-color:rgba(0,0,0,0.1);
+	};
 }
 
 footer{

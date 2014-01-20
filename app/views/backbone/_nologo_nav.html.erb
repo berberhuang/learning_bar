@@ -1,15 +1,5 @@
 <div class="contain-to-grid">
-  <nav class="top-bar" data-topbar data-options="is_hover:false">
-    <ul class="title-area">
-      <li class="name">
-        <%if student_signed_in?%>
-          <%=link_to image_tag('learningbar.png'), courses_path%>
-        <%else%>
-          <%=link_to image_tag('learningbar.png'),'/' %>
-        <% end -%>
-      </li>
-    </ul>
-    
+  <nav class="top-bar" data-topbar data-options="is_hover:false"> 
     <section class="top-bar-section">
       <ul class="right">
       <% if student_signed_in? %>
@@ -55,7 +45,7 @@
         <li class="divider"></li>
         <li><%=link_to '關於', :controller=>:backbone, :action=>:about %></li>
         <li class="divider"></li>
-        <li><%=link_to '課程',courses_path%></li>
+        <li><%=link_to '課程', courses_path%></li>
         <li class="divider"></li>
         <li><a href="#">BLOG</a></li>
         <li class="divider"></li>

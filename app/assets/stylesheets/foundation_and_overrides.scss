@@ -1,7 +1,6 @@
 // 
 // FOUNDATION SETTINGS
 //
-$beer-orange:#fbb03a;
 // Uncomment to use rem-calc() in your settings
 // @import "foundation/functions";
 
@@ -927,11 +926,11 @@ $beer-orange:#fbb03a;
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-$topbar-bg-color: black;
+$topbar-bg-color: white;
 // $topbar-bg: #fbb03a;
 
 // Height and margin
-$topbar-height: 45px;
+$topbar-height: 30px;
 // $topbar-margin-bottom: 0;
 
 // Control Input height for top bar
@@ -949,6 +948,7 @@ $topbar-height: 45px;
 // $topbar-dropdown-toggle-alpha: 0.4;
 
 // Set the link colors and styles for top-level nav
+$topbar-link-color:#111;
 // $topbar-link-color: #fff;
 // $topbar-link-color-hover: #fff;
 // $topbar-link-color-active: #fff;
@@ -990,7 +990,7 @@ $topbar-link-bg-hover: #fbb03a  ;
 // Sticky Class
 // $topbar-sticky-class: ".sticky";
 // $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
-
+$beer-orange:#fbb03a;
 
 
 
