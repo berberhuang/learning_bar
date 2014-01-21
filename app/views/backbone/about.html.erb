@@ -1,54 +1,50 @@
 <%=render 'backbone/nologo_nav'%>
-<div class="first_band clearfix">
-  <div class="column large-12 large-centered">
-    <h1 class="text-center"><%=link_to image_tag('learningbar.png'), courses_path%></h1>
-      <h1 class="text-center">向頂尖程式開發者<br>
-        學習一流開發技術</h1>
-      <h4 class="text-center subheader">
-        由新銳創業團隊擔任業師<br>
-        富含實作精神的開發者學校<br>
-      </h4>
-      <hr/>
-  </div>
-
+<div class="first_band">
+<%=render 'main_logo'%>
 </div>
-
-<div class="row">
-    <div class="large-3 columns">
-      <h4 class="text-center">
-        <span class="fa-stack fa-lg fa-5x">
-        <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
-        <i class="fa fa-lg fa-laptop fa-stack-1x"></i>
-      </span><br/>
-      學習網路產業實務的開發技術
-      </h4>
-      <p>LEARNINGBAR邀請網路產業的專業開發者開班授課，讓你用最直接的方法，學會實務的開發技術，增加學習效率。</p>
+<div class="about">
+  <div class="large-10 columns push-1">
+    <h3>關於LEARNING BAR：</h3>
+      <div class="large-8 columns large-centered text-center">
+      <h3>
+      <i class="fa fa-quote-left"></i>
+        由新銳創業團隊擔任業師<br/>富含實作精神的開發者學校
+      <i class="fa fa-quote-right"></i></h3>
+      </div>
+      <ul class="plan_introduction_photo large-block-grid-3">
+        <li><%=image_tag("plan_introduction_photo1.jpg")%></li>
+        <li><%=image_tag("plan_introduction_photo2.jpg")%></li>
+        <li><%=image_tag("plan_introduction_photo3.jpg")%></li>
+      </ul>
+      <div class="plan_introduction">
+        <p>
+        你有任何想法希望得到專業的建議？或者你想認識一流網路公司、增加未來接觸機會？在LEARNINGBAR，你將獲得與網路公司開發者深度交流的機會。
+        LEARNINGBAR邀請網路產業的專業開發者開班授課，讓你用最直接的方法，學會實務的開發技術，增加學習效率。<br>
+        在LEARNINGBAR上過的課，都會被記錄起來，整合你個人撰寫的履歷，為你的開發實力背書。</p>
+      </div>
+    <h3>LEARNING BAR團隊成員：</h3>
+    <div class="team_member">
+      <div class="cofounder_avatar">
+        <%=image_tag("jeffrey.png")%>
+        <h4>黃祺庸</h4>
+      </div>
+      <div class="cofounder_introduction">
+        <p>LEARNING BAR團隊共同創辦人，擔任本團隊的執行長。國立中山大學企業管理學系畢業。<br/>
+        半路轉行學Coding，意識到想進入網路產業工作必須要先跨越對程式碼的恐懼，因而創辦本開發者學校，希望幫助更多想要進入網路公司的人才學會開發技術。</p>
+      </div>
     </div>
-    <div class="large-3 columns">
-      <h4 class="text-center">
-        <span class="fa-stack fa-lg fa-5x">
-          <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
-          <i class="fa fa-lg fa-star fa-stack-1x"></i></span><br/>
-        與網路專業開發者深度交流</h4>
-      <p>你有任何想法希望得到專業的建議？或者你想要認識一流網路公司、增加未來接觸機會？在LEARNINGBAR，你將獲得與網路公司開發者深度交流的機會</p>
-    </div>
-
-    <div class="large-3 columns">
-      <h4 class="text-center">
-        <span class="fa-stack fa-lg fa-5x">
-        <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
-        <i class="fa fa-lg fa-save fa-stack-1x"></i>
-        </span><br/>
-        累積課程資歷</h4>
-      <p>在LEARNINGBAR上過的課，都會被記錄起來，整合你個人撰寫的履歷，為你的開發實力背書</p>
-    </div>
-    <div class="large-3 columns">
-      <h4 class="text-center">
-        <span class="fa-stack fa-lg fa-5x">
-        <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
-        <i class="fa fa-lg fa-save fa-stack-1x"></i>
-        </span><br/>
-        累積課程資歷</h4>
-      <p>在LEARNINGBAR上過的課，都會被記錄起來，整合你個人撰寫的履歷，為你的開發實力背書</p>
+    <div class="team_member">
+      <div class="cofounder_avatar">
+        <%=image_tag("bert.png")%>
+        <h4>黃浩宇</h4>
+      </div>
+      <div class="cofounder_introduction">
+        <p>LEARNING BAR團隊共同創辦人，擔任本團隊的技術長。國立中山大學資訊工程資訊工程學繫畢業，目前就讀國立交通大學網路工程研究所-分散式系統實驗室。</p>
+      </div>
     </div>
   </div>
+</div>
+<div class="fifth_band">
+  <h1 class="text-center">成為開發者<br/>捲起袖子開發產品!</h1>
+    <%=link_to "報名課程", courses_path, :class=>"button large expand"%>
+</div>

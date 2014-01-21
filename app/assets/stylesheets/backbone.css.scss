@@ -2,24 +2,33 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "foundation_and_overrides";
-
-section.top-bar-section{
-	ul{
-		background-color:black;
+@mixin double_bottom_border{
+	border-bottom: 4px double #e0e0e0;
+}
+@mixin about_text {
+	p{
+		background: rgba(0,0,0,0.2);
+		padding: 1em;
+		border-radius: $global-radius;
+		text-indent: 2em;
 	}
+}
+.main_logo_block{
+	@include grid-column(
+		$columns:12,
+		$center:true
+	)
 }
 .first_band{
 	min-height: 100%;
 	background-color: white;
+	margin-bottom: 3em;
 	.course_item_row{
 		@include grid-row;
 	}
 	h1{
 		color:#111;
 	};
-	i{
-		color:#111;
-	}
 }
 .second_band{
 	@include grid-row;
@@ -49,10 +58,13 @@ section.top-bar-section{
 			);
 		}
 	}
+	h4{
+		margin-bottom: 2em;
+	}
 }
 
 .third_band{
-	@include grid-row(100%);
+	@include grid-row;
 	max-width: 100%;
 	h1{
 		color: white;
@@ -61,33 +73,74 @@ section.top-bar-section{
 
 }
 .fourth_band{
+	@include grid-row;
+	margin-top: 2em;
+	padding-bottom: 2em;
 	img{
 		width:100%;
 		height: 100%;
+	}
+	@include double_bottom_border;
+}
+.fifth_band{
+	margin-top: 2em;
+	@include grid-column(
+		$columns:6,
+		$center:true
+	);
+	text-align: center;
+	h1{
+		margin-bottom: 1em;
 	}
 }
 .course_item{
 		@include grid-column(3);
 		border-radius: $global-radius;
-		transition:background-color 0.5s, opacity 0.5s;
-		border-bottom: 4px double #e0e0e0;
+		@include double_bottom_border;
 		h4{
 			color:rgba(60,60,60,1);
+			transition:color 0.3s;
+			&:hover{
+				color:#fbb03a;
+			};
 		};
-		&:hover{
-			background-color:rgba(0,0,0,0.1);
-		};
+		
 	}
 .teacher_items{
-	@include grid-column(3);
-	border-radius: $global-radius;
-	transition:background-color 0.5s, opacity 0.5s;
+	@include grid-column(4);
 	h4{
 		color:rgba(60,60,60,1);
 	};
-	&:hover{
-		background-color:rgba(0,0,0,0.1);
-	};
+}
+/*About*/
+.about{
+	@include grid-row();
+	max-width: 100%;
+	background-color: #fbb03a;
+	h1,h2,h3,h4,h5,h6,p{
+		color: white;
+	}
+}
+.plan_introduction_photo{
+	@include block-grid(1);
+}
+.plan_introduction{
+	@include about_text;
+}
+.team_member{
+	@include grid-row();
+	margin-top: 2em;
+}
+.cofounder_avatar{
+	@include grid-column(3);
+	text-align: center;
+	img{
+		width: 150px;
+	}
+}
+.cofounder_introduction{
+	@include grid-column(9);
+	@include about_text;
 }
 
 footer{

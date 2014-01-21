@@ -44,6 +44,7 @@ Learningbar::Application.routes.draw do
   end
 
   get 'about'=>'backbone#about'
+  get 'FAQ'=>'backbone#FAQ'
 
  # devise_for :users, :controllers =>{:registrations => "registrations",:sessions=>'sessions'}
 

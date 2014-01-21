@@ -1,56 +1,52 @@
 <%=render 'backbone/nologo_nav'%>
-<section role="main">
 <div class="first_band clearfix">
-	<div class="column large-12 large-centered">
-		<h1 class="text-center"><%=link_to image_tag('learningbar.png'), courses_path%></h1>
-	    <h1 class="text-center">向頂尖程式開發者<br>
-	      學習一流開發技術</h1>
-	    <h4 class="text-center subheader">
-	      由新銳創業團隊擔任業師<br>
-	      富含實作精神的開發者學校<br>
-	    </h4>
-	</div>
-    <div class="course_item_row">
-      <%=link_to @course, :class=>'course_item' do %>
-        <h4 class="text-center">
-          <span class="fa-stack fa-lg fa-4x">
-          <i class="fa fa-lg fa-laptop fa-stack-1x"></i>
-        </span><br/>
-        Web App開發
-        </h4>
-      <%end%>
-      <%=link_to @course, :class=>'course_item' do %>
-        <h4 class="text-center">
-          <span class="fa-stack fa-lg fa-4x">
-          <i class="fa fa-lg fa-apple fa-stack-1x"></i>
-        </span><br/>
-        iOS App開發
-        </h4>
-      <%end%>
-      <%=link_to @course, :class=>'course_item' do %>
-        <h4 class="text-center">
-          <span class="fa-stack fa-lg fa-4x">
-          <i class="fa fa-lg fa-android fa-stack-1x"></i>
-        </span><br/>
-        Android App開發
-        </h4>
-      <%end%>
-      <%=link_to @course, :class=>'course_item' do %>
-        <h4 class="text-center">
-          <span class="fa-stack fa-lg fa-4x">
-          <i class="fa fa-lg fa-html5 fa-stack-1x"></i>
-        </span><br/>
-        前端界面設計&開發
-        </h4>
-      <%end%>
-	</div>
+<%=render :partial=>'main_logo'%>
+  <h4 class="text-center subheader">
+    由新銳創業團隊擔任業師<br>
+    富含實作精神的開發者學校<br>
+  </h4>
+  <div class="course_item_row">
+    <%=link_to @course, :class=>'course_item' do %>
+      <h4 class="text-center">
+        <span class="fa-stack fa-lg fa-4x">
+        <i class="fa fa-lg fa-laptop fa-stack-1x"></i>
+      </span><br/>
+      Web App開發
+      </h4>
+    <%end%>
+    <%=link_to @course, :class=>'course_item' do %>
+      <h4 class="text-center">
+        <span class="fa-stack fa-lg fa-4x">
+        <i class="fa fa-lg fa-apple fa-stack-1x"></i>
+      </span><br/>
+      iOS App開發
+      </h4>
+    <%end%>
+    <%=link_to @course, :class=>'course_item' do %>
+      <h4 class="text-center">
+        <span class="fa-stack fa-lg fa-4x">
+        <i class="fa fa-lg fa-android fa-stack-1x"></i>
+      </span><br/>
+      Android App開發
+      </h4>
+    <%end%>
+    <%=link_to @course, :class=>'course_item' do %>
+      <h4 class="text-center">
+        <span class="fa-stack fa-lg fa-4x">
+        <i class="fa fa-lg fa-html5 fa-stack-1x"></i>
+      </span><br/>
+      前端界面設計&開發
+      </h4>
+    <%end%>
+  </div>
 </div>
 <div class="second_band">
 	<h1 class="text-center">台灣最好的開發者學校</h1>
 	<div class="overview">
-		<h2 class="text-center">
-      <small>LEARNING BAR與一流網路新創公司合作<br>讓學員有一流的開發教育品質！</small>
-    </h2>
+		<h4 class="text-center subheader">
+      由一流網路新創公司開辦課程<br>
+      最貼近網路產業的開發者教育
+    </h4>
 	</div>
 	<div class="process">
 		<ul class="small-block-grid-2">
@@ -84,54 +80,67 @@
 			</li>
 		</ul>
 	</div>
-	
-
-
 </div>
 <div class="third_band">
 	<h1 class="text-center">頂尖的開發者</h1>
-	<%=link_to @course, :class=>'teacher_items' do %>
-        <h4 class="text-center">
-          <span class="fa-stack fa-lg fa-5x">
-          <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
-        </span><br/>
-        </h4>
-    <%end%>
-    <%=link_to @course, :class=>'teacher_items' do %>
-        <h4 class="text-center">
-          <span class="fa-stack fa-lg fa-5x">
-          <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
-        </span><br/>
-        </h4>
-    <%end%>
-    <%=link_to @course, :class=>'teacher_items' do %>
-        <h4 class="text-center">
-          <span class="fa-stack fa-lg fa-5x">
-          <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
-        </span><br/>
-        </h4>
-    <%end%>
-    <%=link_to @course, :class=>'teacher_items' do %>
-        <h4 class="text-center">
-          <span class="fa-stack fa-lg fa-5x">
-          <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
-        </span><br/>
-        </h4>
-    <%end%>
+  <div class="large-10 columns push-1">
+      <div class="teacher_items">
+            <h4 class="text-center">
+              <span class="fa-stack fa-lg fa-5x">
+              <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+            </span><br/>
+            </h4>
+        </div>
+        <div class="teacher_items">
+            <h4 class="text-center">
+              <span class="fa-stack fa-lg fa-5x">
+              <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+            </span><br/>
+            </h4>
+        </div>
+        <div class="teacher_items">
+            <h4 class="text-center">
+              <span class="fa-stack fa-lg fa-5x">
+              <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+            </span><br/>
+            </h4>
+        </div>
+        <div class="teacher_items">
+            <h4 class="text-center">
+              <span class="fa-stack fa-lg fa-5x">
+              <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+            </span><br/>
+            </h4>
+        </div>
+        <div class="teacher_items">
+            <h4 class="text-center">
+              <span class="fa-stack fa-lg fa-5x">
+              <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+            </span><br/>
+            </h4>
+        </div>
+        <div class="teacher_items">
+            <h4 class="text-center">
+              <span class="fa-stack fa-lg fa-5x">
+              <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+            </span><br/>
+            </h4>
+        </div>
+  </div>
 </div>
 <div class="fourth_band">
 	<h1 class="text-center">合作夥伴</h1>
-	<div class="row">
-		<div class="column large-2">
-		  <img src="<%=asset_path('fandora_logo.jpg')%>"/>
-		</div>
-		<div class="column large-2">
-		  <img src="<%=asset_path('CHOCOLABS_CI_4.png')%>"/>
-		</div>
-    <div class="column large-4">
-      <img src="<%=asset_path('appworks.png')%>"/>
-    </div>
+	<div class="column large-2">
+	  <img src="<%=asset_path('fandora_logo.jpg')%>"/>
 	</div>
-  
+	<div class="column large-2">
+	  <img src="<%=asset_path('CHOCOLABS_CI_4.png')%>"/>
+	</div>
+  <div class="column large-4">
+    <img src="<%=asset_path('appworks.png')%>"/>
+  </div>
 </div>
-</section>
+<div class="fifth_band">
+  <h1 class="text-center">成為開發者<br/>捲起袖子開發產品!</h1>
+    <%=link_to "報名課程", courses_path, :class=>"button large expand"%>
+</div>
