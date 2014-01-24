@@ -1,20 +1,16 @@
-$(document).ready(function(){
-    $('.skill_controll_panel').find($('a')).click(function(){
-        console.log("test");
-        $('.skill_controll_panel').editable($(this));
-        $(this).parent().hide();
-    });
-});
 var editable=function(target){
-	var description_obj=target.parents('.skill_item').find('.description');
-	var region=description_obj.find('p:first');
-	var content = region.html(); // notice "this" instead of a specific #myDiv
+    if(!target.data('id')){
+	target=target.parent('.edit_button');
+    }
+    var description_obj=target.parents('.skill_item').find('.description');
+    var region=description_obj.find('p:first');
+    var content = region.html(); // notice "this" instead of a specific #myDiv
     var editableText = $("<textarea />");
-
     var button_container='<div class="edit_button row"></div>';
     var cancel=function(){
 	    description_obj.find('textarea').replaceWith($('<p>').append(content));
 	    description_obj.find('.edit_button').remove();
+	    target.parent().show();
     };
     
 
@@ -28,16 +24,19 @@ var editable=function(target){
     	});
     	content=description;
     	cancel();
+	target.parent().show();
     };
 
-	var cancel_button=$('<a class="button">Cancel</a>').click(cancel);
-	var save_button=$('<a class="button">Save</a>').click(save);
+    var cancel_button=$('<a class="button">Cancel</a>').click(cancel);
+    var save_button=$('<a class="button">Save</a>').click(save);
 
-	b_c=$(button_container);
-	b_c.append(cancel_button);
-	b_c.append(save_button);
+    target.parent().hide();
 
-	b_c.appendTo(description_obj);
+    b_c=$(button_container);
+    b_c.append(cancel_button);
+    b_c.append(save_button);
+
+    b_c.appendTo(description_obj);
 
     editableText.val(content);
     region.replaceWith(editableText);

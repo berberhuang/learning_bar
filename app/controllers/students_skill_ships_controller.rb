@@ -7,11 +7,13 @@ class StudentsSkillShipsController < ApplicationController
 	end
 
 	def create
+		student_id=current_student.id
 		s=StudentSkillShip.new(params[:student_skill_ship])
-		if params[:student_id].to_i!=current_student.id
+		if params[:student_id].to_i!=student_id
 			redirect_to :back
 			return
 		end
+		
 
 	    if s.skill_id.to_i==-1
 	    	skill=Skill.find_by_skill_name(params[:other_skill])
@@ -19,7 +21,12 @@ class StudentsSkillShipsController < ApplicationController
 	    	skill.save
 	    	s.skill_id=skill.id
 	    end
-	    s.student_id=current_student.id
+		
+	    if StudentSkillShip.where(:student_id=>student_id,:skill_id=>s.skill_id).size>0
+		redirect_to :back
+		return
+	    end
+	    s.student_id=student_id
 	    s.save
 
 	    redirect_to edit_skills_student_path('me')

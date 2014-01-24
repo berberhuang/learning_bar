@@ -1,7 +1,11 @@
 <% content_for :head do %>
   <script>
 	$(function(){
-		$('#other_skill_input').autocomplete({source:'<%=student_skills_path(@student)%>'});
+	  $('#other_skill_input').autocomplete({source:'<%=student_skills_path(@student)%>'});
+	  $('.edit_button').click(function(event){
+              var target=$(event.target);
+	      editable(target);
+          });
 	});
   </script>
 <% end %>
@@ -9,7 +13,7 @@
 <%=render 'layouts/student_user_panel'%>
 <div class="large-9 columns">
 	<h3>開發技能</h3>
-	<%=content_tag "a","新增", :onclick=>"$('.add_skill_form').show(100);$('.add_skill_button').hide",:class=>"add_skill_button"%>
+	<%=content_tag "a","新增", :onclick=>"$('.add_skill_form').show(100);$(this).hide()",:class=>"add_skill_button"%>
 	<div class="add_skill_form" style="display:none;">
 	<%=simple_form_for @new_skill, :url => student_skills_path(@student), :method => :post do |f|%>
 		<%@skill_options.each do |s|%>
@@ -31,7 +35,7 @@
 			<li class="skill_item">
 				<div>
 				<div class="skill_controll_panel">
-				<%=content_tag('a',content_tag('i',"編輯",:class=>"fa fa-gear"),:class=>"button tiny radius", :data=>{id:s.id, student_id:s.student_id})%>
+				<%=content_tag('a',content_tag('i',"編輯",:class=>"fa fa-gear"),:class=>"button tiny radius edit_button", :data=>{id:s.id, student_id:s.student_id})%>
 				<%=content_tag('a',content_tag('i',"刪除",:class=>"fa fa-trash-o"),:class=>"button tiny",:onclick=>'if(confirm("確定要刪除?"))$.ajax({type:"delete",url:"'+student_skill_path(@student,s)+'",success:function(){window.location.reload();}});', :class=>"button tiny radius")%>
 				</div>
 				</div>
