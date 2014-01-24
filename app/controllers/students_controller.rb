@@ -21,12 +21,6 @@ class StudentsController < ApplicationController
   end
 
   def edit_info
-    # Rails.logger.info params.inspect
-    #@student=current_student
-    #if student_signed_in?
-    #  @student_editable=true
-    #end
-
     if @student
       @student_editable=true
     else
@@ -49,7 +43,9 @@ class StudentsController < ApplicationController
 
   def update
     if @student
+      logger.info "work"
       @student.update_attributes(params[:student])
+      
       redirect_to student_path('me')
     else
       redirect_to :back
@@ -59,7 +55,6 @@ class StudentsController < ApplicationController
 protected
   def find_student_by_id
     id=params[:id]
-
     if id== 'me' && student_signed_in?
       @student = current_student
     elsif admin_signed_in? && id

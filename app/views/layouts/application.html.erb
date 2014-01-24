@@ -36,12 +36,6 @@
     
     <%=render :partial=>'backbone/modals'%>
     <%=render :partial=>'backbone/footer'%>
-    <script type="text/javascript">
-      $(function(){ 
-        $(document).foundation();
-        $('.textavatar').textAvatar();
-      });
-    </script>
-    <%= javascript_include_tag "foundation" %>
+    <%=javascript_include_tag 'student'%>
   </body>
 </html>

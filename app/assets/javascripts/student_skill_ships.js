@@ -1,3 +1,10 @@
+$(document).ready(function(){
+    $('.skill_controll_panel').find($('a')).click(function(){
+        console.log("test");
+        $('.skill_controll_panel').editable($(this));
+        $(this).parent().hide();
+    });
+});
 var editable=function(target){
 	var description_obj=target.parents('.skill_item').find('.description');
 	var region=description_obj.find('p:first');

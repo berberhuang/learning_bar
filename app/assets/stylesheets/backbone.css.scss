@@ -13,6 +13,13 @@
 		text-indent: 2em;
 	}
 }
+.contain-to-grid{
+	height: 60px;
+	margin-bottom: 20px;
+	&.nav_loged_in{
+		margin-bottom: 60px;
+	}
+}
 .main_logo_block{
 	@include grid-column(
 		$columns:12,
@@ -84,10 +91,7 @@
 }
 .fifth_band{
 	margin-top: 2em;
-	@include grid-column(
-		$columns:6,
-		$center:true
-	);
+	@include grid-row();
 	text-align: center;
 	h1{
 		margin-bottom: 1em;

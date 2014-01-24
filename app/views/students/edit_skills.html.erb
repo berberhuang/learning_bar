@@ -8,39 +8,42 @@
 
 <%=render 'layouts/student_user_panel'%>
 <div class="large-9 columns">
-	<h1>開發技能</h1>
-
-	<%=link_to 'add', "#", :onclick=>"$('.add_box').show(100);" %>
-	<%=link_to 'back', student_path('me') %>
-	<div class="add_box" style="display:none;">
-	<%=form_for @new_skill, :url => student_skills_path(@student), :method => :post do |f|%>
+	<h3>開發技能</h3>
+	<%=content_tag "a","新增", :onclick=>"$('.add_skill_form').show(100);$('.add_skill_button').hide",:class=>"add_skill_button"%>
+	<div class="add_skill_form" style="display:none;">
+	<%=simple_form_for @new_skill, :url => student_skills_path(@student), :method => :post do |f|%>
 		<%@skill_options.each do |s|%>
-			<%=f.radio_button 'skill_id', s.id,:required=>true,:onclick=>'clickSkillRadio();';
- %>
+			<%=f.radio_button 'skill_id', s.id,:required=>true,:onclick=>'clickSkillRadio();';%>
 			<%=s.skill_name%>
 		<% end -%>
 		<div>
 		<%=f.radio_button 'skill_id', -1,:id=>'other_skill',:required=>true,:onclick=>'clickSkillRadio();' %>
 		<%=text_field_tag 'other_skill' ,'',:id=>:other_skill_input,:disabled=>true,:placeholder=>'其他', :style=>'width:100px;display:inline'%>
 		</div>
+		<%=f.label '請描述您的程度'%>
 		<%=f.text_area 'skill_description'%>
-		<%=f.submit 'add'%>
+		<%=f.submit '儲存', :class=>"button"%>
+		<%=link_to '取消', edit_skills_student_path('me'), :class=>"button secondary"%>
 	<%end%>
 	</div>
-	<div class="skill_board column">
+	<ul class="skill_board no-bullet">
 		<%@skills.each do |s|%>
-			<div class="skill_item">
-				<div><%=link_to 'edit','#', :onclick=>"editable($(this));", :data=>{id:s.id, student_id:s.student_id}%>
-					<%=link_to 'delete','#', :onclick=>'if(confirm("確定要刪除"))$.ajax({type:"delete",url:"'+student_skill_path(@student,s)+'",success:function(){window.location.reload();}});'%></div>
-				<div class="large-3 column">
-					<%=s.skill.skill_name%>
+			<li class="skill_item">
+				<div>
+				<div class="skill_controll_panel">
+				<%=content_tag('a',content_tag('i',"編輯",:class=>"fa fa-gear"),:class=>"button tiny radius", :data=>{id:s.id, student_id:s.student_id})%>
+				<%=content_tag('a',content_tag('i',"刪除",:class=>"fa fa-trash-o"),:class=>"button tiny",:onclick=>'if(confirm("確定要刪除?"))$.ajax({type:"delete",url:"'+student_skill_path(@student,s)+'",success:function(){window.location.reload();}});', :class=>"button tiny radius")%>
+				</div>
+				</div>
+				<div class="large-3 column text-center">
+					<h3><%=s.skill.skill_name%></h3>
 				</div>
 				<div class="large-9 column description">
 					<p><%=s.skill_description%></p>
 				</div>
-			</div>
+			</li>
 			<hr/>
 		<% end -%>
-	</div>
-	
+	</ul>
+	<%=link_to 'back', student_path('me'), :class=>'button secondary' %>
 </div>

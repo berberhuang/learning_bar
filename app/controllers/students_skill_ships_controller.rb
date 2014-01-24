@@ -22,7 +22,7 @@ class StudentsSkillShipsController < ApplicationController
 	    s.student_id=current_student.id
 	    s.save
 
-	    redirect_to :edit_skills_students
+	    redirect_to edit_skills_student_path('me')
 	end
 
 	def update

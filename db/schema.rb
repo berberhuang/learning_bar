@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140116081509) do
+ActiveRecord::Schema.define(:version => 20140116060500) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -41,11 +41,18 @@ ActiveRecord::Schema.define(:version => 20140116081509) do
     t.text     "course_expect"
   end
 
+  create_table "boards", :force => true do |t|
+    t.integer  "course_id"
+    t.integer  "student_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "companies", :force => true do |t|
     t.string   "name",        :null => false
-    t.text     "description"
-    t.date     "founded_in"
-    t.string   "company_url"
+    t.text     "description", :null => false
+    t.date     "founded_in",  :null => false
+    t.string   "company_url", :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -74,10 +81,21 @@ ActiveRecord::Schema.define(:version => 20140116081509) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.text     "description"
+    t.integer  "teacher_id"
     t.text     "attend_request"
   end
 
   add_index "courses", ["name"], :name => "index_courses_on_name"
+
+  create_table "posts", :force => true do |t|
+    t.integer  "course_id"
+    t.integer  "student_id"
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "teacher_id"
+  end
 
   create_table "replies", :force => true do |t|
     t.integer  "post_id"
@@ -93,12 +111,11 @@ ActiveRecord::Schema.define(:version => 20140116081509) do
   end
 
   create_table "student_skill_ships", :force => true do |t|
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.integer  "student_id"
     t.integer  "skill_id"
     t.text     "skill_description"
-    t.boolean  "visible",           :default => true
   end
 
   create_table "students", :force => true do |t|

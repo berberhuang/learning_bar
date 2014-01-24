@@ -1,36 +1,40 @@
 <%=render 'layouts/student_user_panel'%>
 <div class="large-9 column">
-	<div class="tabs-content">
-	    <div class="content active columns" id="basic_data">
-	    	<%if @student_editable%>
-	    	<div class="right">
-	    		<%=link_to '編輯',edit_info_student_path('me'), :id=>:edit_student_info %>
-	    	</div>
-			<% end %>
-			<h3>自我介紹</h3>
-			<p><%=@student.description%></p>
-			<h3>個人經歷</h3>
-			<p><%=@student.resume%></p>
-
-			<%if @student_editable%>
-			  	<div class="right">
-			  		<%=link_to "編輯", edit_skills_student_path('me'), :id=>:me%>
-			  	</div>
-			<%end -%>
-			<h3>專長</h3>
-		  	<div class="skill_board column">
-	  		<%@skills.each do |s|%>
-	  			<div class="large-3 column">
-	  				<%=s.skill.skill_name%>
-	  			</div>
-	  			<div class="large-9 column">
-	  				<p><%=s.skill_description%></p>
-	  			</div>
-	  			<hr/>
-	  		<% end -%>
-	  		</div>
-		</div>
+<dl class="tabs" data-tab>
+  <dd class="active"><a href="#profile"><h5>關於我</h5></a></dd>
+  <dd><a href="#show_skill"><h5>開發技能</h5></a></dd>
+</dl>
+<div class="tabs-content">
+    <div class="content active columns" id="profile">
+    	<%if @student_editable%>
+    	<div class="right">
+    		<%=link_to '編輯',edit_info_student_path('me'),:class=>"button"  %>
+    	</div>
+		<% end %>
+		<h3>自我介紹</h3>
+		<p><%=@student.description%></p>
+		<h3>個人經歷</h3>
+		<p><%=@student.resume%></p>
 	</div>
-	<!-- <div class='textavatar' style='width: 140px;' data-name='fjfje'></div> -->
+	<div class="content columns" id="show_skill">
+	<%if @student_editable%>
+	  	<div class="right">
+        <%=link_to "編輯", edit_skills_student_path('me'), :class=>"button"%>
+	  	</div>
+	<%end -%>
+		<h3>專長</h3>
+	  	<ul class="skill_board">
+  		<%@skills.each do |s|%>
+      <li class="skill_item">
+  			<div class="large-3 column">
+  				<h3><%=s.skill.skill_name%></h3>
+  			</div>
+  			<div class="large-9 column">
+  				<p><%=s.skill_description%></p>
+  			</div>
+  			<hr/>
+      </li>
+  		<% end -%>
+  		</div>
+	</div>
 </div>
-	

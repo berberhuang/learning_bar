@@ -1,3 +1,27 @@
-// Place all the styles related to the student controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'foundation';
+.add_skill_button{
+		@include button();
+	};
+.add_skill_form{
+	textarea{
+		min-height: 10em;
+	}
+}
+
+.skill_board{
+	.skill_item{
+		min-height: 6em;
+		padding-top: 2em;
+		display: block;
+	}
+	hr{
+		margin-bottom: 0px;
+	}
+	@include grid-column(12);
+	.skill_controll_panel{
+		float: right;
+		position: absolute;
+		right: 0px;
+		margin-top: -2em;
+	}
+}

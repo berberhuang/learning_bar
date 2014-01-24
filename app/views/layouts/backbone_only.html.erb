@@ -8,6 +8,7 @@
     
     <%= stylesheet_link_tag    "application" ,:media => "all"%>
     <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
 
@@ -23,10 +24,7 @@
   }(document, 'script', 'facebook-jssdk'));</script>
 
   <%= yield %>  
-    
-  <%= javascript_include_tag "application" %>
   <%=render :partial=>'backbone/modals'%>
   <%=render :partial=>'backbone/footer'%>
-
   </body>
 </html>

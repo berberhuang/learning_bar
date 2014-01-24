@@ -44,11 +44,12 @@
       <%else%>
         <li class="divider"></li>
         <li><%=link_to '關於', :controller=>:backbone, :action=>:about %></li>
+        <li class="divider"></li>
         <li><%=link_to 'FAQ', :controller=>:backbone, :action=>:FAQ%></li>
         <li class="divider"></li>
         <li><%=link_to '課程', courses_path%></li>
         <li class="divider"></li>
-        <li><a href="#">BLOG</a></li>
+        <li><a href="http://learningbar-blog.logdown.com" target="blank">BLOG</a></li>
         <li class="divider"></li>
         <li><%=link_to '登入','#',:data=>{:'reveal-id'=>'loginModal'}%></li>
         <li class="divider"></li>

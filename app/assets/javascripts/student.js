@@ -7,8 +7,6 @@ $("#uploadBtn input[type='file']").change(function () {
 	$("#confirm_upload").show();
     // $("#uploadFile").val($(this).val().split('\\').pop());
 }) 
-
 $(".edit_avatar").click(function(){
 	$("#uploadBtn input[type='file']").click();
-
 })
