@@ -990,7 +990,9 @@ $topbar-link-bg-hover: #fbb03a  ;
 // $topbar-sticky-class: ".sticky";
 // $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
 $beer-orange:#fbb03a;
-
+@mixin double_bottom_border{
+	border-bottom: 4px double #e0e0e0;
+}
 
 
 @import 'foundation';

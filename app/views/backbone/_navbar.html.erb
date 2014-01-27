@@ -3,7 +3,7 @@
     <ul class="title-area">
       <li class="name">
         <%if student_signed_in?%>
-          <%=link_to image_tag('logo-horizontal.png'), courses_path%>
+          <%=link_to image_tag('logo-horizontal.png'), root_path%>
         <%else%>
           <%=link_to image_tag('logo-horizontal.png'),'/' %>
         <% end -%>
@@ -16,11 +16,10 @@
         <% student=current_student%>
         <li>
         <%=link_to student_path(:me), :class=>"username" do %>
-          <%= image_tag @student.avatar.url(:tiny)%>
+          <%= image_tag student.avatar.url(:tiny)%>
           <%= student.username%>
         <%end%>
         </li>
-        <li class="divider"></li>
         <li class="has-dropdown"><a href="#"><i class="fa fa-gear"></i></a>
           <ul class="dropdown">
             <li><%=link_to '個人資料', student_path(:me)%></li>
@@ -31,7 +30,6 @@
 
       <%elsif admin_signed_in? %>
         <li><%=link_to 'Admin '+current_admin.username, '/admins', :class=>"username"%></li>
-        <li class="divider"></li>
         <li><%=link_to '登出', '/admins/sign_out',method: 'DELETE'%></li>
       
       <%elsif teacher_signed_in? %>
@@ -41,7 +39,6 @@
             <%='Teacher'+teacher.username%>
           <%end%>
         </li>
-        <li class="divider"></li>
         <li class="has-dropdown"><a href="#"><i class="fa fa-gear"></i></a>
           <ul class="dropdown">
             <li><%=link_to '帳號設定',edit_teacher_registration_path,:id=>:edit_account%></li>
@@ -52,15 +49,10 @@
         
 
       <%else%>
-        <li class="divider"></li>
         <li><%=link_to '關於', :controller=>:backbone, :action=>:about %></li>
-        <li class="divider"></li>
         <li><%=link_to '課程',courses_path%></li>
-        <li class="divider"></li>
         <li><a href="#">BLOG</a></li>
-        <li class="divider"></li>
         <li><%=link_to '登入','#',:data=>{:'reveal-id'=>'loginModal'}%></li>
-        <li class="divider"></li>
 
   <%if resource_name=='student'%>
         	<li><%link_to '註冊', '#', :data=>{:'reveal-id'=>'signupModal'}%></li>

@@ -35,6 +35,7 @@ Learningbar::Application.routes.draw do
   end
 
   resources :courses do
+
     member do
       get  'attend_confirmation'
       post 'attend'
@@ -42,7 +43,8 @@ Learningbar::Application.routes.draw do
       get  'attendee_info'
     end
   end
-
+  resources :reports
+  get 'preparing'=>'courses#preparing'
   get 'about'=>'backbone#about'
   get 'FAQ'=>'backbone#FAQ'
 

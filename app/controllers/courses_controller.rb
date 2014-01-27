@@ -8,12 +8,14 @@ class CoursesController < ApplicationController
 
   def show
    course_id=params[:id].to_i
+   status=params[:status].to_i
    @course=Course.find(course_id)
+   @course.logger
    @companies=@course.companies
    @teachers=@course.teachers
 
    if student_signed_in?
-      @attend = current_student.attends.select{|i| i.course_id==course_id}.size > 0
+      @attend = current_student.attends.select{|i| i.course_id==course_id && i.status<2}.size>0
    elsif admin_signed_in?
       @students=@course.students
    elsif teacher_signed_in?
@@ -24,12 +26,23 @@ class CoursesController < ApplicationController
    end
   end
 
+  def attend_confirmation
+   course_id=params[:id]
+   if Attend.select(:id).where(:course_id=>course_id, :student_id=>current_student.id).where("status<?", 2).size > 0
+     redirect_to '/courses/'+course_id
+     return 
+   end    
+   @attend=Attend.new
+   @course=Course.find(course_id)
+  end
+
   def attend
    @student=current_student
    course_id=params[:id]
    student_id=@student.id
+   status=params[:id]
 
-   if Attend.select(:id).where(:course_id=>course_id, :student_id=>student_id).size > 0
+   if Attend.select(:id).where(:course_id=>course_id, :student_id=>student_id).where("status<?",2 ).size > 0
      redirect_to '/courses/'+course_id
      return 
    end  
@@ -37,6 +50,7 @@ class CoursesController < ApplicationController
    @attend=Attend.new(params[:attend])
    @attend.course_id=course_id
    @attend.student_id=student_id
+   @attend.status=0
 
 
    if @attend.save
@@ -47,24 +61,16 @@ class CoursesController < ApplicationController
 
   end
 
-  def attend_confirmation
-   course_id=params[:id]
-   if Attend.select(:id).where(:course_id=>course_id, :student_id=>current_student.id).size > 0
-     redirect_to '/courses/'+course_id
-     return 
-   end    
-   @attend=Attend.new
-   @course=Course.find(course_id)
-
-  end
-
   def cancel_attendance
-	@course_id=params[:id]
-	@student_id=current_student.id
-	a=Attend.where(:course_id=>@course_id, :student_id=>@student_id)
-	a[0].destroy
-	redirect_to :back
-  flash[:alert]="取消成功"
+    redirect_to new_report_path
+  end
+  def cancel_attendance_report
+    @course_id=params[:id]
+    @student_id=current_student.id
+    a=Attend.where(:course_id=>@course_id, :student_id=>@student_id)
+    a[0].update_attributes(:status=>2)
+    #redirect_to course_path(@course_id)
+    #flash[:alert]="取消成功"
   end
 
   def attendee_info
@@ -87,7 +93,7 @@ class CoursesController < ApplicationController
 
   def create
    @course=Course.new(params[:course])
-   @course.company_id=1	
+   @course.company_id=1
 
    @course.save
    redirect_to :action=>:show, :id=>@course.id

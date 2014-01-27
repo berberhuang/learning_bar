@@ -2,9 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "foundation_and_overrides";
-@mixin double_bottom_border{
-	border-bottom: 4px double #e0e0e0;
-}
 @mixin about_text {
 	p{
 		background: rgba(0,0,0,0.2);
@@ -42,7 +39,7 @@
 	.overview{
 		@include grid-column(
 		   $columns:6,
-		   $center:true,
+		   $push:3,
 		   $collapse:true,
 		   $float:left
 		 );

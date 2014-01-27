@@ -3,6 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "foundation_and_overrides";
+.courses_nav{
+	@include double_bottom_border;
+}
 .course_content{
 }
 .course_sidebar{

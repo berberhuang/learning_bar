@@ -1,9 +1,10 @@
+<%=render 'courses_nav'%>
 <h1 class="course_name"><%= @course.name%></h1>
 <div class="row">
 	<!-- cancel alert -->
 	<div class="large-8 column course_content">
 		<div class="row course_img_container">
-			<img src="<%=image_path('mainbanner.jpg')%>">	
+
 		</div>
 		<div class="row">
 			<%= @course.agenda%>
@@ -16,17 +17,18 @@
 	</div>
 	<aside class="large-4 column course_sidebar">
 		<div class="panel">
-			<h3>課程資訊</h3>
+			<% @teachers.each do |t|%>
+				<%=image_tag t.avatar.url(:midium)%>
+				<h6><%= t.username%></h6>
+				<p><%=t.description%></p>
+			<%end%>
 			<%if @companies %>
 				<h6>開課單位</h6>
 				<%@companies.each do |c|%>
 					<%=c.name%>
 				<%end%>
 			<%end%>
-			<h6>主講人</h6>
-			<% @teachers.each do |t|%>
-				<%= t.username%>
-			<%end%>
+			
 			<h6><i class="fa fa-calendar"></i> 課程時間</h6>
 				<%= @course.course_date.strftime('%Y年%m月%d日%I:%M %p')%>
 			<h6><i class="fa fa-map-marker"></i> 課程地點</h6>
@@ -34,9 +36,6 @@
 			<!--map-->
 			<h6><i class="fa fa-users"></i> 開放名額/報名人數</h6>
 			<%= @course.student_amount.to_s%>/
-		</div>
-		
-		<div class="panel">
 			<h3>報名課程</h3>
 			<h6>課程要求:</h6>
 			<%=@course.attend_request%>
@@ -49,16 +48,20 @@
 				<%=link_to '已報名學生列表', attendee_info_course_path%>
 			<% else %>
 				<br/><br/><br/>
-				 <%=link_to attend_confirmation_course_path(@course),class:"button expand" do %>
-				 	報名<i class="fa fa-sign-in fa-lg"></i>
+				 <%=link_to attend_confirmation_course_path(@course),class:"button expand" do %>報名<i class="fa fa-sign-in fa-lg"></i>
 				 <% end -%>
 			<% end %>
 		</div>
 
 		<div id="cancel_confirmation" class="reveal-modal small" data-reveal>
 			<h3>確定要取消報名課程？</h3>
-			<%=link_to "取消報名", cancel_attendance_course_path, class:'button alert', data:{:'alert-class'=>:'cancel-success'}%>
-			<%=link_to "維持報名", "#", class:'button close-reveal-modal'%>
+			<div class="row">
+				<div class="large-6 columns">
+					<%=link_to "取消報名", new_report_path, :class=>'button alert', data:{:'alert-class'=>'cancel-success'}%>
+				</div>
+			</div>
+			
+			
 			<a class="close-reveal-modal">&#215;</a>
 		</div>
 	</aside>
