@@ -35,15 +35,16 @@ Learningbar::Application.routes.draw do
   end
 
   resources :courses do
-
     member do
       get  'attend_confirmation'
       post 'attend'
+      get  're_attend_confirmation'
+      post 're_attend'
       get  'cancel_attendance'
+      post 'cancel_attendance_report'
       get  'attendee_info'
     end
   end
-  resources :reports
   get 'preparing'=>'courses#preparing'
   get 'about'=>'backbone#about'
   get 'FAQ'=>'backbone#FAQ'

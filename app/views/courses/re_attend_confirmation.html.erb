@@ -4,7 +4,7 @@
 		<h4>時間:<%= @course.course_date.to_s%></h4>
 		<h4>地點:<%= @course.location%></h4>
 		
-		<%=form_for @attend, :url=>attend_course_path(@course) do |f|%>
+		<%=form_for @attend, :url=>re_attend_course_path(@course), :method=>:post do |f|%>
 			<%=f.label :course_expect, "課程期待"%>
 			<%=f.text_area :course_expect%>
 			<%=f.submit '確認報名',:class=>:button%>
@@ -12,3 +12,4 @@
 		<%end%>
 	</div>
 </div>
+

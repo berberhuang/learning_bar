@@ -4,7 +4,6 @@
 	<!-- cancel alert -->
 	<div class="large-8 column course_content">
 		<div class="row course_img_container">
-
 		</div>
 		<div class="row">
 			<%= @course.agenda%>
@@ -41,27 +40,28 @@
 			<%=@course.attend_request%>
 			<br/><br/>
 			<% if @attend %>
-				<div class="attended"><h3 class="subheader text-center">已報名</h1></div>
+				<div class="attended"><h3 class="subheader text-center">已報名</h3></div>
 				<%=link_to '取消報名','#',data:{:'reveal-id'=>:'cancel_confirmation'}, class:'button expand alert'%>
+			<% elsif @had_attended %>
+				<%=link_to re_attend_confirmation_course_path(@course),class:"button expand" do %>
+				報名<i class="fa fa-sign-in fa-lg"></i>
+				<%end%>
 			<% elsif @students %>
 				<%=link_to '編輯', edit_course_path(@course)%>
 				<%=link_to '已報名學生列表', attendee_info_course_path%>
 			<% else %>
-				<br/><br/><br/>
 				 <%=link_to attend_confirmation_course_path(@course),class:"button expand" do %>報名<i class="fa fa-sign-in fa-lg"></i>
-				 <% end -%>
-			<% end %>
+			<% end -%>
+			<%end%>
 		</div>
 
 		<div id="cancel_confirmation" class="reveal-modal small" data-reveal>
 			<h3>確定要取消報名課程？</h3>
 			<div class="row">
 				<div class="large-6 columns">
-					<%=link_to "取消報名", new_report_path, :class=>'button alert', data:{:'alert-class'=>'cancel-success'}%>
+					<%=link_to "取消報名", cancel_attendance_course_path, :class=>'button alert', data:{:'alert-class'=>'cancel-success'}%>
 				</div>
-			</div>
-			
-			
+			</div>		
 			<a class="close-reveal-modal">&#215;</a>
 		</div>
 	</aside>
