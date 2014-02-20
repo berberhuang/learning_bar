@@ -14,17 +14,18 @@ class CoursesController < ApplicationController
    @course=Course.find(course_id)
    @companies=@course.companies
    @teachers=@course.teachers
+   session[:course_id]=course_id
    if student_signed_in?
-      @attend = @student.attends.select{|i| i.course_id==course_id && i.status<2}.size>0
-      @had_attended=@student.attends.select{|i| i.course_id==course_id && i.status>1}.size>0
-      @attendance=@student.attends.select{|i| i.course_id==course_id && i.status>1}
+      @attended = @student.attends.select{|i| i.course_id==course_id && i.status<2}.size>0
+      @attending_firstime = @student.attends.select{|i| i.course_id==course_id }.size<1
+      @re_attended=@student.attends.select{|i| i.course_id==course_id && i.status>1}.size>0
    elsif admin_signed_in?
       @students=@course.students
    elsif teacher_signed_in?
       teacher=current_teacher
       if(TeachingCourseShip.exists?(:teacher_id=>teacher.id, :course_id=>course_id.to_s ))
         @students=@course.students
-      end     
+      end
    end
   end
 
@@ -54,16 +55,12 @@ class CoursesController < ApplicationController
     student_id=@student.id
     @attendance=Attend.select(:id).where('course_id=? AND student_id=?', course_id, student_id)
    # course_id=params[:id]
-   if @attendance.where("status<?", 2).exists?
+    if @attendance.where("status<?", 2).exists?
      redirect_to '/courses/'+course_id
-     Rails.logger.debug("attendance")
-     return
-   elsif @attendance.where("status>?", 1).exists?
+    elsif @attendance.where("status>?", 1).exists?
     @attend=@attendance
-    Rails.logger.debug("attendance")
-  else
+    else
     @attend=Attend.new
-    Rails.logger.info @attend.inspect
    end
  end
 

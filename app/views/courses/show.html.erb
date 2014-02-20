@@ -39,18 +39,21 @@
 			<h6>課程要求:</h6>
 			<%=@course.attend_request%>
 			<br/><br/>
-			<% if @attend %>
+			<% if @attended %>
 				<div class="attended"><h3 class="subheader text-center">已報名</h3></div>
 				<%=link_to '取消報名','#',data:{:'reveal-id'=>:'cancel_confirmation'}, class:'button expand alert'%>
-			<% elsif @had_attended %>
+			<% elsif @attending_firstime %>
+				<%=link_to attend_confirmation_course_path(@course),class:"button expand" do %>報名<i class="fa fa-sign-in fa-lg"></i>
+				<% end -%>
+			<% elsif @re_attended %>
 				<%=link_to re_attend_confirmation_course_path(@course),class:"button expand" do %>
 				報名<i class="fa fa-sign-in fa-lg"></i>
 				<%end%>
 			<% elsif @students %>
 				<%=link_to '編輯', edit_course_path(@course)%>
 				<%=link_to '已報名學生列表', attendee_info_course_path%>
-			<% else %>
-				 <%=link_to attend_confirmation_course_path(@course),class:"button expand" do %>報名<i class="fa fa-sign-in fa-lg"></i>
+			<% else%>
+				<%=link_to new_student_session_path,:class=>'button expand' do %>報名<i class="fa fa-sign-in fa-lg"></i>
 			<% end -%>
 			<%end%>
 		</div>

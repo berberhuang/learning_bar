@@ -7,7 +7,7 @@ Learningbar::Application.routes.draw do
       get 'courses',:on => :member
   end
 
-  devise_for :students,:controllers => { :registrations => :student_registrations }
+  devise_for :students,:controllers => { :registrations => :student_registrations, :sessions=>:sessions }  
   resources :students do
       resources :skills, :controller=> :students_skill_ships
       member do
@@ -48,6 +48,7 @@ Learningbar::Application.routes.draw do
   get 'preparing'=>'courses#preparing'
   get 'about'=>'backbone#about'
   get 'FAQ'=>'backbone#FAQ'
+
 
  # devise_for :users, :controllers =>{:registrations => "registrations",:sessions=>'sessions'}
 
