@@ -2,11 +2,11 @@
 <div class="first_band clearfix">
 <%=render :partial=>'main_logo'%>
   <h4 class="text-center subheader">
-    由新銳創業團隊擔任業師<br>
-    富含實作精神的開發者學校<br>
+    透過 Google Hangouts<br>
+    學習富含實作精神的程式開發者課程<br>
   </h4>
   <div class="course_item_row">
-    <%=link_to course_path(1), :class=>'course_item' do %>
+    <%=link_to course_catagory_path("web-development"), :class=>'course_item' do %>
       <h4 class="text-center">
         <span class="fa-stack fa-lg fa-4x">
         <i class="fa fa-lg fa-laptop fa-stack-1x"></i>
@@ -14,7 +14,7 @@
       Web App開發
       </h4>
     <%end%>
-    <%=link_to course_path(2), :class=>'course_item' do %>
+    <%=link_to course_catagory_path("ios"), :class=>'course_item' do %>
       <h4 class="text-center">
         <span class="fa-stack fa-lg fa-4x">
         <i class="fa fa-lg fa-apple fa-stack-1x"></i>
@@ -22,7 +22,7 @@
       iOS App開發
       </h4>
     <%end%>
-    <%=link_to course_path(1), :class=>'course_item' do %>
+    <%=link_to course_catagory_path("android"), :class=>'course_item' do %>
       <h4 class="text-center">
         <span class="fa-stack fa-lg fa-4x">
         <i class="fa fa-lg fa-android fa-stack-1x"></i>
@@ -30,7 +30,7 @@
       Android App開發
       </h4>
     <%end%>
-    <%=link_to course_path(1), :class=>'course_item' do %>
+    <%=link_to course_catagory_path("front-end"), :class=>'course_item' do %>
       <h4 class="text-center">
         <span class="fa-stack fa-lg fa-4x">
         <i class="fa fa-lg fa-html5 fa-stack-1x"></i>
@@ -41,11 +41,11 @@
   </div>
 </div>
 <div class="second_band">
-	<h1 class="text-center">台灣最好的開發者學校</h1>
+	<h1 class="text-center">你不必再為了學習而忍受通勤</h1>
 	<div class="overview">
 		<h4 class="text-center subheader">
-      由一流網路新創公司開辦課程<br>
-      最貼近網路產業的開發者教育
+      LEARNING-BAR 邀請專業開發者擔任講師<br>
+      以Google Hangouts提供遠端程式教育
     </h4>
 	</div>
 	<div class="process">
@@ -53,29 +53,29 @@
 			<li>
 				<span>1</span>
 				<div class="process-content">
-					<h3>開發課程</h3>
-					<p>想學會寫程式嗎？<br>LEARNING BAR開辦技術課程，邀請台灣一流的開發者與新創公司技術團隊，深入淺出分享各種網路開發技能。</p>
+					<h3>教育沒有距離</h3>
+					<p>透過 Google Hangouts 完善的「螢幕分享」與「遠端協助」功能，讓學寫程式不必再跋山涉水，也能獲得最貼近業界的程式技術課程。</p>
 				</div>
 			</li>
 			<li>
 				<span>2</span>
 				<div class="process-content">
-					<h3>課後讀書會</h3>
-					<p>和其他學員一起努力！除了課程以外，我們提供免費的讀書會給報名課程的學員，讓大家群聚討論、分享，一起學習成長！<br></p>
+					<h3>小班合作專案</h3>
+					<p>3～5人的小班課程，除了保障課程品質外，還能和其他學員一起分工實作專案！LEARNING-BAR 課程由講師帶領，指導同班學員一起完成較大型的專案，學習實際多人程式開發流程。</p>
 				</div>
 			</li>
 			<li>
 				<span>3</span>
 				<div class="process-content">
-					<h3>職缺媒合</h3>
-					<p>參加LEARNING BAR的課程，向網路新創公司學習開發，你的學習記錄與作品將讓新創公司更加認識你，獲得進入實習與應徵正職開發者工作的機會！</p>
+					<h3>踏入開發者社群</h3>
+					<p>參加課程、認識講師，就是踏入開發者社群的最短途徑；LEARNING BAR 邀請的講師皆有許多讀書會、公開活動的舉辦經驗，幫助你加入開發者行列，與其他人互相幫助。</p>
 				</div>
 			</li>
 			<li>
 				<span>4</span>
 				<div class="process-content">
-					<h3>認識夥伴</h3>
-					<p>會寫程式是網路創業的基礎；參加LEARNING BAR的課程，讓你更有機會與想要創業的學員接觸互動！</p>
+					<h3>免費參加不定期活動</h3>
+					<p>LEARNING BAR 除了提供遠端程式教育外，將不定期舉辦線下聚會，凡是參加過LEARNING BAR 課程的朋友，皆能免費參加。</p>
 				</div>
 			</li>
 		</ul>

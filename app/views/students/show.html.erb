@@ -1,15 +1,17 @@
 <%=render 'layouts/student_user_panel'%>
 <div class="large-9 column">
 <dl class="tabs" data-tab>
-  <dd class="active"><a href="#profile"><h5>關於我</h5></a></dd>
-  <dd><a href="#show_skill"><h5>開發技能</h5></a></dd>
+  <dd><a href="#profile"><h6>關於我</h6></a></dd>
+  <dd><a href="#show_skill"><h6>開發技能</h6></a></dd>
+  <dd><a href="#course_history"><h6>我的課程</h6></a></dd>
+
 </dl>
 <div class="tabs-content">
-    <div class="content active columns" id="profile">
-    	<%if @student_editable%>
-    	<div class="right">
-    		<%=link_to '編輯',edit_info_student_path('me'),:class=>"button"  %>
-    	</div>
+  <div class="content active columns" id="profile">
+	<%if @student_editable%>
+  	<div class="right">
+  		<%=link_to '編輯',edit_info_student_path('me'),:class=>"button"  %>
+  	</div>
 		<% end %>
 		<h3>自我介紹</h3>
 		<p><%=@student.description%></p>
@@ -23,8 +25,8 @@
 	  	</div>
 	<%end -%>
 		<h3>專長</h3>
-	  	<ul class="skill_board">
-  		<%@skills.each do |s|%>
+  	<ul class="skill_board">
+		<%@skills.each do |s|%>
       <li class="skill_item">
   			<div class="large-3 column">
   				<h3><%=s.skill.skill_name%></h3>
@@ -35,6 +37,16 @@
   			<hr/>
       </li>
   		<% end -%>
-  		</div>
 	</div>
+	
+  <div class="content columns" id="course_history">
+    <h3>參與課程</h3>
+    <ul>
+    <%@courses.each do |course|%>
+      <li>
+        <%=link_to course.name, course_path(course)%>
+      </li>
+    <% end -%>
+    </ul>
+  </div>
 </div>

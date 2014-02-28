@@ -5,6 +5,8 @@
 
   <div class="columns large-2"><%= f.label '課程名稱',:class=>'inline right' %><br /></div>
   <div class="columns large-10"><%= f.text_field :name, :autofocus => true %></div>
+  <div class="columns large-2"><%= f.label '課程分類',:class=>'inline right' %><br /></div>
+  <div class="columns large-10"><%= f.text_field :course_catagory_id, :autofocus => true %></div>
   
   <div class="columns large-2"><%= f.label '課程時間',:class=>'inline right' %><br /></div>
   <div class="columns large-10"><%= f.datetime_select :course_date, :autofocus => true,:ampm=>true, :minute_step=>30 %></div>
@@ -18,7 +20,7 @@
   <div class="columns large-2"><%= f.label '課程規劃',:class=>'inline right' %><br /></div>
   <div class="columns large-10"><%= f.text_area :agenda %></div>
 
-  <div class="columns large-"><%= f.submit "Create" %></div>
+  <div class="columns"><%= f.submit "儲存" %></div>
 
     <% end %>
 <%=link_to 'Back',:back%>

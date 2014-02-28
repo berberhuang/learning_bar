@@ -1,0 +1,23 @@
+<h3><%=@catagory.name%>&nbsp;課程列表</h3>
+<div class="course_list">
+	<ul class="small-block-grid-2 large-block-grid-3">
+	<%@courses.each do |course|%>
+		<li>
+			<div class="course_list_item">
+				<h3 class="text-center">
+					<%=link_to course.name, course_path(course)%>
+				</h3>
+				<p>關於本課程：</p><p><%=course.description%></p>
+				<p>時間：</p>
+				<p><%=course.course_date.strftime('%Y年%m月%d日%I:%M %p')%></p>
+				<p>地點：</p>
+				<p><%=course.location%></p>
+				<%=link_to :查看課程, course_path(course), :class=>"button expand"%>
+			</div>
+			
+		</li>
+	<% end -%>
+
+	</ul>
+</div>
+

@@ -27,6 +27,7 @@ gem 'paperclip'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'friendly_id', '~>4.0.10'
 gem 'foundation-rails', '~>5.0.3.1'
 gem 'devise'
 

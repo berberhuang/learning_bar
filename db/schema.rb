@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140124081934) do
+ActiveRecord::Schema.define(:version => 20140226132918) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -72,18 +72,28 @@ ActiveRecord::Schema.define(:version => 20140124081934) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "course_catagories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "slug"
+  end
+
+  add_index "course_catagories", ["slug"], :name => "index_course_catagories_on_slug", :unique => true
+
   create_table "courses", :force => true do |t|
-    t.string   "name",           :null => false
-    t.integer  "company_id",     :null => false
-    t.datetime "course_date",    :null => false
-    t.integer  "student_amount", :null => false
-    t.string   "location",       :null => false
-    t.text     "agenda",         :null => false
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.string   "name",               :null => false
+    t.integer  "company_id",         :null => false
+    t.datetime "course_date",        :null => false
+    t.integer  "student_amount",     :null => false
+    t.string   "location",           :null => false
+    t.text     "agenda",             :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.text     "description"
     t.integer  "teacher_id"
     t.text     "attend_request"
+    t.integer  "course_catagory_id"
   end
 
   add_index "courses", ["name"], :name => "index_courses_on_name"

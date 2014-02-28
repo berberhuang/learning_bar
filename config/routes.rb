@@ -33,6 +33,9 @@ Learningbar::Application.routes.draw do
       get 'courses'
     end
   end
+    root :to => 'backbone#index'
+
+  resources :course_catagories, :path=>''
 
   resources :courses do
     member do
@@ -101,7 +104,6 @@ Learningbar::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'backbone#index'
 
   # See how all your routes lay out with "rake routes"
 
