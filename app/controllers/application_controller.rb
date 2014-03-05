@@ -5,4 +5,8 @@ class ApplicationController < ActionController::Base
   		course_path(session[:course_id])
     end
   end
+  def after_sign_in_path_for(students)
+  	# edit_student_registration_path
+  	student_path('me')
+  end
 end

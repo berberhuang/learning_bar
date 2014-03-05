@@ -7,7 +7,8 @@ Learningbar::Application.routes.draw do
       get 'courses',:on => :member
   end
 
-  devise_for :students,:controllers => { :registrations => :student_registrations, :sessions=>:sessions }  
+  devise_for :students,:controllers => { :registrations => :student_registrations,
+    :omniauth_callbacks => "students/omniauth_callbacks",:sessions=>:sessions }  
   resources :students do
       resources :skills, :controller=> :students_skill_ships
       member do

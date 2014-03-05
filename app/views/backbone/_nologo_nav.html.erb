@@ -43,7 +43,9 @@
         <li><%=link_to 'FAQ', :controller=>:backbone, :action=>:FAQ%></li>
         <li><%=link_to '課程', courses_path%></li>
         <li><a href="http://learningbar-blog.logdown.com" target="blank">BLOG</a></li>
-        <li><%=link_to '登入','#',:data=>{:'reveal-id'=>'loginModal'}%></li>
+        <!--li><%=link_to '登入','#',:data=>{:'reveal-id'=>'loginModal'}%></li-->
+        <li><%=link_to '登入',new_student_registration_path%></li>
+
 
   <%if resource_name=='student'%>
         	<li><%link_to '註冊', '#', :data=>{:'reveal-id'=>'signupModal'}%></li>

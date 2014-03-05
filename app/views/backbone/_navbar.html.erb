@@ -16,7 +16,7 @@
         <% student=current_student%>
         <li>
         <%=link_to student_path(:me), :class=>"username" do %>
-          <%= image_tag student.avatar.url(:tiny)%>
+          <%= image_tag student.avatar.url(:thumb)%>
           <%= student.username%>
         <%end%>
         </li>
@@ -52,7 +52,8 @@
         <!-- <li><#%=link_to '關於', :controller=>:backbone, :action=>:about %></li> -->
         <li><%=link_to '課程',courses_path%></li>
         <li><a href="#">BLOG</a></li>
-        <li><%=link_to '登入','#',:data=>{:'reveal-id'=>'loginModal'}%></li>
+        <!--li><%=link_to '登入','#',:data=>{:'reveal-id'=>'loginModal'}%></li-->
+        <li><%=link_to '登入',new_student_registration_path%></li>
 
   <%if resource_name=='student'%>
         	<li><%link_to '註冊', '#', :data=>{:'reveal-id'=>'signupModal'}%></li>

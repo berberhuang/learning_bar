@@ -30,7 +30,8 @@ gem 'jquery-ui-rails'
 gem 'friendly_id', '~>4.0.10'
 gem 'foundation-rails', '~>5.0.3.1'
 gem 'devise'
-
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

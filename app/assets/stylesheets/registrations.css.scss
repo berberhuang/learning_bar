@@ -1,0 +1,29 @@
+@import "foundation_and_overrides";
+.google_signin_button{
+	@include button(
+		$padding:$button-tny,
+		$radius:true,
+		$bg:#dd4b39
+		);
+	height: 34px;
+	padding: 0;
+	&:hover{
+		background-color:#e74b37;
+		box-shadow:inset 0 -2px 0 rgba(0,0,0,0.2);
+	};
+	.google-icon{
+		width: 33px;
+		height: 32px;
+		padding: 0.625rem 0;
+		vertical-align: top;
+		margin-top: -3px;
+		display: inline-block;
+	};
+	.google-letter{
+		display: inline-block;
+		padding: 0.625rem 19px 0.625rem 18px;
+		border-left: solid 1px #bb3f30;
+		/*line-height: 31px;*/
+		font-size: 12px;
+	}
+}
